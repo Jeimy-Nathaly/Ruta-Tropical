@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acerca de Ruta Tropical</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="acercade.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+      <link rel="javascript" href="acerca de.js">
+</head>
+
+<body>
+ <!-- ==================================================
+     BARRA DE NAVEGACIÓN
+     ================================================== -->
+<nav class="nav-sitio" id="nav-sitio">
+
+    <button class="nav-sitio__menu" id="abrir-menu" type="button"
+            aria-label="Abrir menú" aria-expanded="false" aria-controls="cajon">
+        <span></span><span></span><span></span>
+    </button>
+
+    <a class="nav-sitio__marca" href="/pagina principal/Inicio.html">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+
+    <div class="nav-sitio__derecha">
+        <label class="moneda">
+            <img id="bandera" src="https://flagcdn.com/w40/us.png" alt="" width="38" height="26">
+            <select id="currency" aria-label="Moneda">
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+                <option value="dop">DOP</option>
+                <option value="gbp">GBP</option>
+            </select>
+            <i class="fa-solid fa-caret-down" aria-hidden="true"></i>
+        </label>
+<div class="idioma" id="idioma">
+    <button class="idioma__boton" id="idioma-boton" type="button"
+            aria-haspopup="listbox" aria-expanded="false" aria-controls="idioma-lista"
+            aria-label="Idioma">
+        <img id="idioma-bandera" src="https://flagcdn.com/w40/es.png" alt="" width="38" height="26">
+        <span class="idioma__codigo" id="idioma-codigo">ES</span>
+        <i class="fa-solid fa-caret-down" aria-hidden="true"></i>
+    </button>
+
+    <ul class="idioma__lista" id="idioma-lista" role="listbox" aria-label="Elegir idioma" hidden></ul>
+</div>
+        <a class="nav-sitio__usuario" href="login.html" aria-label="Iniciar sesión">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+        </a>
+    </div>
+</nav>
+
+<!-- Fondo difuminado -->
+<div class="cajon-fondo" id="cajon-fondo"></div>
+
+<!-- ==================================================
+MENÚ LATERAL
+================================================== -->
+<aside class="cajon" id="cajon" aria-label="Menú principal">
+
+    <div class="cajon__cab">
+        <span class="cajon__marca">Ruta Tropical</span>
+        <button class="cajon__cerrar" id="cerrar-menu" type="button" aria-label="Cerrar menú">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <ul class="cajon__principal">
+        <li><a class="activa" href="#destinos"><i class="fa-solid fa-plane"></i> Vuelos</a></li>
+        <li><a href="#hoteles"><i class="fa-solid fa-hotel"></i> Hoteles</a></li>
+        <li><a href="#hoteles"><i class="fa-solid fa-hotel"></i> autobus</a></li>
+    </ul>
+
+
+
+    <ul class="cajon__enlaces">
+        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> planifica con IA</a></li>
+        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Tarifas de equipaje</a></li>
+        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> planean tus viajes</a></li>
+        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Sobre nosotros</a></li>
+        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Contacto</a></li>
+        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Preguntas frecuentes</a></li>
+        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> explorar</a></li>
+        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Términos y condiciones</a></li>
+        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> rastraedor de vuelos</a></li>
+        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> viajes</a></li>
+    </ul>
+
+    <div class="cajon__contacto">
+        <div class="contacto-fila">
+            <span class="contacto-fila__icono"><i class="fa-solid fa-phone"></i></span>
+            <div>
+                <strong>Teléfono:</strong>
+                <span class="info">+1-029-789-7542</span>
+            </div>
+        </div>
+        <div class="contacto-fila">
+            <span class="contacto-fila__icono"><i class="fa-solid fa-envelope"></i></span>
+            <div>
+                <strong>Correo:</strong>
+                <span class="info">rutaTropical@tuempresa.com</span>
+            </div>
+        </div>
+    </div>
+
+</aside>
+  <header class="banner">
+    <h1>Tu viaje empieza en Ruta Tropical.</h1>
+  </header>
+
+  <main>
+    <p class="intro">
+      Desde 2015, Ruta Tropical ayuda a los viajeros a descubrir el Caribe y más allá.
+      ¿Un buscador de viajes con sabor tropical? Nadie lo había hecho, hasta que llegamos nosotros.
+    </p>
+
+    <p>
+      Ruta Tropical nació de una idea sencilla:
+      <strong>viajar debe ser fácil, claro y emocionante desde el primer clic.</strong>
+    </p>
+
+    <p>
+      Creemos que planificar unas vacaciones no debería ser complicado. Por eso construimos una
+      plataforma que reúne en un solo lugar vuelos, hoteles, alquiler de autos y paquetes, para que
+      compares con calma y elijas lo que mejor se adapte a ti. Somos pioneros en la búsqueda de viajes
+      enfocada en destinos tropicales, siempre pensando en quien viaja. No importa tu presupuesto, tus
+      preferencias ni tu destino soñado: mereces ver todas las opciones y decidir con libertad.
+    </p>
+
+    <p>
+      Queremos que la web sea una herramienta a tu favor. Sin trucos, sin cargos ocultos y sin
+      sorpresas desagradables. Solo tú, tus opciones y las ganas de partir.
+    </p>
+
+    <p>
+      Hoy somos una de las plataformas de viajes de más rápido crecimiento de la región. Analizamos
+      miles de ofertas cada día y colaboramos con aerolíneas, hoteles y agencias de confianza para que
+      cada persona planifique su aventura de forma ágil, transparente y segura. Aunque hemos crecido,
+      <strong>nuestros valores siguen siendo los mismos desde el primer día.</strong>
+    </p>
+
+    <h2>En qué creemos.</h2>
+
+    <section>
+      <div class="valor">
+        <h3>Todas las personas merecen elegir con transparencia.</h3>
+        <p>Nuestra plataforma te permite comparar opciones, entender los costos totales y reservar con confianza. Sin tarifas ocultas. Sin sorpresas.</p>
+      </div>
+
+      <div class="valor">
+        <h3>La magia surge cuando tienes todas las opciones.</h3>
+        <p>Ruta Tropical está diseñada para mostrarte un panorama completo de aerolíneas, hoteles, agencias de alquiler de autos y proveedores locales, para que veas todo antes de reservar.</p>
+      </div>
+
+      <div class="valor">
+        <h3>No tenemos favoritos.</h3>
+        <p>Trabajamos con proveedores de viajes para mostrarte precios, horarios y disponibilidad de forma clara y justa. Nuestros resultados se basan en lo que mejor se ajusta a ti, no en lo que más nos conviene a nosotros.</p>
+      </div>
+
+      <div class="valor">
+        <h3>Un mercado abierto nos beneficia a todos.</h3>
+        <p>Cuando hay variedad, ganan tanto los viajeros como los proveedores. Mantenemos un acceso equitativo a las tarifas para que cada persona encuentre su mejor opción y para fomentar un ecosistema de viajes sano y competitivo.</p>
+      </div>
+
+      <div class="valor">
+        <h3>Viajar debe ser accesible para todo el mundo.</h3>
+        <p>Viajar debe ser fácil, sin importar de dónde ni cómo lo planifiques. Por eso trabajamos con una amplia red de proveedores y nunca dejamos de innovar. Con herramientas intuitivas y búsqueda inteligente, te ayudamos a encontrar vuelos, alojamientos, autos y paquetes que se adapten a tus necesidades.</p>
+      </div>
+    </section>
+  </main>
+
+<!---------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+pie de pagina
+-----------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------->
+<footer class="footer">
+    <div class="footer__inner">
+
+      <div class="footer__columnas">
+        <nav aria-label="Empresa">
+          <h3>Empresa</h3>
+          <ul>
+            <li><a href="/acerca de/acerca de.html">Acerca de</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Contacto">
+          <h3>Contacto</h3>
+          <ul>
+            <li><a href="#">Ayuda/FAQ</a></li>
+            <li><a href="#">Prensa</a></li>
+            <li><a href="#">Afiliados</a></li>
+            <li><a href="#">Dueños de hoteles</a></li>
+            <li><a href="#">Socios</a></li>
+            <li><a href="#">Anúnciate con nosotros</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Más">
+          <h3>Más</h3>
+          <ul>
+            <li><a href="#">Tarifas de aerolíneas</a></li>
+            <li><a href="#">Aerolíneas</a></li>
+            <li><a href="#">Consejos de tarifas bajas</a></li>
+            <li><a href="#">Insignias y certificados</a></li>
+            <li><a href="#">Seguridad</a></li>
+          </ul>
+        </nav>
+
+        <div>
+          <h3>Descarga la app</h3>
+          <div class="apps">
+            <a class="app-btn" href="#" aria-label="Disponible en Google Play">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 2.5v19l10-9.5L3 2.5z"/>
+                <path d="M16 9l3.5 2c.7.4.7 1.6 0 2L16 15l-3-3 3-3z"/>
+              </svg>
+              <div><small>Get it on</small><span>Google Play</span></div>
+            </a>
+            <a class="app-btn" href="#" aria-label="Descargar en App Store">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M16.4 12.7c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9s-1.9-.9-3.2-.8c-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.700-.8 3.100-.8s1.800.8 3.100.8 2.100-1.200 2.900-2.300c.9-1.300 1.300-2.600 1.300-2.700-.1 0-2.300-.9-2.300-3.700zM14 5.4c.7-.8 1.100-1.900 1-3-1 0-2.100.7-2.800 1.500-.6.700-1.100 1.800-1 2.900 1.100.1 2.100-.6 2.800-1.400z"/>
+              </svg>
+              <div><small>Download on the</small><span>App Store</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__legal">
+        <div class="footer__legal-links">
+          <span>©2026 Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</span>
+          <a href="#">Privacidad</a>
+          <a href="#">Términos y condiciones</a>
+        </div>
+
+        <div class="social">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.100 0 2.200.2 2.200.2v2.500h-1.300c-1.200 0-1.600.8-1.600 1.600V12h2.800l-.4 2.900h-2.300v7A10 10 0 0012 2z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.500 2.500 0 00-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 002.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 001.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 001.800-1.800c.4-1.600.4-4.800.4-4.800s0-3.200-.4-4.800zM10 15V9l5.200 3L10 15z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.500A4.500 4.500 0 1112 16.500a4.500 4.500 0 010-9zm0 2A2.500 2.500 0 1012 14.500a2.500 2.500 0 000-5zM17.500 6a1 1 0 110 2 1 1 0 010-2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="acerca de.js"></script>
+</body>
+</html>

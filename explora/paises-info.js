@@ -1,0 +1,33 @@
+/* Info de cada país. Formato:
+   'capital|idiomas|moneda|lugares;...|platos;...|cultura|zonas para hospedarse;...' */
+const INFO = {
+  'argentina': 'Buenos Aires|Español|Peso argentino|Cataratas del Iguazú;Glaciar Perito Moreno;Buenos Aires (La Boca y Recoleta)|Asado;Empanadas;Alfajores|Cuna del tango y del mate|Palermo y Recoleta (Buenos Aires);Bariloche',
+  'brasil': 'Brasilia|Portugués|Real|Cristo Redentor (Río);Cataratas do Iguaçu;Lençóis Maranhenses|Feijoada;Pão de queijo;Moqueca|Carnaval, samba y capoeira|Copacabana e Ipanema (Río);Salvador de Bahía',
+  'canada': 'Ottawa|Inglés y francés|Dólar canadiense|Cataratas del Niágara;Banff y Lago Louise;Torre CN (Toronto)|Poutine;Butter tarts;Sirope de arce|Diversidad multicultural y hockey sobre hielo|Centro de Toronto;Viejo Montreal;Vancouver',
+  'colombia': 'Bogotá|Español|Peso colombiano|Cartagena de Indias;Valle de Cocora;Caño Cristales|Bandeja paisa;Ajiaco;Arepas|Café, cumbia y vallenato|Centro histórico de Cartagena;Zona Rosa (Bogotá);Eje Cafetero',
+  'cuba': 'La Habana|Español|Peso cubano|La Habana Vieja;Valle de Viñales;Varadero|Ropa vieja;Moros y cristianos;Sándwich cubano|Son cubano, tabaco y autos clásicos|La Habana Vieja;Varadero;Trinidad',
+  'estados-unidos': 'Washington D. C.|Inglés|Dólar estadounidense|Estatua de la Libertad (Nueva York);Gran Cañón;Parque Yellowstone|Hamburguesas;Barbacoa;Tarta de manzana|Jazz, cine de Hollywood y Acción de Gracias|Manhattan;San Francisco;Miami Beach',
+  'mexico': 'Ciudad de México|Español|Peso mexicano|Chichén Itzá;Teotihuacán;Tulum y Cancún|Tacos al pastor;Mole poblano;Chiles en nogada|Día de Muertos y mariachi|Roma y Condesa (CDMX);Playa del Carmen;Centro de Oaxaca',
+  'republicadominicana': 'Santo Domingo|Español|Peso dominicano|Zona Colonial (Santo Domingo);Punta Cana;Samaná e Isla Saona|La Bandera;Sancocho;Mangú|Merengue, bachata y béisbol|Zona Colonial;Bávaro y Punta Cana;Las Terrenas',
+  'venezuela': 'Caracas|Español|Bolívar|Salto Ángel;Archipiélago Los Roques;Monte Roraima|Arepas;Pabellón criollo;Hallacas|Joropo y la Navidad con hallacas|Altamira (Caracas);Isla de Margarita;Mérida',
+  'alemania': 'Berlín|Alemán|Euro|Puerta de Brandeburgo (Berlín);Castillo de Neuschwanstein;Catedral de Colonia|Salchichas (bratwurst);Pretzel;Schnitzel|Oktoberfest y mercados navideños|Mitte (Berlín);Centro de Múnich;Hamburgo',
+  'espana': 'Madrid|Español|Euro|Sagrada Familia (Barcelona);La Alhambra (Granada);Camino de Santiago|Paella;Tortilla de patatas;Jamón ibérico|Flamenco, siesta y fiestas como San Fermín|Barrio Gótico (Barcelona);Centro de Madrid;Santa Cruz (Sevilla)',
+  'francia': 'París|Francés|Euro|Torre Eiffel;Museo del Louvre;Mont-Saint-Michel|Croissant;Ratatouille;Quesos y vinos|Arte, moda y alta cocina|Le Marais y Montmartre (París);Niza',
+  'italia': 'Roma|Italiano|Euro|Coliseo (Roma);Canales de Venecia;Torre de Pisa|Pizza napolitana;Pasta carbonara;Gelato|Ópera, Renacimiento y fútbol|Centro de Roma;Florencia;Costa Amalfitana',
+  'reinounido': 'Londres|Inglés|Libra esterlina|Big Ben (Londres);Stonehenge;Castillo de Edimburgo|Fish and chips;Desayuno inglés;Té con scones|Monarquía, teatro y té de las cinco|Westminster (Londres);Old Town (Edimburgo);Oxford',
+  'rusia': 'Moscú|Ruso|Rublo|Plaza Roja (Moscú);Museo del Hermitage (San Petersburgo);Lago Baikal|Borsch;Pelmeni;Blini|Ballet Bolshói y gran literatura|Centro de Moscú;Nevsky Prospect (San Petersburgo)',
+  'arabiasaudita': 'Riad|Árabe|Riyal saudí|Al-Ula y Hegra;Diriyah (Riad);Al-Balad (Jeddah)|Kabsa;Mutabbaq;Dátiles y café árabe|Hospitalidad y tradición beduina|Riad;Jeddah;Al-Ula',
+  'china': 'Pekín|Chino mandarín|Yuan renminbi|Gran Muralla;Ciudad Prohibida;Guerreros de Terracota (Xi’an)|Pato laqueado;Dim sum;Dumplings|Caligrafía y Año Nuevo Lunar|Centro de Pekín;El Bund (Shanghái);Chengdú',
+  'india': 'Nueva Delhi|Hindi e inglés|Rupia india|Taj Mahal (Agra);Jaipur, la Ciudad Rosa;Varanasi|Biryani;Pollo tikka masala;Samosas|Festivales Holi y Diwali|Nueva Delhi;Jaipur;Goa',
+  'japon': 'Tokio|Japonés|Yen|Monte Fuji;Fushimi Inari (Kioto);Senso-ji (Tokio)|Sushi;Ramen;Tempura|Ceremonia del té y hanami|Shinjuku y Shibuya (Tokio);Gion (Kioto);Namba (Osaka)',
+  'corea-del-sur': 'Seúl|Coreano|Won surcoreano|Palacio Gyeongbokgung;Isla de Jeju;Aldea Gamcheon (Busan)|Kimchi;Bibimbap;Barbacoa coreana|K-pop, K-drama y hanbok|Myeongdong y Hongdae (Seúl);Haeundae (Busan)',
+  'libano': 'Beirut|Árabe|Libra libanesa|Ruinas de Baalbek;Cuevas de Jeita;Biblos|Hummus;Tabulé;Kibbeh|Mezze, hospitalidad y festivales de música|Hamra y Gemmayzeh (Beirut);Biblos;Batroun',
+  'argelia': 'Argel|Árabe y bereber|Dinar argelino|La Casbah de Argel;Ruinas de Timgad;Tassili n’Ajjer|Cuscús;Chorba;Makroud|Cultura bereber y tuareg|Centro de Argel;Orán;Constantina',
+  'angola': 'Luanda|Portugués|Kwanza|Cataratas de Calandula;Parque Nacional de Quiçama;Isla de Luanda|Muamba de galinha;Calulu;Funge|Kizomba, semba y Carnaval de Luanda|Luanda;Benguela;Lubango',
+  'egipto': 'El Cairo|Árabe|Libra egipcia|Pirámides de Giza;Valle de los Reyes (Luxor);Abu Simbel|Koshari;Ful medames;Falafel|Legado faraónico y cruceros por el Nilo|Giza y El Cairo;Luxor;Sharm el-Sheij',
+  'marruecos': 'Rabat|Árabe y bereber|Dírham marroquí|Medina de Fez;Plaza Jemaa el-Fna (Marrakech);Chefchaouen|Tajín;Cuscús;Té de menta|Zocos, artesanía y hospitalidad|Medina de Marrakech (riads);Fez;Essaouira',
+  'nigeria': 'Abuya|Inglés|Naira|Roca de Zuma (Abuya);Parque Nacional Yankari;Reserva de Lekki (Lagos)|Jollof rice;Suya;Sopa egusi|Nollywood y afrobeats|Victoria Island (Lagos);Centro de Abuya',
+  'australia': 'Canberra|Inglés|Dólar australiano|Ópera de Sídney;Gran Barrera de Coral;Uluru|Meat pie;Vegemite en tostada;Pavlova|Cultura aborigen y surf|Circular Quay (Sídney);Melbourne;Cairns',
+  'nuevazelanda': 'Wellington|Inglés y maorí|Dólar neozelandés|Milford Sound;Hobbiton (Matamata);Rotorua|Hangi;Cordero;Pavlova|Cultura maorí y el haka|Queenstown;Auckland;Rotorua',
+  'fiyi': 'Suva|Inglés, fiyiano e hindi|Dólar fiyiano|Islas Mamanuca;Islas Yasawa;Isla Taveuni|Kokoda;Lovo;Palusami|Ceremonia del kava y danza meke|Denarau (Nadi);Islas Mamanuca;Costa del Coral'
+};

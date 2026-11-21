@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explora – Destinos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="explorar.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="#top" data-tab="top">Explora</a>
+    <nav>
+      <a class="active" href="#top" data-tab="top">Países</a>
+      <a href="#gastronomia" data-tab="gastronomia">Gastronomía y restaurantes</a>
+      <a href="#lugares" data-tab="lugares">Lugares turísticos</a>
+      <a href="#cultura" data-tab="cultura">Cultura</a>
+      <a href="#hospedaje" data-tab="hospedaje">Informaciones de hospedajes</a>
+      <a href="#resenas" data-tab="resenas">Reseñas de viajeros</a>
+    </nav>
+  </header>
+
+  <!-- PORTADA: carrusel de países -->
+  <section class="hero" id="top">
+    <div class="bg show" id="bgA"></div>
+    <div class="bg" id="bgB"></div>
+    <div class="shade"></div>
+
+    <section class="content" id="content">
+      <p class="place" id="place"></p>
+      <h1 id="title"></h1>
+      <p class="desc" id="desc"></p>
+      <a class="cta" href="#gastronomia"><span class="play">▼</span> Descubrir destino</a>
+    </section>
+
+    <div class="cards" id="cards"></div>
+
+    <div class="controls">
+      <button id="prev" aria-label="Anterior">‹</button>
+      <button id="next" aria-label="Siguiente">›</button>
+      <div class="bar"><i id="bar"></i></div>
+      <span class="num" id="num">1</span>
+    </div>
+  </section>
+
+  <!-- SECCIONES: las crea el JS según el país elegido -->
+  <main id="secciones"></main>
+
+  <script src="paises-info.js"></script>
+  <script src="explorar.js"></script>
+</body>
+</html>

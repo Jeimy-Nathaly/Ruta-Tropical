@@ -1,0 +1,613 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #17A1CF 0%, #81BAC2 50%, #FADADA 100%);
+  color: #0F172A;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.rt-fondo-ambiental {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.rt-resplandor-izq {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  top: -120px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(249, 250, 251, 0.55) 0%, transparent 72%);
+  filter: blur(22px);
+}
+
+.rt-resplandor-der {
+  position: absolute;
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  right: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(250, 218, 218, 0.5) 0%,
+    rgba(129, 186, 194, 0.25) 55%,
+    transparent 78%
+  );
+  filter: blur(20px);
+}
+
+/* ==========================================================
+   BARRA SUPERIOR CON EL LOGO DE LA PÁGINA
+   ========================================================== */
+.rt-header-top {
+  position: relative;
+  z-index: 3;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 36px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.rt-logo-enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #F9FAFB;
+  font-weight: 900;
+  font-size: 16.5px;
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.22);
+  transition: transform 0.2s ease;
+}
+
+.rt-logo-enlace:hover {
+  transform: translateY(-1px);
+}
+
+.rt-logo-icono {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: #F9FAFB;
+  color: #17A1CF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.rt-logo-enlace:hover .rt-logo-icono {
+  background: #E2837D;
+  color: #F9FAFB;
+}
+
+/* ==========================================================
+   GRID CENTRADO CON BUENA SEPARACIÓN ENTRE LOGIN E IMAGEN
+   ========================================================== */
+.rt-grid-centrado {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100vh - 56px);
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 36px 36px;
+  display: grid;
+  grid-template-columns: 405px 440px;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  gap: 96px;
+}
+
+.rt-lado-formulario {
+  width: 100%;
+  max-width: 405px;
+}
+
+.rt-alerta-top {
+  display: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+  animation: aparecerSuave 0.25s ease;
+}
+
+.rt-alerta-top.error {
+  display: block;
+  background: #FADADA;
+  color: #DD4350;
+  border: 1.5px solid #E2837D;
+}
+
+.rt-alerta-top.exito {
+  display: block;
+  background: #F9FAFB;
+  color: #17A1CF;
+  border: 1.5px solid #17A1CF;
+}
+
+.rt-tarjeta-auth {
+  background: rgba(249, 250, 251, 0.96);
+  backdrop-filter: blur(18px);
+  border: 2px solid #F9FAFB;
+  border-radius: 26px;
+  padding: 26px 24px;
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.14);
+}
+
+.rt-anim-entrada {
+  animation: aparecerSuave 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes aparecerSuave {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.rt-encabezado-auth {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.rt-encabezado-auth h1 {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #0F172A;
+  margin-bottom: 4px;
+}
+
+.rt-encabezado-auth h1 span {
+  color: #DD4350;
+}
+
+.rt-encabezado-auth p {
+  font-size: 12.5px;
+  color: #475569;
+}
+
+/* Selector Iniciar sesión / Crear cuenta limpio con acento aguamarina/azul */
+.rt-tabs-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 5px;
+  border-radius: 14px;
+  background: rgba(129, 186, 194, 0.22);
+  border: 1px solid rgba(129, 186, 194, 0.45);
+  margin-bottom: 18px;
+}
+
+.rt-tab-btn {
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #334155;
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rt-tab-btn:hover {
+  color: #17A1CF;
+}
+
+.rt-tab-btn.activa {
+  background: #F9FAFB;
+  color: #17A1CF;
+  box-shadow: 0 4px 12px rgba(23, 161, 207, 0.14);
+}
+
+.rt-form-panel.oculto {
+  display: none;
+}
+
+.rt-campo-bloque {
+  margin-bottom: 14px;
+}
+
+.rt-fila-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.rt-etiqueta-campo {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 6px;
+}
+
+.rt-fila-label .rt-etiqueta-campo {
+  margin-bottom: 0;
+}
+
+.rt-link-accion {
+  background: none;
+  border: none;
+  color: #2f7e8a;
+  font-size: 11.5px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.rt-link-accion:hover {
+  color: #17A1CF;
+  text-decoration: underline;
+}
+
+.rt-campo-animado {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.rt-icono-izq {
+  position: absolute;
+  left: 13px;
+  color: #81BAC2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.rt-campo-animado:focus-within .rt-icono-izq {
+  color: #17A1CF;
+  transform: scale(1.08);
+}
+
+.rt-input-tropical {
+  width: 100%;
+  height: 43px;
+  padding: 0 14px 0 40px;
+  border-radius: 12px;
+  border: 1.5px solid #81BAC2;
+  background: #F9FAFB;
+  color: #0F172A;
+  font-size: 13px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.22s ease;
+}
+
+.rt-input-tropical.rt-con-ojo {
+  padding-right: 42px;
+}
+
+.rt-input-tropical::placeholder {
+  color: #94A3B8;
+}
+
+.rt-input-tropical:focus {
+  border-color: #17A1CF;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(23, 161, 207, 0.2);
+}
+
+.rt-ver-ojo {
+  position: absolute;
+  right: 11px;
+  background: none;
+  border: none;
+  color: #81BAC2;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.rt-ver-ojo:hover {
+  color: #17A1CF;
+  transform: scale(1.1);
+}
+
+/* Botón principal sólido en durazno/coral (#E2837D -> #DD4350) para variar del azul */
+.rt-btn-tropical {
+  width: 100%;
+  height: 45px;
+  margin-top: 4px;
+  border-radius: 13px;
+  border: none;
+  background: #E2837D;
+  color: #F9FAFB;
+  font-size: 13.5px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(226, 131, 125, 0.34);
+  transition: all 0.2s ease;
+}
+
+.rt-btn-tropical:hover,
+.rt-btn-tropical:active {
+  background: #DD4350;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(221, 67, 80, 0.36);
+}
+
+.rt-flecha-svg {
+  transition: transform 0.22s ease;
+}
+
+.rt-btn-tropical:hover .rt-flecha-svg {
+  transform: translateX(4px);
+}
+
+.rt-separador-social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #64748B;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin: 18px 0 12px;
+}
+
+.rt-separador-social::before,
+.rt-separador-social::after {
+  content: "";
+  flex: 1;
+  height: 1.5px;
+  background: rgba(129, 186, 194, 0.45);
+}
+
+.rt-social-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Botones sociales con iluminación variada y limpia al tocar o pasar cursor */
+.rt-btn-social {
+  height: 40px;
+  border-radius: 12px;
+  border: 1.5px solid #81BAC2;
+  background: #F9FAFB;
+  color: #0F172A;
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.rt-social-grid .rt-btn-social:first-child:hover,
+.rt-social-grid .rt-btn-social:first-child:focus,
+.rt-social-grid .rt-btn-social:first-child:active {
+  border-color: #E2837D;
+  background: rgba(250, 218, 218, 0.35);
+  color: #0F172A;
+  box-shadow: 0 0 0 3px rgba(226, 131, 125, 0.22);
+  transform: translateY(-1px);
+}
+
+.rt-social-grid .rt-btn-social:last-child:hover,
+.rt-social-grid .rt-btn-social:last-child:focus,
+.rt-social-grid .rt-btn-social:last-child:active {
+  border-color: #17A1CF;
+  background: rgba(129, 186, 194, 0.2);
+  color: #0F172A;
+  box-shadow: 0 0 0 3px rgba(23, 161, 207, 0.2);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================
+   COLUMNA DERECHA: ESFERA GRANDE Y AVIÓN DE VIAJE
+   ========================================================== */
+.rt-lado-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.rt-masa-viaje {
+  position: relative;
+  width: 440px;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rt-fluido-capa {
+  position: absolute;
+  inset: 4%;
+  border-radius: 44% 56% 48% 52% / 52% 40% 60% 48%;
+  animation: morphViaje 11s ease-in-out infinite alternate;
+}
+
+.c1 {
+  background: radial-gradient(
+    circle at 34% 28%,
+    #F9FAFB 0%,
+    #FADADA 24%,
+    #E2837D 46%,
+    #81BAC2 72%,
+    #17A1CF 100%
+  );
+  box-shadow:
+    0 0 80px rgba(249, 250, 251, 0.45),
+    inset -24px -24px 55px rgba(23, 161, 207, 0.45),
+    inset 22px 22px 50px rgba(249, 250, 251, 0.65);
+}
+
+.c2 {
+  inset: 9%;
+  background: radial-gradient(
+    circle at 66% 58%,
+    rgba(249, 250, 251, 0.55) 0%,
+    rgba(129, 186, 194, 0.35) 52%,
+    transparent 76%
+  );
+  mix-blend-mode: screen;
+  animation-duration: 8.5s;
+  animation-direction: alternate-reverse;
+}
+
+.c3 {
+  inset: 14%;
+  background: radial-gradient(
+    circle at 28% 68%,
+    rgba(221, 67, 80, 0.32) 0%,
+    rgba(250, 218, 218, 0.28) 50%,
+    transparent 75%
+  );
+  animation-duration: 14s;
+}
+
+@keyframes morphViaje {
+  0% {
+    border-radius: 44% 56% 48% 52% / 52% 40% 60% 48%;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    border-radius: 56% 44% 58% 42% / 43% 57% 43% 57%;
+    transform: rotate(9deg) scale(1.04);
+  }
+  100% {
+    border-radius: 40% 60% 45% 55% / 58% 44% 56% 42%;
+    transform: rotate(-7deg) scale(0.99);
+  }
+}
+
+.rt-onda-radar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(249, 250, 251, 0.55);
+  animation: expandirOnda 4.5s ease-out infinite;
+}
+
+.o2 {
+  animation-delay: 2.2s;
+  border-color: rgba(250, 218, 218, 0.55);
+}
+
+@keyframes expandirOnda {
+  0% { transform: scale(0.72); opacity: 0.85; }
+  100% { transform: scale(1.22); opacity: 0; }
+}
+
+.rt-anillo-ruta {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(249, 250, 251, 0.72);
+  z-index: 3;
+}
+
+.r1 {
+  width: 108%;
+  height: 108%;
+  animation: girarRuta 26s linear infinite;
+}
+
+.r2 {
+  width: 118%;
+  height: 78%;
+  transform: rotate(-18deg);
+  border-color: rgba(221, 67, 80, 0.45);
+}
+
+@keyframes girarRuta {
+  to { transform: rotate(360deg); }
+}
+
+.rt-avion-grande-centro {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  filter: drop-shadow(0 14px 24px rgba(15, 23, 42, 0.25));
+  animation: vueloSobreEsfera 5.8s ease-in-out infinite alternate;
+}
+
+.rt-estela-centro {
+  width: 125px;
+  height: 4px;
+  margin-right: -8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent 0%, rgba(250, 218, 218, 0.55) 50%, rgba(249, 250, 251, 0.98) 100%);
+}
+
+@keyframes vueloSobreEsfera {
+  0% { transform: translate(-16px, 12px) rotate(-16deg); }
+  100% { transform: translate(32px, -20px) rotate(-8deg); }
+}
+
+.rt-pie-visual {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0F172A;
+  text-align: center;
+  background: rgba(249, 250, 251, 0.92);
+  border: 1.5px solid #81BAC2;
+  padding: 9px 18px;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+.rt-pie-visual strong {
+  color: #17A1CF;
+  font-weight: 800;
+}
+
+@media (max-width: 1040px) {
+  .rt-grid-centrado {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    padding: 20px 16px 32px;
+  }
+
+  .rt-masa-viaje {
+    width: min(350px, 82vw);
+    height: min(350px, 82vw);
+  }
+}
+
+.rt-google-oficial-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+}

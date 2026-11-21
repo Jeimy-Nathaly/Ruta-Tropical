@@ -1,0 +1,539 @@
+/* ====== Variables ====== */
+:root {
+  --fondo: #f8f9fb;
+  --texto: #45666c;
+  --teal: #82b8c2;
+  --teal-link: #ff1d6c;
+  --rojo: #e0485c;
+  --naranja: #88e7e4ca;
+  --naranja-2: #ff6b8b;
+  --borde: #8a9bb0;
+  --aviso-azul: #e3f6fc;
+  --aviso-gris: #e8ecf0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+/* ==========================================================
+   3. BARRA DE NAVEGACIÓN
+   ========================================================== */
+.nav-sitio {
+  position: absolute;               /* sobre la portada */
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: var(--alto-nav);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(128, 126, 126, .49);
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+/* La clase .fija la añade el JS al pasar la portada */
+.nav-sitio.fija {
+  position: fixed;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .12);
+  animation: bajar-nav .3s ease;
+}
+@keyframes bajar-nav {
+  from { transform: translateY(-100%); }
+  to   { transform: none; }
+}
+
+/* Botón de las tres rayitas */
+.nav-sitio__menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 0 8px;
+  background: none;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.nav-sitio__menu span { display: block; height: 2px; background: #fff; border-radius: 2px; }
+.nav-sitio__menu:hover { background: rgba(62, 62, 62, .22); }
+
+.nav-sitio__marca {
+  margin-right: auto;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -.3px;
+  color: #fff;
+  white-space: nowrap;
+}
+.nav-sitio__marca:hover { text-decoration: none; }
+
+.nav-sitio__derecha { display: flex; align-items: center; gap: 14px; }
+
+/* Moneda */
+.moneda { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.moneda img { display: block; width: 38px; height: 26px; object-fit: cover; border-radius: 3px; }
+.moneda select {
+  padding: 7px 10px;
+  font: 700 12px/1 "Poppins", Arial, sans-serif;
+  letter-spacing: .5px;
+  color: #fff;
+  background: var(--salmon);
+  border: 0;
+  border-radius: 8px;
+  appearance: none;
+  cursor: pointer;
+}
+.moneda i { font-size: 12px; color: var(--salmon); }
+
+/* Usuario */
+.nav-sitio__usuario {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  color: #fff;
+  background: var(--salmon);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--rojo);
+}
+.nav-sitio__usuario:hover { text-decoration: none; }
+
+/* Foco visible para teclado */
+.nav-sitio__menu:focus-visible,
+.moneda select:focus-visible,
+.nav-sitio__usuario:focus-visible,
+.cajon a:focus-visible,
+.cajon__cerrar:focus-visible { outline: 3px solid #0a66ff; outline-offset: 2px; }
+
+@media (max-width: 480px) {
+  .nav-sitio { padding: 0 10px; }
+  .nav-sitio__marca { font-size: 17px; }
+  .nav-sitio__derecha { gap: 8px; }
+  .moneda img { width: 30px; height: 20px; }
+}
+
+
+/* ==========================================================
+   4. SELECTOR DE IDIOMA
+   ========================================================== */
+.idioma { position: relative; }
+
+.idioma__boton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.idioma__boton img { display: block; width: 38px; height: 26px; object-fit: cover; border-radius: 3px; }
+.idioma__boton i { font-size: 12px; color: #1a1a1a; }
+.idioma__boton[aria-expanded="true"] i { transform: rotate(180deg); }
+.idioma__boton:focus-visible { outline: 3px solid #0a66ff; outline-offset: 3px; }
+
+.idioma__codigo {
+  padding: 7px 10px;
+  font: 700 12px/1 "Poppins", Arial, sans-serif;
+  letter-spacing: .5px;
+  color: #fff;
+  background: var(--salmon);
+  border-radius: 8px;
+}
+
+/* Lista desplegable */
+.idioma__lista {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 1200;
+  width: 240px;
+  max-height: 340px;
+  padding: 6px;
+  overflow-y: auto;
+  list-style: none;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .18);
+  font-family: "Poppins", Arial, sans-serif;
+}
+.idioma__lista[hidden] { display: none; }
+
+.idioma__lista li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  font-size: 14px;
+  color: var(--salmon);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.idioma__lista li img { flex: none; width: 28px; height: 19px; object-fit: cover; border-radius: 2px; }
+.idioma__lista li small { margin-left: auto; font-size: 11px; font-weight: 700; }
+.idioma__lista li:hover,
+.idioma__lista li.enfocado { background: #f3f5f7; }
+.idioma__lista li[aria-selected="true"] { font-weight: 700; color: #fff; background: var(--rojo); }
+
+@media (max-width: 480px) {
+  .idioma__boton { gap: 6px; }
+  .idioma__boton img { width: 30px; height: 20px; }
+  .idioma__codigo { padding: 6px 7px; }
+  .idioma__lista { right: -60px; width: min(240px, calc(100vw - 24px)); }
+}
+
+
+/* ==========================================================
+   5. MENÚ LATERAL
+   ========================================================== */
+
+/* Fondo difuminado */
+.cajon-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  background: rgba(196, 202, 213, .35);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.cajon-fondo.visible { opacity: 1; pointer-events: auto; }
+
+/* Panel */
+.cajon {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 1100;
+  width: 300px;
+  max-width: 85vw;
+  padding: 20px 16px 24px;
+  overflow-y: auto;
+  background: #fff;
+  font-family: "Poppins", Arial, sans-serif;
+  box-shadow: 6px 0 30px rgba(0, 0, 0, .18);
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform .3s ease, visibility .3s;
+}
+.cajon.abierto { transform: none; visibility: visible; }
+
+.cajon__cab { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.cajon__marca { font-size: 20px; font-weight: 800; color: var(--salmon); }
+.cajon__cerrar {
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  color: var(--turquesa);
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.cajon__cerrar:hover { background: #fff1ea; }
+
+.cajon__principal,
+.cajon__enlaces { list-style: none; }
+
+/* Opciones principales */
+.cajon__principal a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--turquesa);
+  border-left: 3px solid transparent;
+}
+.cajon__principal a:hover { background: #f7f8f9; text-decoration: none; }
+.cajon__principal i { width: 22px; font-size: 18px; text-align: center; color: #5b6270; }
+.cajon__principal a.activa { color: var(--rojo); border-left-color: var(--rojo); background: #fff8f4; }
+.cajon__principal a.activa i { color: var(--rojo); }
+
+/* Enlaces secundarios */
+.cajon__enlaces a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 4px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--rojo);
+}
+.cajon__enlaces a:hover { text-decoration: none; opacity: .8; }
+.cajon__enlaces i { font-size: 9px; }
+
+/* Contacto */
+.cajon__contacto {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+}
+.contacto-fila { display: flex; align-items: center; gap: 12px; }
+.contacto-fila__icono {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  font-size: 14px;
+  color: #fff;
+  background: var(--rojo);
+  border-radius: 50%;
+}
+.contacto-fila strong { display: block; font-size: 12px; color: #757f99; }
+.contacto-fila .info { font-size: 12px; color: var(--muted); word-break: break-word; }
+
+/* ====== Banda con las 3 tarjetas (ayuda.html) ====== */
+.contacto-banda {
+  background: var(--teal);
+  padding: 60px 24px;
+}
+
+.contacto-tarjetas {
+  max-width: 1730px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.tarjeta {
+  background: #fff;
+  border-radius: 8px;
+  padding: 26px;
+  box-shadow: 0 1px 3px rgba(220, 220, 220, 0.12);
+}
+
+.tarjeta h3 {
+  margin: 0 0 20px;
+  font-size: 22px;
+}
+
+.tarjeta p {
+  margin: 0 0 28px;
+  font-size: 19px;
+}
+
+.tarjeta-link {
+  color: var(--teal-link);
+  font-size: 19px;
+  text-decoration: none;
+}
+
+.tarjeta-link:hover { text-decoration: underline; }
+
+/* ====== Páginas de formulario ====== */
+.form-pagina {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+}
+
+.form-pagina h1 {
+  font-size: 26px;
+  margin: 0 0 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-col {
+  padding-right: 30px;
+  border-right: 1px solid var(--borde);
+}
+
+.lateral {
+  padding-left: 30px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.lateral a:not(.btn),
+.aviso-gris a {
+  color: var(--teal-link);
+  text-decoration: none;
+}
+
+/* Campos */
+.campo { margin-bottom: 34px; }
+
+.campo label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.campo input[type="email"],
+.campo input[type="text"],
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 14px;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  background: #fff;
+}
+
+.campo textarea { resize: vertical; }
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: 2px solid var(--teal-link);
+  outline-offset: 1px;
+}
+
+.nota {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 8px 0 24px;
+}
+
+/* Avisos */
+.aviso-azul {
+  background: var(--aviso-azul);
+  border: 1px solid ;
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  color: #82b8c2;
+}
+
+.aviso-gris {
+  background: var(--aviso-gris);
+  padding: 12px 14px;
+  font-size: 12px;
+  margin: 0 0 28px;
+}
+
+/* Botón naranja */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--naranja), var(--naranja-2));
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover { filter: brightness(1.08); }
+
+/* ====== Móvil ====== */
+@media (max-width: 800px) {
+  .contacto-tarjetas { grid-template-columns: 1fr; }
+
+  .form-layout { grid-template-columns: 1fr; }
+
+  .form-col {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .lateral {
+    padding-left: 0;
+    margin-top: 30px;
+    border-top: 1px solid var(--borde);
+    padding-top: 20px;
+  }
+}
+
+/* ==========================================================
+   9. PIE DE PÁGINA
+   ========================================================== */
+.footer {
+  margin-top: 9px;
+  padding: 48px 36px 32px;
+  color: var(--rojo);
+  background: #fff;
+  border-top: 1px solid #e3e4e4;
+}
+.footer__inner { max-width: 1200px; margin: 0 auto; }
+
+/* Columnas de enlaces */
+.footer__columnas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 40px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--rojo);
+}
+.footer h3 { margin-bottom: 16px; font-size: 14px; font-weight: 700; color: var(--rojo); }
+.footer ul { list-style: none; }
+.footer li { margin-bottom: 14px; line-height: 18px; }
+
+.footer a { color: var(--turquesa); text-decoration: none; }
+.footer a:hover { color: var(--turquesa-hover); text-decoration: none; }
+.footer a:focus-visible { outline: 2px solid var(--rojo); outline-offset: 3px; border-radius: 2px; }
+
+/* Botones de las apps */
+.apps { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 108px;
+  height: 36px;
+  padding: 0 8px;
+  line-height: 1;
+  border: 1px solid var(--turquesa);
+  border-radius: 6px;
+}
+.app-btn svg { flex: none; width: 20px; height: 20px; fill: var(--turquesa); }
+.app-btn small { display: block; margin-bottom: 2px; font-size: 6px; text-transform: uppercase; }
+.app-btn span { font-size: 13px; font-weight: 500; }
+
+/* Barra inferior */
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding: 32px 0 24px;
+}
+.footer__legal-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px; }
+
+.social { display: flex; gap: 28px; padding-right: 64px; }
+.social a { display: inline-flex; }
+.social svg { width: 18px; height: 18px; fill: var(--turquesa); }
+
+@media (max-width: 900px) {
+  .footer { padding: 40px 24px 28px; }
+  .footer__columnas { grid-template-columns: repeat(2, 1fr); }
+  .social { padding-right: 0; }
+}
+@media (max-width: 560px) {
+  .footer { padding: 32px 16px 24px; }
+  .footer__columnas { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+  .footer__legal { flex-direction: column; align-items: flex-start; }
+}

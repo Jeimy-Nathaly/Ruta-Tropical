@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Descubre el mejor momento para reservar tu próximo viaje con Ruta Tropical.">
+  <title>Descubre cuándo reservar tu próximo viaje | Ruta Tropical</title>
+
+  <!-- Íconos (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos de la página -->
+  <link rel="stylesheet" href="descubre.css">
+</head>
+
+<body>
+
+<!-- ==========================================================
+     1. BARRA DE NAVEGACIÓN
+     ========================================================== -->
+<nav class="nav-sitio" id="nav-sitio">
+
+  <button class="nav-sitio__menu" id="abrir-menu" type="button"
+          aria-label="Abrir menú" aria-expanded="false" aria-controls="cajon">
+    <span></span><span></span><span></span>
+  </button>
+<!-- Logo de la barra -->
+<a class="nav-sitio__marca" href="../pagina principal/Inicio.html">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+
+  <div class="nav-sitio__derecha">
+
+    <!-- Moneda -->
+    <label class="moneda">
+      <img id="bandera" src="https://flagcdn.com/w40/us.png" alt="" width="38" height="26">
+      <select id="currency" aria-label="Moneda">
+        <option value="usd">USD</option>
+        <option value="eur">EUR</option>
+        <option value="dop">DOP</option>
+        <option value="gbp">GBP</option>
+      </select>
+      <i class="fa-solid fa-caret-down" aria-hidden="true"></i>
+    </label>
+
+    <!-- Idioma (la lista la llena descubre.js) -->
+    <div class="idioma" id="idioma">
+      <button class="idioma__boton" id="idioma-boton" type="button"
+              aria-haspopup="listbox" aria-expanded="false" aria-controls="idioma-lista"
+              aria-label="Idioma">
+        <img id="idioma-bandera" src="https://flagcdn.com/w40/es.png" alt="" width="38" height="26">
+        <span class="idioma__codigo" id="idioma-codigo">ES</span>
+        <i class="fa-solid fa-caret-down" aria-hidden="true"></i>
+      </button>
+      <ul class="idioma__lista" id="idioma-lista" role="listbox" aria-label="Elegir idioma" hidden></ul>
+    </div>
+
+    <!-- Usuario -->
+    <a class="nav-sitio__usuario" href="login.html" aria-label="Iniciar sesión">
+      <i class="fa-solid fa-user" aria-hidden="true"></i>
+    </a>
+
+  </div>
+</nav>
+
+
+<!-- ==========================================================
+     2. MENÚ LATERAL
+     ========================================================== -->
+
+<!-- Fondo difuminado -->
+<div class="cajon-fondo" id="cajon-fondo"></div>
+
+<aside class="cajon" id="cajon" aria-label="Menú principal">
+
+  <div class="cajon__cab">
+    <span class="cajon__marca">Ruta Tropical</span>
+    <button class="cajon__cerrar" id="cerrar-menu" type="button" aria-label="Cerrar menú">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <!-- Opciones principales -->
+  <ul class="cajon__principal">
+    <li><a class="activa" href="#destinos"><i class="fa-solid fa-plane" aria-hidden="true"></i> Vuelos</a></li>
+    <li><a href="#hoteles"><i class="fa-solid fa-hotel" aria-hidden="true"></i> Hoteles</a></li>
+    <li><a href="#autobus"><i class="fa-solid fa-bus" aria-hidden="true"></i> Autobús</a></li>
+  </ul>
+
+  <!-- Enlaces secundarios -->
+  <ul class="cajon__enlaces">
+    <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Planifica con IA</a></li>
+    <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Tarifas de equipaje</a></li>
+    <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Planea tus viajes</a></li>
+    <li><a href="acerca-de.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Sobre nosotros</a></li>
+    <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Contacto</a></li>
+    <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Preguntas frecuentes</a></li>
+    <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Explorar</a></li>
+    <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Términos y condiciones</a></li>
+    <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Rastreador de vuelos</a></li>
+    <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Viajes</a></li>
+  </ul>
+
+  <!-- Contacto -->
+  <div class="cajon__contacto">
+    <div class="contacto-fila">
+      <span class="contacto-fila__icono"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+      <div>
+        <strong>Teléfono:</strong>
+        <span class="info">+1-029-789-7542</span>
+      </div>
+    </div>
+    <div class="contacto-fila">
+      <span class="contacto-fila__icono"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+      <div>
+        <strong>Correo:</strong>
+        <span class="info">rutaTropical@tuempresa.com</span>
+      </div>
+    </div>
+  </div>
+
+</aside>
+
+
+<!-- ==========================================================
+     3. CONTENIDO PRINCIPAL
+     ========================================================== -->
+<main>
+
+  <!-- ---------- Portada ---------- -->
+  <section class="hero">
+
+    <div class="hero-content">
+      <h1>Descubre cuándo reservar tu próximo viaje.</h1>
+
+      <p class="hero-text">
+        Resulta ser que sí existe un momento ideal para irte de vacaciones. Nuestra herramienta El mejor momento para viajar tiene en cuenta tu lugar de origen, el destino y la duración del viaje para determinar cuándo te conviene reservar y viajar para conseguir un precio increíble.
+        <strong>Ingresa los datos del viaje y nosotros nos ocupamos del resto.</strong>
+      </p>
+
+      <!-- Formulario de búsqueda -->
+      <form class="search" onsubmit="return false">
+
+        <div class="route">
+          <label class="field">
+            <svg class="plane" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.500a1.500 1.500 0 0 0-3 0V9l-8 5v2l8-2.500V19l-2 1.500V22l3.500-1 3.500 1v-1.500L13 19v-5.500z"/></svg>
+            <input type="text" value="Santo Domingo (SDQ)" aria-label="Origen">
+          </label>
+
+          <button type="button" class="swap" aria-label="Intercambiar origen y destino">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h15M15 4l4 4-4 4M20 16H5M9 12l-4 4 4 4"/></svg>
+          </button>
+
+          <label class="field">
+            <svg class="plane" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.500a1.500 1.500 0 0 0-3 0V9l-8 5v2l8-2.500V19l-2 1.500V22l3.500-1 3.500 1v-1.500L13 19v-5.500z"/></svg>
+            <input type="text" placeholder="Destino" aria-label="Destino">
+          </label>
+        </div>
+
+        <label class="field duration">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <select aria-label="Duración del viaje">
+            <option>Viaje de 4 días</option>
+            <option>Viaje de 7 días</option>
+            <option>Viaje de 10 días</option>
+            <option>Viaje de 14 días</option>
+          </select>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </label>
+
+        <button class="search-btn" type="submit" aria-label="Buscar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        </button>
+
+      </form>
+
+      <p class="ideas">
+        Parece que te vendrían bien algunas ideas. Prueba esto:
+        <a href="#">De Santo Domingo a Nueva York,</a>
+        <a href="#">De Santo Domingo a Newark</a> o
+        <a href="#">De Santo Domingo a Miami</a>
+      </p>
+    </div>
+
+    <!-- Imagen de la portada -->
+    <div class="hero-art">
+<img src="imagenes/descubre fondo.jpg" alt="Vista del ala de un avión al atardecer">    
+</div>
+
+  </section>
+
+  <!-- ---------- Metodología ---------- -->
+  <section class="method">
+    <div class="method-inner">
+      <h2>Metodología</h2>
+      <div class="accordion">
+        <details><summary>Cálculo: nuestra recomendación</summary><p>Combinamos precios, clima y demanda para sugerir el mejor momento.</p></details>
+        <details><summary>Datos: precios de vuelos</summary><p>Analizamos el historial de precios de vuelos para tu ruta.</p></details>
+        <details><summary>Datos: precios de hoteles</summary><p>Revisamos las tarifas de hoteles en el destino a lo largo del año.</p></details>
+        <details><summary>Datos: popularidad del destino</summary><p>Medimos cuántos viajeros buscan el destino en cada fecha.</p></details>
+        <details><summary>Datos: clima</summary><p>Usamos temperaturas y lluvias históricas del destino.</p></details>
+        <details><summary>Datos: el mejor momento para reservar</summary><p>Estimamos con cuánta anticipación conviene comprar.</p></details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ==========================================================
+     4. PIE DE PÁGINA
+     ========================================================== -->
+<footer class="footer">
+  <div class="footer__inner">
+
+    <!-- Columnas de enlaces -->
+    <div class="footer__columnas">
+
+      <nav aria-label="Empresa">
+        <h3>Empresa</h3>
+        <ul>
+          <li><a href="/acerca de/acerca de.html">Acerca de</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Contacto">
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="#">Ayuda/FAQ</a></li>
+          <li><a href="#">Prensa</a></li>
+          <li><a href="#">Afiliados</a></li>
+          <li><a href="#">Dueños de hoteles</a></li>
+          <li><a href="#">Socios</a></li>
+          <li><a href="#">Anúnciate con nosotros</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Más">
+        <h3>Más</h3>
+        <ul>
+          <li><a href="#">Tarifas de aerolíneas</a></li>
+          <li><a href="#">Aerolíneas</a></li>
+          <li><a href="#">Consejos de tarifas bajas</a></li>
+          <li><a href="#">Insignias y certificados</a></li>
+          <li><a href="#">Seguridad</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h3>Descarga la app</h3>
+        <div class="apps">
+          <a class="app-btn" href="#" aria-label="Disponible en Google Play">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 2.5v19l10-9.5L3 2.5z"/>
+              <path d="M16 9l3.5 2c.7.4.7 1.6 0 2L16 15l-3-3 3-3z"/>
+            </svg>
+            <div><small>Get it on</small><span>Google Play</span></div>
+          </a>
+          <a class="app-btn" href="#" aria-label="Descargar en App Store">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16.4 12.7c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9s-1.9-.9-3.2-.8c-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.3-.9-2.3-3.7zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.100.7-2.800 1.500-.6.7-1.100 1.800-1 2.900 1.100.1 2.100-.6 2.800-1.400z"/>
+            </svg>
+            <div><small>Download on the</small><span>App Store</span></div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Barra legal y redes -->
+    <div class="footer__legal">
+      <div class="footer__legal-links">
+        <span>©2026 Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</span>
+        <a href="#">Privacidad</a>
+        <a href="#">Términos y condiciones</a>
+      </div>
+
+      <div class="social">
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0012 2z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 00-1.8-1.8C18.2 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 002.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 001.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 001.800-1.800c.4-1.600.4-4.800.4-4.800s0-3.200-.4-4.800zM10 15V9l5.200 3L10 15z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.500A4.500 4.500 0 1112 16.500a4.500 4.500 0 010-9zm0 2A2.500 2.500 0 1012 14.500a2.500 2.500 0 000-5zM17.500 6a1 1 0 110 2 1 1 0 010-2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- Funcionalidad: menú, moneda, idioma -->
+<script src="descubre.js"></script>
+
+</body>
+</html>

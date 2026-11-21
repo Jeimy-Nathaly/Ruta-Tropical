@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu cuenta · RuTa Tropical</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="perfil-menu.css" />
+  <link rel="stylesheet" href="perfil-usuario.css" />
+</head>
+<body>
+  <div class="rt-cuenta-shell">
+
+    <!-- =====================================================
+         SECCIÓN 1: MENÚ LATERAL IZQUIERDO
+         ===================================================== -->
+    <aside class="rt-cuenta-sidebar" id="rtCuentaSidebar">
+      <div class="rt-cuenta-sidebar-top">
+        <a href="Inicio.html" class="rt-cuenta-logo">Ruta Tropical</a>
+        <button type="button" class="rt-cuenta-menu-btn" id="rtBtnCerrarSidebar" aria-label="Cerrar menú">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <nav class="rt-cuenta-nav" aria-label="Navegación principal">
+        <a href="Inicio.html" class="rt-cuenta-nav-item activa">
+          <i class="fa-solid fa-plane rt-nav-icono-rojo"></i>
+          <span>Vuelos</span>
+        </a>
+        <a href="explorar.html" class="rt-cuenta-nav-item">
+          <i class="fa-solid fa-building rt-nav-icono-gris"></i>
+          <span>Hoteles</span>
+        </a>
+        <a href="explorar.html" class="rt-cuenta-nav-item">
+          <i class="fa-solid fa-bus rt-nav-icono-gris"></i>
+          <span>autobus</span>
+        </a>
+
+        <div class="rt-cuenta-links-grupo">
+          <a href="../pagina principal/chat-ia.html#ia" class="rt-cuenta-link-simple"><i class="fa-solid fa-chevron-right"></i> planifica con IA</a>
+          <a href="../descubre/descubre tu reserva tu proximo viaje.html" class="rt-cuenta-link-simple"><i class="fa-solid fa-chevron-right"></i> planean tus viajes</a>
+          <a href="../acerca de/acerca de.html" class="rt-cuenta-link-simple"><i class="fa-solid fa-chevron-right"></i> Sobre nosotros</a>
+          <a href="Inicio.html#contacto" class="rt-cuenta-link-simple"><i class="fa-solid fa-chevron-right"></i> Contacto</a>
+          <a href="../ayuda/ayuda.html" class="rt-cuenta-link-simple"><i class="fa-solid fa-chevron-right"></i> Preguntas frecuentes</a>
+          <a href="../explorar mas/explorar.html" class="rt-cuenta-link-simple"><i class="fa-solid fa-chevron-right"></i> explorar</a>
+          <a href="Inicio.html#terminos" class="rt-cuenta-link-simple"><i class="fa-solid fa-chevron-right"></i> Términos y condiciones</a>
+          <a href="../rastreador/rastreo.html" class="rt-cuenta-link-simple"><i class="fa-solid fa-chevron-right"></i> rastraedor de vuelos</a>
+          <a href="../viajes/viajes.html" class="rt-cuenta-link-simple"><i class="fa-solid fa-chevron-right"></i> viajes</a>
+        </div>
+      </nav>
+
+      <div class="rt-sidebar-contacto-card">
+        <div class="rt-contacto-fila">
+          <span class="rt-contacto-icono" aria-hidden="true">
+            <i class="fa-solid fa-phone"></i>
+          </span>
+          <div class="rt-contacto-texto">
+            <small>Teléfono:</small>
+            <strong class="rt-contacto-resaltado">+1-029-789-7542</strong>
+          </div>
+        </div>
+        <div class="rt-contacto-fila">
+          <span class="rt-contacto-icono" aria-hidden="true">
+            <i class="fa-solid fa-envelope"></i>
+          </span>
+          <div class="rt-contacto-texto">
+            <small>Correo:</small>
+            <strong class="rt-contacto-resaltado">rutaTropical@tuempresa.com</strong>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- COLUMNA PRINCIPAL -->
+    <div class="rt-cuenta-main">
+
+      <!-- =====================================================
+           SECCIÓN 2: BARRA SUPERIOR
+           ===================================================== -->
+<header class="rt-cuenta-topbar">
+        <button type="button" class="rt-cuenta-abrir-sidebar" id="rtBtnAbrirSidebar" aria-label="Abrir menú">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="rt-cuenta-topbar-acciones">
+          <div class="rt-idioma-box" id="rtIdiomaBox">
+            <button
+              type="button"
+              class="rt-cuenta-idioma-btn"
+              id="rtTopIdiomaBtn"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="rtIdiomaMenu"
+              title="Seleccionar país e idioma"
+            >
+              <span class="rt-bandera-img" id="rtTopBanderaImg" aria-hidden="true">
+                <svg viewBox="0 0 28 20" width="22" height="16">
+                  <rect width="28" height="20" rx="3" fill="#002D62" />
+                  <rect x="14" width="14" height="10" fill="#CE1126" />
+                  <rect y="10" width="14" height="10" fill="#CE1126" />
+                  <rect x="12" width="4" height="20" fill="#FFFFFF" />
+                  <rect y="8" width="28" height="4" fill="#FFFFFF" />
+                  <circle cx="14" cy="10" r="2.2" fill="#002D62" stroke="#FFFFFF" stroke-width="0.9" />
+                </svg>
+              </span>
+              <span id="rtTopIdiomaTexto">ES</span>
+              <i class="fa-solid fa-chevron-down rt-idioma-flecha" aria-hidden="true"></i>
+            </button>
+
+            <div class="rt-idioma-menu" id="rtIdiomaMenu" role="menu" aria-hidden="true">
+              <div class="rt-idioma-menu-titulo">País / Idioma</div>
+
+              <button type="button" class="rt-idioma-opcion activa" data-pais="do" data-lang="es" data-code="ES" role="menuitem">
+                <span class="rt-idioma-opcion-izq">
+                  <span class="rt-bandera-img" aria-hidden="true">
+                    <svg viewBox="0 0 28 20" width="22" height="16">
+                      <rect width="28" height="20" rx="3" fill="#002D62" />
+                      <rect x="14" width="14" height="10" fill="#CE1126" />
+                      <rect y="10" width="14" height="10" fill="#CE1126" />
+                      <rect x="12" width="4" height="20" fill="#FFFFFF" />
+                      <rect y="8" width="28" height="4" fill="#FFFFFF" />
+                      <circle cx="14" cy="10" r="2.2" fill="#002D62" stroke="#FFFFFF" stroke-width="0.9" />
+                    </svg>
+                  </span>
+                  <span>República Dominicana (ES)</span>
+                </span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+
+              <button type="button" class="rt-idioma-opcion" data-pais="us" data-lang="en" data-code="EN" role="menuitem">
+                <span class="rt-idioma-opcion-izq">
+                  <span class="rt-bandera-img" aria-hidden="true">
+                    <svg viewBox="0 0 28 20" width="22" height="16">
+                      <rect width="28" height="20" rx="3" fill="#FFFFFF" />
+                      <rect y="0" width="28" height="2.2" fill="#BF0A30" />
+                      <rect y="4.4" width="28" height="2.2" fill="#BF0A30" />
+                      <rect y="8.8" width="28" height="2.2" fill="#BF0A30" />
+                      <rect y="13.2" width="28" height="2.2" fill="#BF0A30" />
+                      <rect y="17.6" width="28" height="2.4" fill="#BF0A30" />
+                      <rect width="12.5" height="11" rx="2" fill="#002868" />
+                    </svg>
+                  </span>
+                  <span>Estados Unidos (EN)</span>
+                </span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+
+              <button type="button" class="rt-idioma-opcion" data-pais="es" data-lang="es" data-code="ES" role="menuitem">
+                <span class="rt-idioma-opcion-izq">
+                  <span class="rt-bandera-img" aria-hidden="true">
+                    <svg viewBox="0 0 28 20" width="22" height="16">
+                      <rect width="28" height="20" rx="3" fill="#AA151B" />
+                      <rect y="5" width="28" height="10" fill="#F1BF00" />
+                      <rect x="6.5" y="7.5" width="3" height="5" rx="0.8" fill="#AA151B" />
+                    </svg>
+                  </span>
+                  <span>España (ES)</span>
+                </span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+
+              <button type="button" class="rt-idioma-opcion" data-pais="fr" data-lang="fr" data-code="FR" role="menuitem">
+                <span class="rt-idioma-opcion-izq">
+                  <span class="rt-bandera-img" aria-hidden="true">
+                    <svg viewBox="0 0 28 20" width="22" height="16">
+                      <rect width="9.4" height="20" rx="2" fill="#0055A4" />
+                      <rect x="9.4" width="9.2" height="20" fill="#FFFFFF" />
+                      <rect x="18.6" width="9.4" height="20" rx="2" fill="#EF4135" />
+                    </svg>
+                  </span>
+                  <span>Francia (FR)</span>
+                </span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+
+              <button type="button" class="rt-idioma-opcion" data-pais="ca" data-lang="en" data-code="CA" role="menuitem">
+                <span class="rt-idioma-opcion-izq">
+                  <span class="rt-bandera-img" aria-hidden="true">
+                    <svg viewBox="0 0 28 20" width="22" height="16">
+                      <rect width="28" height="20" rx="3" fill="#FFFFFF" />
+                      <rect width="7" height="20" fill="#D80621" />
+                      <rect x="21" width="7" height="20" fill="#D80621" />
+                      <polygon points="14,5 15.6,9 19,9 16.3,11.3 17.3,15 14,12.8 10.7,15 11.7,11.3 9,9 12.4,9" fill="#D80621" />
+                    </svg>
+                  </span>
+                  <span>Canadá (EN/FR)</span>
+                </span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+
+              <button type="button" class="rt-idioma-opcion" data-pais="mx" data-lang="es" data-code="MX" role="menuitem">
+                <span class="rt-idioma-opcion-izq">
+                  <span class="rt-bandera-img" aria-hidden="true">
+                    <svg viewBox="0 0 28 20" width="22" height="16">
+                      <rect width="9.4" height="20" rx="2" fill="#006847" />
+                      <rect x="9.4" width="9.2" height="20" fill="#FFFFFF" />
+                      <rect x="18.6" width="9.4" height="20" rx="2" fill="#CE1126" />
+                      <circle cx="14" cy="10" r="2" fill="#8C6239" />
+                    </svg>
+                  </span>
+                  <span>México (ES)</span>
+                </span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+
+              <button type="button" class="rt-idioma-opcion" data-pais="br" data-lang="pt" data-code="PT" role="menuitem">
+                <span class="rt-idioma-opcion-izq">
+                  <span class="rt-bandera-img" aria-hidden="true">
+                    <svg viewBox="0 0 28 20" width="22" height="16">
+                      <rect width="28" height="20" rx="3" fill="#009C3B" />
+                      <polygon points="14,2.5 25,10 14,17.5 3,10" fill="#FFDF00" />
+                      <circle cx="14" cy="10" r="3.8" fill="#002776" />
+                    </svg>
+                  </span>
+                  <span>Brasil (PT)</span>
+                </span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+
+              <button type="button" class="rt-idioma-opcion" data-pais="it" data-lang="it" data-code="IT" role="menuitem">
+                <span class="rt-idioma-opcion-izq">
+                  <span class="rt-bandera-img" aria-hidden="true">
+                    <svg viewBox="0 0 28 20" width="22" height="16">
+                      <rect width="9.4" height="20" rx="2" fill="#009246" />
+                      <rect x="9.4" width="9.2" height="20" fill="#FFFFFF" />
+                      <rect x="18.6" width="9.4" height="20" rx="2" fill="#CE2B37" />
+                    </svg>
+                  </span>
+                  <span>Italia (IT)</span>
+                </span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+
+              <button type="button" class="rt-idioma-opcion" data-pais="de" data-lang="de" data-code="DE" role="menuitem">
+                <span class="rt-idioma-opcion-izq">
+                  <span class="rt-bandera-img" aria-hidden="true">
+                    <svg viewBox="0 0 28 20" width="22" height="16">
+                      <rect width="28" height="6.7" fill="#000000" />
+                      <rect y="6.7" width="28" height="6.6" fill="#DD0000" />
+                      <rect y="13.3" width="28" height="6.7" fill="#FFCE00" />
+                    </svg>
+                  </span>
+                  <span>Alemania (DE)</span>
+                </span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+
+              <button type="button" class="rt-idioma-opcion" data-pais="jp" data-lang="ja" data-code="JP" role="menuitem">
+                <span class="rt-idioma-opcion-izq">
+                  <span class="rt-bandera-img" aria-hidden="true">
+                    <svg viewBox="0 0 28 20" width="22" height="16">
+                      <rect width="28" height="20" rx="3" fill="#FFFFFF" />
+                      <circle cx="14" cy="10" r="4.5" fill="#BC002D" />
+                    </svg>
+                  </span>
+                  <span>Japón (JP)</span>
+                </span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="rt-perfil-box" id="rtPerfilBox">
+            <button
+              type="button"
+              class="rt-perfil-btn"
+              id="rtPerfilBtn"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="rtPerfilMenu"
+              title="Perfil de usuario"
+            >
+              <span class="rt-perfil-inicial" id="rtPerfilInicialBtn">J</span>
+            </button>
+
+            <div class="rt-perfil-menu" id="rtPerfilMenu" role="menu" aria-hidden="true">
+              <div class="rt-perfil-cuentas-lista" id="rtPerfilCuentasLista"></div>
+
+              <button type="button" class="rt-perfil-anadir" id="rtPerfilAnadirBtn" role="menuitem">
+                <span class="rt-perfil-anadir-icono" aria-hidden="true">+👤</span>
+                <span>Añadir usuario</span>
+              </button>
+
+              <div class="rt-perfil-separador"></div>
+
+              <a href="../descubre/descubre tu reserva tu proximo viaje.html" class="rt-perfil-enlace" role="menuitem">Trips</a>
+              <a href="../ayuda/ayuda.html" class="rt-perfil-enlace" role="menuitem">Ayuda/Preguntas frecuentes</a>
+              <a href="perfil-usuario.html" class="rt-perfil-enlace" role="menuitem">Tu cuenta</a>
+
+              <button type="button" class="rt-perfil-salir" id="rtPerfilSalirBtn" role="menuitem">
+                Cerrar sesión
+              </button>
+            </div>
+            
+          </div>
+        </div>
+      </header>
+
+      <!-- =====================================================
+           SECCIÓN 3: ENCABEZADO DE PERFIL Y PESTAÑAS
+           ===================================================== -->
+      <main class="rt-cuenta-contenido">
+        <section class="rt-cuenta-hero">
+          <div class="rt-cuenta-hero-datos">
+            <h1 class="rt-cuenta-titulo">Te damos la bienvenida</h1>
+
+            <div class="rt-cuenta-meta">
+              <div class="rt-cuenta-meta-col">
+                <span class="rt-cuenta-etiqueta">Email</span>
+                <strong class="rt-cuenta-valor" id="rtCuentaEmailHero">jeimycr9@gmail.com</strong>
+              </div>
+
+              <div class="rt-cuenta-meta-col">
+                <span class="rt-cuenta-etiqueta">Aeropuerto de origen</span>
+                <div class="rt-cuenta-origen-linea">
+                  <strong class="rt-cuenta-valor" id="rtCuentaOrigenHero">Montreal, QC, Canadá - Todos los aeropuertos</strong>
+                  <button type="button" class="rt-cuenta-btn-editar" id="rtBtnEditarOrigen" title="Editar aeropuerto">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                </div>
+                <div class="rt-cuenta-editor-origen oculto" id="rtEditorOrigen">
+                  <input type="text" id="rtInputOrigen" class="rt-cuenta-input" placeholder="Escribe tu aeropuerto de origen" />
+                  <button type="button" class="rt-cuenta-btn-primario" id="rtBtnGuardarOrigen">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rt-cuenta-avatar-wrap">
+            <div class="rt-cuenta-avatar-grande" id="rtAvatarGrandeCuenta">J</div>
+            <button type="button" class="rt-cuenta-avatar-lapiz" id="rtBtnFotoCuenta" title="Cambiar foto de perfil">
+              <i class="fa-solid fa-pen"></i>
+            </button>
+            <input type="file" id="rtInputFotoCuenta" accept="image/*" hidden />
+          </div>
+        </section>
+
+        <div class="rt-cuenta-tabs" role="tablist">
+          <button type="button" class="rt-cuenta-tab activa" data-pestana="resumen" role="tab" aria-selected="true">Resumen</button>
+          <button type="button" class="rt-cuenta-tab" data-pestana="cuenta" role="tab" aria-selected="false">Cuenta</button>
+          <button type="button" class="rt-cuenta-tab" data-pestana="preferencias" role="tab" aria-selected="false">Preferencias</button>
+          <button type="button" class="rt-cuenta-tab" data-pestana="viajeros" role="tab" aria-selected="false">Viajeros</button>
+          <button type="button" class="rt-cuenta-tab" data-pestana="pagos" role="tab" aria-selected="false">Métodos de pago</button>
+          <button type="button" class="rt-cuenta-tab" data-pestana="notificaciones" role="tab" aria-selected="false">Notificaciones</button>
+        </div>
+
+        <!-- =====================================================
+             SECCIÓN 4: PANEL RESUMEN
+             ===================================================== -->
+        <section class="rt-cuenta-panel activa" id="panel-resumen">
+          <h2 class="rt-cuenta-subtitulo">Estadísticas de viajes</h2>
+
+          <div class="rt-cuenta-banner rt-banner-globo">
+            <div class="rt-banner-contenido">
+              <h3>Todavía no tienes estadísticas</h3>
+              <p>¡Ya es hora de ponerse en marcha y descubrir el mundo!</p>
+              <button type="button" class="rt-cuenta-btn-oscuro rt-btn-ver-viajes" onclick="window.location.href='explorar.html'">
+  Ver viajes
+</button>
+            </div>
+
+            <div class="rt-globo-escena" aria-hidden="true">
+              <span class="rt-mosaico-bloque rt-m1"></span>
+              <span class="rt-mosaico-bloque rt-m2"></span>
+              <span class="rt-mosaico-bloque rt-m3"></span>
+              <span class="rt-mosaico-bloque rt-m4"></span>
+              <span class="rt-mosaico-bloque rt-m5"></span>
+
+              <svg class="rt-globo-svg" viewBox="0 0 180 150" width="180" height="150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="104" cy="142" rx="18" ry="4" fill="#17A1CF" opacity="0.28" />
+                <rect x="93" y="133" width="22" height="6" rx="3" fill="#17A1CF" />
+                <path d="M104 122 L104 134" stroke="#17A1CF" stroke-width="5" stroke-linecap="round" />
+
+                <defs>
+                  <radialGradient id="rtGloboGrad" cx="35%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="#E2837D" />
+                    <stop offset="55%" stop-color="#DD4350" />
+                    <stop offset="100%" stop-color="#17A1CF" />
+                  </radialGradient>
+                </defs>
+                <circle cx="104" cy="68" r="46" fill="url(#rtGloboGrad)" />
+
+                <path d="M84 42 C90 38, 99 40, 102 46 C104 51, 96 56, 91 55 C86 54, 81 47, 84 42 Z" fill="#81BAC2" opacity="0.72" />
+                <path d="M95 62 C102 60, 108 66, 106 76 C104 86, 98 95, 94 94 C90 93, 92 80, 91 72 C90 67, 91 63, 95 62 Z" fill="#81BAC2" opacity="0.72" />
+                <path d="M115 48 C124 46, 134 52, 135 63 C136 73, 127 81, 119 78 C113 76, 111 66, 112 58 C113 53, 112 49, 115 48 Z" fill="#17A1CF" opacity="0.45" />
+
+                <path d="M62 42 C54 68, 64 104, 96 118 C116 126, 136 120, 146 106" stroke="#DD4350" stroke-width="5" stroke-linecap="round" />
+                <circle cx="104" cy="22" r="5" fill="#DD4350" />
+
+                <g transform="translate(36, 74) rotate(-22)">
+                  <polygon points="18,16 6,4 22,7 30,14" fill="#17A1CF" />
+                  <polygon points="36,24 26,42 40,38 48,25" fill="#81BAC2" stroke="#FFFFFF" stroke-width="1.5" />
+                  <path d="M16 19 C16 15, 20 13, 26 12 L68 6 C76 5, 83 7, 84 10.5 C85 13.5, 79 17, 71 19 L28 27 C21 28.2, 16 24, 16 19 Z" fill="#FFFFFF" />
+                  <path d="M18 21 L78 11.5" stroke="#17A1CF" stroke-width="2.5" stroke-linecap="round" />
+                  <polygon points="36,14 26,0 40,0 50,12" fill="#FFFFFF" stroke="#17A1CF" stroke-width="1.6" />
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <h2 class="rt-cuenta-subtitulo rt-cuenta-mt">Búsquedas recientes</h2>
+          <div class="rt-cuenta-busquedas">
+            <a href="explorar.html" class="rt-cuenta-busqueda-item">
+              <span><i class="fa-solid fa-plane"></i> <strong>MVD Montevideo</strong> → <strong>SCL Santiago de Chile</strong></span>
+              <span class="rt-cuenta-busqueda-meta">sáb, 12/19 – sáb, 12/26 · 2 pasajeros, económica ›</span>
+            </a>
+            <a href="explorar.html" class="rt-cuenta-busqueda-item">
+              <span><i class="fa-solid fa-plane"></i> <strong>MVD Montevideo</strong> → <strong>SCL Santiago de Chile</strong></span>
+              <span class="rt-cuenta-busqueda-meta">jue, 12/03 – lun, 12/07 · 1 pasajero, económica ›</span>
+            </a>
+            <a href="explorar.html" class="rt-cuenta-busqueda-item">
+              <span><i class="fa-solid fa-plane"></i> <strong>MIA Miami</strong> → <strong>CLT Charlotte</strong></span>
+              <span class="rt-cuenta-busqueda-meta">jue, 12/03 – lun, 12/07 · 1 pasajero, económica ›</span>
+            </a>
+          </div>
+        </section>
+
+<!-- =====================================================
+     SECCIÓN 5: PANEL CUENTA
+     ===================================================== -->
+<section class="rt-cuenta-panel" id="panel-cuenta">
+  <h2 class="rt-cuenta-titulo-seccion">Cuenta</h2>
+
+  <!-- Tarjeta 1: Preferencias + Ilustración isométrica + Redes sociales -->
+  <div class="rt-cuenta-tarjeta">
+    <div class="rt-cuenta-tarjeta-layout">
+      <div class="rt-cuenta-campos-lista">
+        <h3 class="rt-cuenta-tarjeta-titulo">Preferencias</h3>
+
+        <div class="rt-fila-campo">
+          <label class="rt-fila-etiqueta" for="rtDatoNombre">Nombre</label>
+          <div class="rt-fila-control">
+            <input type="text" id="rtDatoNombre" class="rt-input-linea" value="" placeholder="Tu nombre" readonly />
+            <button type="button" class="rt-btn-accion-azul" data-campo="rtDatoNombre">Editar</button>
+          </div>
+        </div>
+
+        <div class="rt-fila-campo">
+          <label class="rt-fila-etiqueta" for="rtDatoAlias">Nombre para mostrar <i class="fa-solid fa-circle-info rt-icono-info"></i></label>
+          <div class="rt-fila-control">
+            <input type="text" id="rtDatoAlias" class="rt-input-linea" value="" placeholder="" readonly />
+            <button type="button" class="rt-btn-accion-azul" data-campo="rtDatoAlias">Añadir</button>
+          </div>
+        </div>
+
+        <div class="rt-fila-campo">
+          <label class="rt-fila-etiqueta" for="rtDatoCorreo">Dirección de correo electrónico</label>
+          <div class="rt-fila-control">
+            <input type="email" id="rtDatoCorreo" class="rt-input-linea" value="jeimycr9@gmail.com" readonly />
+            <button type="button" class="rt-btn-accion-azul" data-campo="rtDatoCorreo">Editar</button>
+          </div>
+        </div>
+
+        <div class="rt-fila-campo">
+          <label class="rt-fila-etiqueta" for="rtDatoRegion">Región</label>
+          <div class="rt-fila-control">
+            <input type="text" id="rtDatoRegion" class="rt-input-linea" value="Uruguay" readonly />
+            <button type="button" class="rt-btn-accion-azul" data-campo="rtDatoRegion">Editar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rt-ilustracion-cuenta-wrap" aria-hidden="true">
+        <svg class="rt-ilustracion-cuenta-svg" viewBox="0 0 460 330" width="460" height="330" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sombra base isométrica -->
+          <polygon points="105,215 245,135 415,232 275,312" fill="#E2E8F0" opacity="0.55" />
+
+          <!-- Laptop abierta (base y pantalla) -->
+          <polygon points="78,205 185,144 315,218 208,279" fill="#CBD5E1" />
+          <polygon points="84,204 185,147 308,217 207,274" fill="#E2E8F0" />
+          <!-- Teclado y trackpad -->
+          <polygon points="106,205 182,162 252,202 176,245" fill="#94A3B8" opacity="0.45" />
+          <polygon points="184,244 212,228 232,240 204,256" fill="#94A3B8" opacity="0.6" />
+
+          <!-- Pantalla inclinada -->
+          <polygon points="84,204 84,82 185,24 185,147" fill="#94A3B8" />
+          <polygon points="90,198 90,88 179,37 179,147" fill="#F8FAFC" />
+          <!-- Cabecera y buscador en pantalla con colores de RuTa Tropical -->
+          <polygon points="96,92 173,48 173,62 96,106" fill="#17A1CF" opacity="0.18" />
+          <circle cx="102" cy="96" r="2.2" fill="#DD4350" />
+          <circle cx="108" cy="92.5" r="2.2" fill="#E2837D" />
+          <circle cx="114" cy="89" r="2.2" fill="#17A1CF" />
+          <polygon points="98,116 146,89 146,106 98,133" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
+          <polygon points="150,86 171,74 171,91 150,103" fill="#DD4350" />
+          <polygon points="98,139 171,98 171,134 98,175" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+          <polygon points="104,158 142,137 142,145 104,166" fill="#17A1CF" opacity="0.7" />
+
+          <!-- Libros / carpetas apilados en tonos coral y rojo tropical -->
+          <polygon points="152,202 256,142 328,183 224,243" fill="#DD4350" />
+          <polygon points="152,202 224,243 224,253 152,212" fill="#B91C1C" />
+          <polygon points="224,243 328,183 328,193 224,253" fill="#991B1B" />
+
+          <polygon points="168,224 272,164 344,205 240,265" fill="#E2837D" />
+          <polygon points="168,224 240,265 240,275 168,234" fill="#C96A64" />
+          <polygon points="240,265 344,205 344,215 240,275" fill="#A8524C" />
+
+          <!-- Viajero sentado sobre los libros -->
+          <path d="M238 172 L248 166 L256 190 L244 196 Z" fill="#17A1CF" />
+          <path d="M242 174 L225 164 L229 158 L246 168 Z" fill="#1E293B" />
+          <path d="M247 167 L251 142 L257 143 L253 168 Z" fill="#1E293B" />
+          <circle cx="254" cy="138" r="2.8" fill="#1E293B" />
+          <!-- Piernas sentadas -->
+          <path d="M247 192 L266 202 L262 222 L256 221 L259 206 L243 197 Z" fill="#1E293B" />
+          <path d="M253 190 L276 200 L274 220 L268 219 L270 204 L250 195 Z" fill="#334155" />
+          <!-- Cabeza y gorra -->
+          <circle cx="242" cy="158" r="6.5" fill="#334155" />
+          <path d="M235 156 C236 149, 248 149, 250 156 Z" fill="#DD4350" />
+
+          <!-- Maceta con hojas turquesa y lápiz -->
+          <ellipse cx="328" cy="126" rx="28" ry="15" fill="#CBD5E1" />
+          <path d="M300 126 L300 194 C300 203, 356 203, 356 194 L356 126 Z" fill="#E2E8F0" />
+          <ellipse cx="328" cy="126" rx="22" ry="11" fill="#334155" />
+          <!-- Hojas en azul-turquesa tropical -->
+          <path d="M324 124 C304 94, 304 64, 320 46 C328 68, 330 96, 326 124 Z" fill="#17A1CF" />
+          <path d="M330 124 C332 88, 346 62, 366 54 C358 80, 344 104, 332 124 Z" fill="#81BAC2" />
+          <path d="M320 125 C296 108, 286 92, 290 78 C306 88, 316 104, 322 125 Z" fill="#0E7490" />
+
+          <!-- Lápiz grande inclinado -->
+          <g transform="translate(356, 86) rotate(12)">
+            <rect x="0" y="0" width="12" height="118" rx="2" fill="#E2837D" />
+            <rect x="0" y="0" width="12" height="12" rx="2" fill="#DD4350" />
+            <polygon points="0,118 12,118 6,134" fill="#FDE68A" />
+            <polygon points="4.2,129 7.8,129 6,134" fill="#0F172A" />
+          </g>
+
+          <!-- Persona sentada en el borde de la maceta -->
+          <path d="M334 114 L348 110 L354 134 L340 138 Z" fill="#FFFFFF" stroke="#CBD5E1" />
+          <path d="M338 136 L332 158 L326 156 L332 135 Z" fill="#1E293B" />
+          <path d="M346 135 L344 158 L338 157 L340 135 Z" fill="#1E293B" />
+          <circle cx="342" cy="102" r="6.5" fill="#1E293B" />
+          <path d="M336 100 C338 92, 348 92, 349 101 Z" fill="#DD4350" />
+
+          <!-- Mouse inalámbrico -->
+          <ellipse cx="344" cy="238" rx="22" ry="12" transform="rotate(-14 344 238)" fill="#CBD5E1" />
+          <ellipse cx="343" cy="235" rx="21" ry="11" transform="rotate(-14 343 235)" fill="#F1F5F9" stroke="#CBD5E1" />
+
+          <!-- Pasaporte a la derecha -->
+          <polygon points="362,188 416,158 452,180 398,210" fill="#1E293B" />
+          <polygon points="362,188 398,210 398,220 362,198" fill="#0F172A" />
+          <polygon points="398,210 452,180 452,190 398,220" fill="#334155" />
+          <ellipse cx="406" cy="184" rx="11" ry="6.5" transform="rotate(-24 406 184)" stroke="#81BAC2" stroke-width="1.4" />
+          <line x1="398" y1="188" x2="414" y2="180" stroke="#81BAC2" stroke-width="1.2" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="rt-divisor-horizontal"></div>
+
+    <div class="rt-bloque-interno">
+      <h3 class="rt-cuenta-tarjeta-titulo">Redes sociales</h3>
+      <p class="rt-cuenta-subtexto">Vincula tus cuentas con RuTa Tropical</p>
+      <div class="rt-redes-vinculo-fila">
+        <button type="button" class="rt-btn-vincular-outline" id="rtBtnVincularApple">
+          <i class="fa-brands fa-apple"></i>
+          <span>Apple</span>
+        </button>
+        <button type="button" class="rt-btn-vincular-activo" id="rtBtnVincularGoogle">
+          <i class="fa-brands fa-google"></i>
+          <span>Vinculada</span>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjeta 2: Remitentes + Compartir viajes + Calendario -->
+  <div class="rt-cuenta-tarjeta">
+    <div class="rt-bloque-interno">
+      <h3 class="rt-cuenta-tarjeta-titulo">Remitentes autorizados</h3>
+      <p class="rt-cuenta-subtexto">Reenvía manualmente los comprobantes de reserva de estas cuentas a trips@rutatropical.com para añadirlos a tus viajes. No se realizará sincronización automática.</p>
+      <div class="rt-correo-tuyo" id="rtRemitentePrincipal">jeimycr9@gmail.com (tú)</div>
+      <div class="rt-lista-extra" id="rtListaRemitentes"></div>
+      <button type="button" class="rt-btn-oscuro" id="rtBtnAnadirRemitente">Añadir un email</button>
+    </div>
+
+    <div class="rt-divisor-horizontal"></div>
+
+    <div class="rt-bloque-interno">
+      <h3 class="rt-cuenta-tarjeta-titulo">Compartir viajes de forma automática</h3>
+      <p class="rt-cuenta-subtexto">Compartiremos cualquier viaje que crees con los siguientes emails.</p>
+      <div class="rt-lista-extra" id="rtListaCompartir"></div>
+      <button type="button" class="rt-btn-oscuro" id="rtBtnCompartirEmail">Añadir un email</button>
+    </div>
+
+    <div class="rt-divisor-horizontal"></div>
+
+    <div class="rt-bloque-interno">
+      <h3 class="rt-cuenta-tarjeta-titulo">Calendario de Trips</h3>
+      <p class="rt-cuenta-subtexto">Este feed te muestra todos tus viajes</p>
+      <div class="rt-feed-caja" id="rtFeedUrl">https://rutatropical.com/trips/ical/uf/0CDLeoy_xxA/TYUGNXC1/calendar.ics</div>
+      <div class="rt-feed-acciones">
+        <button type="button" class="rt-link-azul-btn" id="rtBtnRestablecerFeed">Restablecer este enlace</button>
+        <button type="button" class="rt-link-azul-btn" id="rtBtnInstruccionesFeed">Leer las instrucciones</button>
+      </div>
+      <p class="rt-mensaje-feed oculto" id="rtMensajeFeed"></p>
+    </div>
+  </div>
+
+  <!-- Tarjeta 3: Información de uso -->
+  <div class="rt-cuenta-tarjeta rt-tarjeta-horizontal">
+    <div class="rt-uso-izq">
+      <span class="rt-uso-icono" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="12" width="4" height="8" rx="1.5" fill="#DD4350" />
+          <rect x="10" y="6" width="4" height="14" rx="1.5" fill="#E2837D" />
+          <rect x="17" y="9" width="4" height="11" rx="1.5" fill="#17A1CF" />
+          <path d="M4 9.5L11.5 4L19 7" stroke="#0F172A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <div>
+        <h3 class="rt-cuenta-tarjeta-titulo">Tu información de uso</h3>
+        <p class="rt-cuenta-subtexto">Recopilar información de uso nos ayuda a mejorar tu experiencia con RuTa Tropical. ¿Quieres revisar tu historial?</p>
+      </div>
+    </div>
+    <button type="button" class="rt-btn-borde-oscuro" id="rtBtnRevisarHistorial">Revisar historial</button>
+  </div>
+
+  <!-- Tarjeta 4: Privacidad y eliminar cuenta -->
+  <div class="rt-cuenta-tarjeta">
+    <h3 class="rt-cuenta-tarjeta-titulo">Tus preferencias sobre información personal</h3>
+    <p class="rt-cuenta-subtexto">Compartimos tu información personal para permitir que terceros proporcionen publicidad y ofertas relevantes para ti. Puedes modificar cómo se comparte tu información para estos fines a continuación. <a href="Inicio.html" class="rt-link-azul">Más información</a></p>
+
+    <div class="rt-privacidad-fila">
+      <div>
+        <strong>Compartir con empresas de nuestro grupo.</strong>
+        <a href="Inicio.html" class="rt-link-azul">Más información</a>
+      </div>
+      <label class="rt-toggle-wrap">
+        <input type="checkbox" class="rt-toggle-input" data-priv="grupo" checked />
+        <span class="rt-toggle-slider"></span>
+        <span class="rt-toggle-estado">Activo</span>
+      </label>
+    </div>
+
+    <div class="rt-privacidad-fila">
+      <div>
+        <strong>Compartir con socios de viaje.</strong>
+        <a href="Inicio.html" class="rt-link-azul">Más información</a>
+      </div>
+      <label class="rt-toggle-wrap">
+        <input type="checkbox" class="rt-toggle-input" data-priv="sociosViaje" checked />
+        <span class="rt-toggle-slider"></span>
+        <span class="rt-toggle-estado">Activo</span>
+      </label>
+    </div>
+
+    <div class="rt-privacidad-fila">
+      <div>
+        <strong>Compartir con nuestros socios comerciales.</strong>
+        <a href="Inicio.html" class="rt-link-azul">Más información</a>
+      </div>
+      <label class="rt-toggle-wrap">
+        <input type="checkbox" class="rt-toggle-input" data-priv="sociosComerciales" checked />
+        <span class="rt-toggle-slider"></span>
+        <span class="rt-toggle-estado">Activo</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="rt-eliminar-cuenta-wrap">
+    <button type="button" class="rt-btn-eliminar-cuenta" id="rtBtnEliminarCuenta">Eliminar cuenta</button>
+  </div>
+</section>
+
+      <!-- =====================================================
+     SECCIÓN 6: PANEL PREFERENCIAS
+     ===================================================== -->
+<section class="rt-cuenta-panel" id="panel-preferencias">
+  <h2 class="rt-cuenta-titulo-seccion">Preferencias</h2>
+
+  <!-- Tarjeta 1: Aeropuertos -->
+  <div class="rt-cuenta-tarjeta">
+    <h3 class="rt-cuenta-tarjeta-titulo">Aeropuertos</h3>
+    <p class="rt-cuenta-subtexto">Simplifica la búsqueda de vuelos guardando tu aeropuerto de origen y otros aeropuertos desde los que vueles con frecuencia.</p>
+
+    <div class="rt-pref-bloque">
+      <h4 class="rt-pref-subtitulo">Aeropuerto de origen</h4>
+      <div class="rt-pref-chips-fila" id="rtOrigenChips">
+        <span class="rt-pref-chip-activo">
+          <span>Montreal (YMQ)</span>
+          <button type="button" class="rt-chip-quitar" aria-label="Quitar Montreal (YMQ)">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div class="rt-pref-bloque">
+      <label class="rt-pref-subtitulo" for="rtBuscarAeropuertoSec">Aeropuertos secundarios</label>
+      <div class="rt-pref-buscador-caja">
+        <input
+          type="text"
+          id="rtBuscarAeropuertoSec"
+          class="rt-pref-buscador-input"
+          placeholder="Buscar aeropuertos alternativos"
+        />
+        <button type="button" class="rt-pref-lupa-btn" id="rtBtnBuscarAeropuerto" aria-label="Buscar aeropuerto">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div class="rt-pref-chips-fila rt-pref-mt-sm" id="rtAeropuertosSecLista"></div>
+    </div>
+
+    <div class="rt-pref-bloque rt-pref-sin-margen">
+      <span class="rt-pref-sugerencias-etiqueta">Sugerencias</span>
+      <div class="rt-pref-chips-fila" id="rtSugerenciasAeropuertos">
+        <button type="button" class="rt-pref-sugerencia-btn" data-aeropuerto="Montevideo (MVD)">
+          <span>Montevideo (MVD)</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="rt-pref-sugerencia-btn" data-aeropuerto="Punta del Este (PDP)">
+          <span>Punta del Este (PDP)</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="rt-pref-sugerencia-btn" data-aeropuerto="Miami (MIA)">
+          <span>Miami (MIA)</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjeta 2: Aerolíneas -->
+  <div class="rt-cuenta-tarjeta">
+    <h3 class="rt-cuenta-tarjeta-titulo">Aerolíneas</h3>
+    <p class="rt-cuenta-subtexto">Obtén mejores resultados de búsqueda añadiendo tus preferencias de aerolíneas.</p>
+
+    <div class="rt-pref-bloque">
+      <label class="rt-pref-subtitulo" for="rtAerolineasPreferidas">Preferidas</label>
+      <p class="rt-pref-ayuda">Estas opciones aparecerán más arriba en resultados.</p>
+      <input
+        type="text"
+        id="rtAerolineasPreferidas"
+        class="rt-pref-input"
+        placeholder="Busca aerolíneas"
+      />
+    </div>
+
+    <div class="rt-pref-bloque rt-pref-sin-margen">
+      <label class="rt-pref-subtitulo" for="rtAerolineasOmitir">Omitir</label>
+      <p class="rt-pref-ayuda">Estas opciones aparecerán más abajo en resultados.</p>
+      <input
+        type="text"
+        id="rtAerolineasOmitir"
+        class="rt-pref-input"
+        placeholder="Busca aerolíneas"
+      />
+    </div>
+  </div>
+
+  <!-- Tarjeta 3: Cadenas de hoteles -->
+  <div class="rt-cuenta-tarjeta">
+    <h3 class="rt-cuenta-tarjeta-titulo">Cadenas de hoteles</h3>
+    <p class="rt-cuenta-subtexto">Obtén mejores resultados de búsqueda añadiendo tus preferencias de cadenas de hoteles.</p>
+
+    <div class="rt-pref-bloque">
+      <label class="rt-pref-subtitulo" for="rtHotelesPreferidos">Preferidas</label>
+      <p class="rt-pref-ayuda">Estas opciones aparecerán más arriba en resultados.</p>
+      <input
+        type="text"
+        id="rtHotelesPreferidos"
+        class="rt-pref-input"
+        placeholder="Busca cadenas de hoteles"
+      />
+    </div>
+
+    <div class="rt-pref-bloque rt-pref-sin-margen">
+      <label class="rt-pref-subtitulo" for="rtHotelesOmitir">Omitir</label>
+      <p class="rt-pref-ayuda">Estas opciones aparecerán más abajo en resultados.</p>
+      <input
+        type="text"
+        id="rtHotelesOmitir"
+        class="rt-pref-input"
+        placeholder="Busca cadenas de hoteles"
+      />
+    </div>
+  </div>
+
+  <!-- Tarjeta 4: Lugares guardados -->
+  <div class="rt-cuenta-tarjeta">
+    <h3 class="rt-cuenta-tarjeta-titulo">Lugares guardados</h3>
+    <p class="rt-cuenta-subtexto">Elige entre tus lugares guardados para limitar la búsqueda a los hoteles y alquileres cercanos.</p>
+
+    <button type="button" class="rt-pref-link-accion" id="rtBtnAnadirLugar">Añade un lugar</button>
+
+    <div class="rt-pref-lugar-form oculto" id="rtFormLugar">
+      <input
+        type="text"
+        id="rtInputLugar"
+        class="rt-pref-input"
+        placeholder="Ej. Punta Cana, Santo Domingo o Ciudad Colonial"
+      />
+      <button type="button" class="rt-btn-oscuro" id="rtBtnGuardarLugar">Guardar lugar</button>
+    </div>
+
+    <div class="rt-pref-chips-fila rt-pref-mt-sm" id="rtListaLugaresGuardados"></div>
+  </div>
+</section>
+
+<!-- =====================================================
+     SECCIÓN 7: PANEL VIAJEROS
+     ===================================================== -->
+<section class="rt-cuenta-panel" id="panel-viajeros">
+  <h2 class="rt-cuenta-titulo-seccion">Pasajeros</h2>
+
+  <!-- Tarjeta 1: Pasajero principal -->
+  <div class="rt-cuenta-tarjeta">
+    <h3 class="rt-cuenta-tarjeta-titulo">Pasajero principal</h3>
+    <p class="rt-cuenta-subtexto">Esta información nos permitirá rellenar los campos de forma automática y agilizar el proceso de reserva.</p>
+
+    <div class="rt-viajero-cabecera">
+      <div class="rt-viajero-avatar" id="rtViajeroAvatarMini">J</div>
+      <span class="rt-viajero-correo" id="rtViajeroCorreoPrincipal">jeimycr9@gmail.com</span>
+    </div>
+
+    <div class="rt-divisor-horizontal rt-divisor-suave"></div>
+
+    <div class="rt-viajero-cuerpo">
+      <div class="rt-viajero-grid" id="rtViajeroDatosGrid">
+        <div class="rt-viajero-dato">
+          <span class="rt-viajero-etiqueta">Nombre</span>
+          <strong class="rt-viajero-valor" data-campo-viajero="nombre">-</strong>
+        </div>
+
+        <div class="rt-viajero-dato">
+          <span class="rt-viajero-etiqueta">Segundo nombre</span>
+          <strong class="rt-viajero-valor" data-campo-viajero="segundoNombre">-</strong>
+        </div>
+
+        <div class="rt-viajero-dato">
+          <span class="rt-viajero-etiqueta">Apellidos</span>
+          <strong class="rt-viajero-valor" data-campo-viajero="apellidos">-</strong>
+        </div>
+
+        <div class="rt-viajero-dato">
+          <span class="rt-viajero-etiqueta">Fecha de nacimiento</span>
+          <strong class="rt-viajero-valor" data-campo-viajero="fechaNacimiento">-</strong>
+        </div>
+
+        <div class="rt-viajero-dato">
+          <span class="rt-viajero-etiqueta">Sexo</span>
+          <strong class="rt-viajero-valor" data-campo-viajero="sexo">-</strong>
+        </div>
+
+        <div class="rt-viajero-dato rt-viajero-vacio" aria-hidden="true"></div>
+
+        <div class="rt-viajero-dato">
+          <span class="rt-viajero-etiqueta">Número de móvil</span>
+          <strong class="rt-viajero-valor" data-campo-viajero="movil">-</strong>
+        </div>
+
+        <div class="rt-viajero-dato rt-viajero-vacio" aria-hidden="true"></div>
+
+        <div class="rt-viajero-dato rt-viajero-vacio" aria-hidden="true"></div>
+
+        <div class="rt-viajero-dato">
+          <span class="rt-viajero-etiqueta">N.º de compensación DHS</span>
+          <strong class="rt-viajero-valor" data-campo-viajero="dhs">-</strong>
+        </div>
+
+        <div class="rt-viajero-dato">
+          <span class="rt-viajero-etiqueta">N.º de viajero conocido (KTN)</span>
+          <strong class="rt-viajero-valor" data-campo-viajero="ktn">-</strong>
+        </div>
+      </div>
+
+      <div class="rt-viajero-accion-col">
+        <button type="button" class="rt-viajero-link-btn" id="rtBtnEditarViajero">
+          Editar<br />viajero
+        </button>
+      </div>
+    </div>
+
+    <!-- Formulario editable del pasajero principal -->
+    <div class="rt-viajero-form oculto" id="rtFormEditarViajero">
+      <div class="rt-viajero-form-grid">
+        <label class="rt-viajero-campo">
+          <span>Nombre</span>
+          <input type="text" id="rtViajeroInputNombre" placeholder="Tu nombre" />
+        </label>
+        <label class="rt-viajero-campo">
+          <span>Segundo nombre</span>
+          <input type="text" id="rtViajeroInputSegundoNombre" placeholder="Segundo nombre" />
+        </label>
+        <label class="rt-viajero-campo">
+          <span>Apellidos</span>
+          <input type="text" id="rtViajeroInputApellidos" placeholder="Tus apellidos" />
+        </label>
+        <label class="rt-viajero-campo">
+          <span>Fecha de nacimiento</span>
+          <input type="date" id="rtViajeroInputFechaNacimiento" />
+        </label>
+        <label class="rt-viajero-campo">
+          <span>Sexo</span>
+          <select id="rtViajeroInputSexo">
+            <option value="">Selecciona</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </label>
+        <label class="rt-viajero-campo">
+          <span>Número de móvil</span>
+          <input type="tel" id="rtViajeroInputMovil" placeholder="+1 809 000 0000" />
+        </label>
+        <label class="rt-viajero-campo">
+          <span>N.º de compensación DHS</span>
+          <input type="text" id="rtViajeroInputDhs" placeholder="Opcional" />
+        </label>
+        <label class="rt-viajero-campo">
+          <span>N.º de viajero conocido (KTN)</span>
+          <input type="text" id="rtViajeroInputKtn" placeholder="Opcional" />
+        </label>
+      </div>
+
+      <div class="rt-viajero-form-botones">
+        <button type="button" class="rt-btn-oscuro" id="rtBtnGuardarViajero">Guardar cambios</button>
+        <button type="button" class="rt-btn-borde-oscuro" id="rtBtnCancelarViajero">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjeta 2: Compañeros de viaje -->
+  <div class="rt-cuenta-tarjeta">
+    <h3 class="rt-cuenta-tarjeta-titulo">Compañeros de viaje</h3>
+    <p class="rt-cuenta-subtexto">Añade a familiares, amigos y colegas con los que viajas con frecuencia para agilizar las reservas</p>
+
+    <button type="button" class="rt-viajero-link-btn rt-viajero-link-inline" id="rtBtnAnadirCompanero">Añadir viajero</button>
+
+    <div class="rt-viajero-form oculto" id="rtFormAnadirCompanero">
+      <div class="rt-viajero-form-grid">
+        <label class="rt-viajero-campo">
+          <span>Nombre completo</span>
+          <input type="text" id="rtCompaneroNombre" placeholder="Nombre y apellido" />
+        </label>
+        <label class="rt-viajero-campo">
+          <span>Correo electrónico (opcional)</span>
+          <input type="email" id="rtCompaneroCorreo" placeholder="correo@ejemplo.com" />
+        </label>
+      </div>
+      <div class="rt-viajero-form-botones">
+        <button type="button" class="rt-btn-oscuro" id="rtBtnGuardarCompanero">Guardar compañero</button>
+        <button type="button" class="rt-btn-borde-oscuro" id="rtBtnCancelarCompanero">Cancelar</button>
+      </div>
+    </div>
+
+    <div class="rt-companeros-lista" id="rtListaCompaneros"></div>
+  </div>
+</section>
+
+<!-- =====================================================
+     SECCIÓN 8: PANEL MÉTODOS DE PAGO
+     ===================================================== -->
+<section class="rt-cuenta-panel" id="panel-pagos">
+  <h2 class="rt-cuenta-titulo-seccion">Métodos de pago guardados</h2>
+
+  <div class="rt-cuenta-tarjeta">
+    <div class="rt-pagos-layout">
+      <div class="rt-pagos-info">
+        <h3 class="rt-cuenta-tarjeta-titulo">Métodos de pago guardados</h3>
+        <p class="rt-cuenta-subtexto">Elige uno de tus métodos de pago guardados al reservar para rellenar de forma automática tus datos de pago.</p>
+
+        <button type="button" class="rt-pagos-link-btn" id="rtBtnAnadirTarjeta">Añadir una tarjeta de crédito</button>
+        <p class="rt-pagos-seguridad">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <span>Tus datos viajan protegidos para agilizar tus reservas en RuTa Tropical.</span>
+        </p>
+      </div>
+
+      <div class="rt-pagos-visual" aria-hidden="true">
+        <div class="rt-tarjeta-virtual">
+          <div class="rt-tarjeta-top">
+            <span class="rt-tarjeta-chip"></span>
+            <span class="rt-tarjeta-marca">RuTa Tropical</span>
+          </div>
+
+          <div class="rt-tarjeta-numero" id="rtVistaTarjetaNumero">•••• •••• •••• 4829</div>
+
+          <div class="rt-tarjeta-pie">
+            <div class="rt-tarjeta-meta">
+              <small>TITULAR</small>
+              <strong id="rtVistaTarjetaTitular">Usuario</strong>
+            </div>
+            <div class="rt-tarjeta-meta">
+              <small>VENCE</small>
+              <strong id="rtVistaTarjetaVence">12/29</strong>
+            </div>
+            <span class="rt-tarjeta-badge">VIAJERO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulario creativo para añadir tarjeta -->
+    <div class="rt-pagos-form oculto" id="rtFormAnadirTarjeta">
+      <div class="rt-pagos-form-grid">
+        <label class="rt-viajero-campo rt-pagos-campo-ancho">
+          <span>Número de tarjeta</span>
+          <input type="text" id="rtInputTarjetaNumero" maxlength="19" placeholder="1234 5678 9012 3456" />
+        </label>
+        <label class="rt-viajero-campo">
+          <span>Nombre del titular</span>
+          <input type="text" id="rtInputTarjetaTitular" placeholder="Como aparece en la tarjeta" />
+        </label>
+        <label class="rt-viajero-campo">
+          <span>Fecha de vencimiento</span>
+          <input type="text" id="rtInputTarjetaVence" maxlength="5" placeholder="MM/AA" />
+        </label>
+        <label class="rt-viajero-campo">
+          <span>Código de seguridad (CVV)</span>
+          <input type="password" id="rtInputTarjetaCvv" maxlength="4" placeholder="•••" />
+        </label>
+      </div>
+
+      <div class="rt-viajero-form-botones">
+        <button type="button" class="rt-btn-oscuro" id="rtBtnGuardarTarjeta">Guardar tarjeta</button>
+        <button type="button" class="rt-btn-borde-oscuro" id="rtBtnCancelarTarjeta">Cancelar</button>
+      </div>
+    </div>
+
+    <div class="rt-pagos-lista" id="rtListaTarjetasGuardadas"></div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SECCIÓN 9: PANEL NOTIFICACIONES
+     ===================================================== -->
+<section class="rt-cuenta-panel" id="panel-notificaciones">
+  <!-- Bloque 1: Alertas -->
+  <div class="rt-notif-alertas-hero">
+    <div class="rt-notif-alertas-texto">
+      <h2 class="rt-cuenta-titulo-seccion">Alertas</h2>
+      <p class="rt-notif-descripcion">
+        Usa tus favoritos para seguir precios y resultados guardados de vuelos, hoteles y más. Crea alertas de precios para comenzar, o busca el símbolo
+        <i class="fa-regular fa-heart rt-notif-corazon" aria-hidden="true"></i>
+        para guardar resultados mientras buscas.
+      </p>
+
+      <button type="button" class="rt-notif-crear-btn" id="rtBtnCrearAlerta">
+        <i class="fa-regular fa-bell" aria-hidden="true"></i>
+        <span>Crear alerta de precios</span>
+        <i class="fa-solid fa-chevron-down rt-notif-chevron" aria-hidden="true"></i>
+      </button>
+
+      <div class="rt-notif-alerta-form oculto" id="rtFormCrearAlerta">
+        <input
+          type="text"
+          id="rtInputAlertaRuta"
+          class="rt-pref-input"
+          placeholder="Ej. Santo Domingo (SDQ) → Miami (MIA)"
+        />
+        <button type="button" class="rt-btn-oscuro" id="rtBtnGuardarAlerta">Guardar alerta</button>
+      </div>
+
+      <div class="rt-notif-alertas-lista" id="rtListaAlertasCreadas"></div>
+    </div>
+
+    <div class="rt-notif-campana-wrap" aria-hidden="true">
+      <svg class="rt-notif-campana-svg" viewBox="0 0 180 150" width="180" height="150" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sombra en el suelo -->
+        <polygon points="62,118 104,94 144,117 102,141" fill="#CBD5E1" opacity="0.65" />
+
+        <!-- Burbuja isométrica con campana en colores de RuTa Tropical -->
+        <polygon points="74,38 118,13 142,27 142,88 98,113 74,99" fill="#DD4350" />
+        <polygon points="74,38 98,52 98,113 74,99" fill="#B91C1C" />
+        <polygon points="98,52 142,27 142,88 98,113" fill="#E2837D" />
+        <!-- Punta inferior de la burbuja -->
+        <polygon points="86,106 98,113 92,123" fill="#B91C1C" />
+
+        <!-- Campana interior -->
+        <path d="M118 46 C112 49, 108 56, 108 65 L104 73 L128 59 L124 53 C124 48, 121 45, 118 46 Z" fill="#0F172A" />
+        <ellipse cx="119" cy="69" rx="3.2" ry="2.2" transform="rotate(-28 119 69)" fill="#0F172A" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Tarjeta 1: Preferencias de correo -->
+  <div class="rt-cuenta-tarjeta">
+    <h3 class="rt-cuenta-tarjeta-titulo">Preferencias de correo</h3>
+    <p class="rt-cuenta-subtexto">Enviaremos los emails seleccionados a <strong id="rtNotifCorreoDestino">jeimycr9@gmail.com</strong>.</p>
+
+    <div class="rt-notif-fila">
+      <div class="rt-notif-fila-info">
+        <strong>Consejos de viaje</strong>
+        <p>Email mensual con los últimos consejos de viajes, tendencias y herramientas de RuTa Tropical.</p>
+      </div>
+      <label class="rt-toggle-wrap">
+        <input type="checkbox" class="rt-toggle-input rt-notif-toggle" data-notif="consejos" />
+        <span class="rt-toggle-slider"></span>
+        <span class="rt-toggle-estado">No</span>
+      </label>
+    </div>
+
+    <div class="rt-notif-fila">
+      <div class="rt-notif-fila-info">
+        <strong>Ofertas especiales</strong>
+        <p>Recibe ofertas limitadas y descuentos de nuestros socios</p>
+      </div>
+      <label class="rt-toggle-wrap">
+        <input type="checkbox" class="rt-toggle-input rt-notif-toggle" data-notif="ofertas" />
+        <span class="rt-toggle-slider"></span>
+        <span class="rt-toggle-estado">No</span>
+      </label>
+    </div>
+
+    <div class="rt-notif-fila">
+      <div class="rt-notif-fila-info">
+        <strong>Escapadas</strong>
+        <p>Recibe cada semana inspiración y consejos sobre destinos y escapadas desde tu aeropuerto de origen.</p>
+      </div>
+      <label class="rt-toggle-wrap">
+        <input type="checkbox" class="rt-toggle-input rt-notif-toggle" data-notif="escapadas" />
+        <span class="rt-toggle-slider"></span>
+        <span class="rt-toggle-estado">No</span>
+      </label>
+    </div>
+
+    <div class="rt-notif-fila">
+      <div class="rt-notif-fila-info">
+        <strong>Notificaciones de reembolsos</strong>
+        <p>Recibe información sobre compensaciones si tu vuelo se retrasa o se cancela.</p>
+      </div>
+      <label class="rt-toggle-wrap">
+        <input type="checkbox" class="rt-toggle-input rt-notif-toggle" data-notif="reembolsos" checked />
+        <span class="rt-toggle-slider"></span>
+        <span class="rt-toggle-estado">Sí</span>
+      </label>
+    </div>
+
+    <div class="rt-notif-fila">
+      <div class="rt-notif-fila-info">
+        <strong>Tu opinión cuenta</strong>
+        <p>Envía tu valoración y comparte tu experiencia con otros viajeros.</p>
+      </div>
+      <label class="rt-toggle-wrap">
+        <input type="checkbox" class="rt-toggle-input rt-notif-toggle" data-notif="opinion" checked />
+        <span class="rt-toggle-slider"></span>
+        <span class="rt-toggle-estado">Sí</span>
+      </label>
+    </div>
+
+    <div class="rt-notif-fila rt-notif-fila-con-sub">
+      <div class="rt-notif-fila-cabecera">
+        <div class="rt-notif-fila-info">
+          <strong>Recomendaciones personalizadas</strong>
+          <p>Ofertas relacionadas con el viaje que estés planificando.</p>
+        </div>
+        <label class="rt-toggle-wrap">
+          <input type="checkbox" class="rt-toggle-input rt-notif-toggle" data-notif="recomendaciones" />
+          <span class="rt-toggle-slider"></span>
+          <span class="rt-toggle-estado">No</span>
+        </label>
+      </div>
+      <div class="rt-notif-checks-fila">
+        <label class="rt-notif-check-item">
+          <input type="checkbox" name="recPersonalizadas" value="hoteles" />
+          <span>Hoteles</span>
+        </label>
+        <label class="rt-notif-check-item">
+          <input type="checkbox" name="recPersonalizadas" value="vuelos" />
+          <span>Vuelos</span>
+        </label>
+        <label class="rt-notif-check-item">
+          <input type="checkbox" name="recPersonalizadas" value="coches" />
+          <span>Coches</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="rt-notif-fila rt-notif-fila-con-sub">
+      <div class="rt-notif-fila-cabecera">
+        <div class="rt-notif-fila-info">
+          <strong>Precios en tiempo real</strong>
+          <p>Recibe precios actualizados para las búsquedas hechas en RuTa Tropical.</p>
+        </div>
+        <label class="rt-toggle-wrap">
+          <input type="checkbox" class="rt-toggle-input rt-notif-toggle" data-notif="preciosTiempoReal" />
+          <span class="rt-toggle-slider"></span>
+          <span class="rt-toggle-estado">No</span>
+        </label>
+      </div>
+      <div class="rt-notif-checks-fila">
+        <label class="rt-notif-check-item">
+          <input type="checkbox" name="preciosReal" value="hoteles" />
+          <span>Hoteles</span>
+        </label>
+        <label class="rt-notif-check-item">
+          <input type="checkbox" name="preciosReal" value="vuelos" />
+          <span>Vuelos</span>
+        </label>
+        <label class="rt-notif-check-item">
+          <input type="checkbox" name="preciosReal" value="coches" />
+          <span>Coches</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="rt-notif-pie-desactivar">
+      <span>¿Seguro que no quieres que te ayudemos a encontrar las mejores ofertas de viajes, destinos y consejos?</span>
+      <button type="button" class="rt-notif-link-btn" id="rtBtnDesactivarTodasNotif">Desactivar todas</button>
+    </div>
+  </div>
+
+  <!-- Tarjeta 2: Notificaciones de Trips y Calendario -->
+  <div class="rt-cuenta-tarjeta">
+    <h3 class="rt-cuenta-tarjeta-titulo">Notificaciones de Trips</h3>
+
+    <div class="rt-notif-fila rt-notif-sin-borde-top">
+      <div class="rt-notif-fila-info">
+        <p class="rt-notif-texto-largo">Todas las notificaciones de Trips (actualizaciones y recordatorios, check-in, estado de los vuelos, alertas de cambio de puerta, etc.)</p>
+      </div>
+      <label class="rt-toggle-wrap">
+        <input type="checkbox" class="rt-toggle-input rt-notif-toggle" data-notif="tripsGeneral" checked />
+        <span class="rt-toggle-slider"></span>
+        <span class="rt-toggle-estado">Sí</span>
+      </label>
+    </div>
+
+    <div class="rt-notif-fila">
+      <div class="rt-notif-fila-info">
+        <strong>Email (todas las alertas)</strong>
+        <p id="rtNotifTripsCorreo">jeimycr9@gmail.com</p>
+      </div>
+      <label class="rt-toggle-wrap">
+        <input type="checkbox" class="rt-toggle-input rt-notif-toggle" data-notif="tripsEmail" checked />
+        <span class="rt-toggle-slider"></span>
+        <span class="rt-toggle-estado">Sí</span>
+      </label>
+    </div>
+
+    <div class="rt-notif-calendario-bloque">
+      <h4 class="rt-cuenta-tarjeta-titulo">Calendario de Trips</h4>
+      <p class="rt-cuenta-subtexto">Este feed te muestra todos tus viajes</p>
+      <div class="rt-feed-caja" id="rtNotifFeedUrl">https://rutatropical.com/trips/ical/uf/0CDLeoy_xxA/TYUGNXC1/calendar.ics</div>
+      <div class="rt-feed-acciones">
+        <button type="button" class="rt-link-azul-btn" id="rtNotifRestablecerFeed">Restablecer este enlace</button>
+        <button type="button" class="rt-link-azul-btn" id="rtNotifInstruccionesFeed">Leer las instrucciones</button>
+      </div>
+      <p class="rt-mensaje-feed oculto" id="rtNotifMensajeFeed"></p>
+    </div>
+  </div>
+</section>
+<!-- =====================================================
+     PIE DE PÁGINA ORIGINAL + BARRA DE MARCAS Y AEROLÍNEAS
+     ===================================================== -->
+<footer class="rt-footer-original" id="rtFooter">
+  <div class="rt-footer-contenedor">
+    <div class="rt-footer-superior">
+      <div class="rt-footer-marca-col">
+        <a href="Inicio.html" class="rt-footer-logo-texto">RuTa Tropical</a>
+        <p class="rt-footer-lema">
+          Tu agencia de confianza para descubrir el mundo al mejor precio. Compara, ahorra y vuela sin límites.
+        </p>
+        <div class="rt-footer-redes">
+          <a href="Inicio.html" class="rt-footer-red-btn" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+          </a>
+          <a href="Inicio.html" class="rt-footer-red-btn" aria-label="YouTube">
+            <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+          </a>
+          <a href="Inicio.html" class="rt-footer-red-btn" aria-label="Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="Inicio.html" class="rt-footer-red-btn" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="rt-footer-col">
+        <h3 class="rt-footer-col-titulo">Empresa</h3>
+        <ul class="rt-footer-enlaces">
+          <li><a href="Inicio.html"><span>&rsaquo;</span> Acerca de</a></li>
+          <li><a href="Inicio.html"><span>&rsaquo;</span> Prensa</a></li>
+          <li><a href="Inicio.html"><span>&rsaquo;</span> Afiliados</a></li>
+          <li><a href="Inicio.html"><span>&rsaquo;</span> Socios</a></li>
+        </ul>
+      </div>
+
+      <div class="rt-footer-col">
+        <h3 class="rt-footer-col-titulo">Contacto</h3>
+        <ul class="rt-footer-enlaces">
+          <li><a href="Inicio.html"><span>&rsaquo;</span> Ayuda / FAQ</a></li>
+          <li><a href="Inicio.html"><span>&rsaquo;</span> Hoteles</a></li>
+          <li><a href="Inicio.html"><span>&rsaquo;</span> Publicidad</a></li>
+        </ul>
+      </div>
+
+      <div class="rt-footer-col">
+        <h3 class="rt-footer-col-titulo">Más</h3>
+        <ul class="rt-footer-enlaces">
+          <li><a href="#rtFooterAerolineas"><span>&rsaquo;</span> Tarifas aéreas</a></li>
+          <li><a href="#rtFooterAerolineas"><span>&rsaquo;</span> Ofertas bajas</a></li>
+          <li><a href="Inicio.html"><span>&rsaquo;</span> Privacidad</a></li>
+        </ul>
+      </div>
+
+      <div class="rt-footer-app-col">
+        <h3 class="rt-footer-col-titulo">Descarga la app</h3>
+        <p class="rt-footer-app-desc">Lleva tus reservas y ofertas siempre contigo.</p>
+        <div class="rt-footer-app-botones">
+          <a href="Inicio.html" class="rt-app-btn-oscuro">
+            <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+            <span>
+              <small>DISPONIBLE EN</small>
+              <strong>Google Play</strong>
+            </span>
+          </a>
+          <a href="Inicio.html" class="rt-app-btn-oscuro">
+            <i class="fa-brands fa-apple" aria-hidden="true"></i>
+            <span>
+              <small>CONSÍGUELO EN</small>
+              <strong>App Store</strong>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rt-footer-legal">
+      <p class="rt-footer-copyright">© 2026 RuTa Tropical. Todos los derechos reservados.</p>
+      <div class="rt-footer-legal-links">
+        <a href="Inicio.html">Privacidad</a>
+        <span>•</span>
+        <a href="Inicio.html">Términos y condiciones</a>
+        <span>•</span>
+        <a href="Inicio.html">Cookies</a>
+      </div>
+    </div>
+
+    <!-- Barra de marcas asociadas -->
+    <div class="rt-footer-socios-barra" aria-label="Plataformas asociadas">
+      <a href="Inicio.html" class="rt-socio-logo rt-socio-booking">Booking.com</a>
+
+      <a href="Inicio.html" class="rt-socio-logo rt-socio-kayak" aria-label="KAYAK">
+        <span>K</span><span>A</span><span>Y</span><span>A</span><span>K</span>
+      </a>
+
+      <a href="Inicio.html" class="rt-socio-logo rt-socio-opentable">
+        <span class="rt-socio-ot-punto"></span>
+        <span class="rt-socio-ot-aro"></span>
+        <strong>OpenTable</strong>
+      </a>
+
+      <a href="Inicio.html" class="rt-socio-logo rt-socio-priceline">priceline</a>
+
+      <a href="Inicio.html" class="rt-socio-logo rt-socio-agoda">
+        <strong>agoda</strong>
+        <span class="rt-socio-agoda-puntos" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i>
+        </span>
+      </a>
+    </div>
+
+    <!-- Aerolíneas debajo de la barra de marcas -->
+    <div class="rt-footer-aerolineas-bloque" id="rtFooterAerolineas">
+      <span class="rt-footer-aero-titulo">Aerolíneas</span>
+      <div class="rt-footer-aerolineas-lista">
+        <a href="Inicio.html" class="rt-aerolinea-enlace">Arajet</a>
+        <a href="Inicio.html" class="rt-aerolinea-enlace">American</a>
+        <a href="Inicio.html" class="rt-aerolinea-enlace">Copa</a>
+        <a href="Inicio.html" class="rt-aerolinea-enlace">Delta</a>
+        <a href="Inicio.html" class="rt-aerolinea-enlace">Iberia</a>
+        <a href="Inicio.html" class="rt-aerolinea-enlace">JetBlue</a>
+        <a href="Inicio.html" class="rt-aerolinea-enlace">Air France</a>
+        <a href="Inicio.html" class="rt-aerolinea-enlace">United</a>
+        <a href="Inicio.html" class="rt-aerolinea-enlace">Avianca</a>
+        <a href="Inicio.html" class="rt-aerolinea-enlace">Air Europa</a>
+      </div>
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+
+  <script src="perfil-menu.js"></script>
+  <script src="perfil-usuario.js"></script>
+
+  
+</body>
+</html>

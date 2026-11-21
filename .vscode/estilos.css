@@ -1,0 +1,539 @@
+/* ==========================================================
+   ÍNDICE
+   1. Configuración general
+   2. Portada
+   3. Barra de navegación (header)
+   4. Menú lateral y barra superior fija
+   5. Opciones: Vuelos / Alojamientos / Autobús
+   6. Buscador de viajes
+   7. Preguntas frecuentes
+   8. Animaciones
+   9. Responsive (teléfonos)
+   ========================================================== */
+
+
+/* ==========================================================
+   1. CONFIGURACIÓN GENERAL
+   ========================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* desplazamiento suave al usar la flecha */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+.subtema {
+    color: #596070;
+}
+
+select {
+    color: #596070;
+}
+
+select:hover {
+    border-color: #cbd5e1;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border: 2px solid #c9d9e6;
+    box-shadow: 0 0 0 3px #ffff;
+}
+
+
+/* ==========================================================
+   2. PORTADA
+   ========================================================== */
+.portada {
+    min-height: 100vh;
+    position: relative;
+    color: white;
+
+    background-image:
+        linear-gradient(rgba(0, 15, 30, 0.58), rgba(0, 15, 30, 0.58)),
+        url("imagenes/fondo1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contenido {
+    min-height: calc(100vh - 150px);
+    padding: 70px 20px 90px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.contenido h1 {
+    font-size: clamp(38px, 5.5vw, 65px);
+    line-height: 1.15;
+    font-weight: 900;
+    margin-bottom: 25px;
+}
+
+.descripcion {
+    max-width: 650px;
+    margin-bottom: 35px;
+
+    font-size: 14px;
+    line-height: 1.8;
+    color: #f0f0f0;
+}
+
+/* Flecha para bajar */
+.bajar {
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+
+    animation: movimiento 1.5s infinite;
+}
+
+
+/* ==========================================================
+   3. BARRA DE NAVEGACIÓN (header)
+   ========================================================== */
+.barradenavegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 4%;
+    width: 100%;
+    position: relative;
+}
+
+.left-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nombredelaempresa {
+    position: absolute;
+    right: 80%;
+    transform: translateX(-50%);
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 700;
+    color: #596070;
+}
+
+/* Selectores de idioma y moneda */
+.selectors {
+    display: flex;
+    gap: 10px;
+}
+
+.selectors select {
+    padding: 12px 18px;
+    border-color: #ffff;
+    font-size: 14px;
+    color: #596070;
+    background: white;
+    cursor: pointer;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+
+/* ==========================================================
+   4. MENÚ LATERAL Y BARRA SUPERIOR FIJA
+   ========================================================== */
+
+/* --- Barra superior fija --- */
+.barra-superior {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    width: 100%;
+    height: 80px;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+}
+
+/* --- Menú lateral deslizable --- */
+.menu-lateral {
+    position: fixed;
+    top: 80px;
+    left: -300px;
+    z-index: 999;
+
+    width: 280px;
+    height: calc(100vh - 80px);
+
+    background: white;
+    transition: 0.3s ease;
+}
+
+.menu-lateral.abierto {
+    left: 0;
+}
+
+/* --- Barra lateral (estructura del contenido) --- */
+.barra-lateral {
+    width: 280px;
+    height: 100vh;
+    padding: 10px;
+    background: #6c3838;
+    border-right: 1px solid #f4f3f3;
+}
+
+.encabezado-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px;
+}
+
+.boton-menu {
+    width: 0;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    background: #ffff;
+    cursor: pointer;
+    color: #596070;
+    font-weight: 1000;
+}
+
+.boton-menu:hover {
+    background: #94A9BE;
+}
+
+.Descubre {
+    color: #757f99;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* --- Lista de opciones del menú --- */
+.lista-menu {
+    list-style: none;
+    color: #757f99;
+}
+
+.opcion-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.opcion-menu:hover,
+.opcion-menu.activa {
+    background: #c9d9e6;
+}
+
+.separador {
+    margin: 15px 0;
+    border: none;
+    border-top: 1px solid #e5e5e5;
+}
+
+
+/* ==========================================================
+   5. OPCIONES: VUELOS / ALOJAMIENTOS / AUTOBÚS
+   ========================================================== */
+.menudeopciones {
+    display: flex;
+    gap: 30px;
+}
+
+/* Contenedor: icono arriba, nombre abajo */
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Cuadro redondeado con el icono */
+.circulo {
+    width: 60px;
+    height: 60px;
+    margin: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #e9eff1;
+    color: #596070;
+    border-radius: 30%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    transition: background 0.2s ease;
+}
+
+.circulo i {
+    font-size: 22px;
+}
+
+/* Nombre debajo del cuadro */
+.option span {
+    font-size: 13px;
+    color: #596070;
+}
+
+/* Opción activa */
+.option.active .circulo {
+    background: #94A9BE;
+    color: white;
+}
+
+/* Hover */
+.option.active:hover .circulo {
+    background: #596070;
+}
+
+.option:not(.active):hover .circulo {
+    background: #d5dee2;
+}
+
+
+/* ==========================================================
+   6. BUSCADOR DE VIAJES
+   ========================================================== */
+.todoelcontenidodeelviaje {
+    background-image: url("imagenes/fonde.avif");
+    padding: 10px;
+}
+
+.selecciones {
+    display: flex;
+    gap: 16px;
+    margin: 30px 100px;
+    padding: 40px;
+
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+}
+
+.selecciones input,
+.selecciones select {
+    flex: 1;
+    height: 55px;
+    padding: 0 16px;
+
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+.fecha {
+    color: #596070;
+}
+
+/* Botón "Buscar" */
+.botondebusqueda button {
+    margin: 20px;
+    padding: 15px 20px;
+
+    background: #757f99;
+    color: white;
+    font-size: 18px;
+    text-align: left;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.botondebusqueda button:hover {
+    background: #596070;
+}
+
+
+/* ==========================================================
+   7. PREGUNTAS FRECUENTES
+   ========================================================== */
+.preguntas {
+    width: 100%;
+    margin: 0;
+    padding: 25px 40px;
+    color: #596070;
+}
+
+.preguntas h2 {
+    font-size: 35px;
+    color: #757f99;
+    margin-bottom: 18px;
+}
+
+/* Dos columnas */
+.contenedor-preguntas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    align-items: start;
+}
+
+.columna {
+    min-width: 0;
+}
+
+/* Cada pregunta */
+.pregunta {
+    border-bottom: 1px solid #dedede;
+}
+
+.pregunta summary {
+    position: relative;
+    padding: 12px 25px 12px 0;
+
+    list-style: none;
+    font-weight: 600;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.pregunta summary::-webkit-details-marker {
+    display: none;
+}
+
+.pregunta summary:hover {
+    color: #757f99;
+}
+
+/* Flecha */
+.pregunta summary::after {
+    content: "";
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+
+    border-right: 1px solid #757f99;
+    border-bottom: 1px solid #757f99;
+    transform: translateY(-70%) rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+/* Flecha al abrir */
+.pregunta[open] summary::after {
+    transform: translateY(-20%) rotate(225deg);
+}
+
+/* Respuesta */
+.pregunta p {
+    padding: 0 15px 12px 0;
+    font-size: 15px;
+    color: #757f99;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   8. ANIMACIONES
+   ========================================================== */
+@keyframes movimiento {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, 8px);
+    }
+}
+
+
+/* ==========================================================
+   9. RESPONSIVE (TELÉFONOS)
+   ========================================================== */
+
+/* Tablets y teléfonos grandes */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+    }
+
+    .selecciones {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Teléfonos */
+@media (max-width: 600px) {
+
+    /* Portada */
+    .contenido h1 {
+        font-size: 36px;
+    }
+
+    .descripcion {
+        font-size: 13px;
+    }
+
+    /* Header */
+    .barra-superior {
+        padding: 15px 5%;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nombredelaempresa {
+        position: static;    /* quita el absolute */
+        transform: none;     /* quita el translateX(-50%) */
+        margin: 0;
+        font-size: 16px;
+        white-space: nowrap; /* evita que el texto se parta en dos líneas */
+    }
+
+    /* Secciones */
+    .seccion-destinos,
+    .seccion-extra {
+        padding: 70px 20px;
+    }
+
+    /* Preguntas frecuentes */
+    .preguntas {
+        padding: 20px 15px;
+    }
+
+    .preguntas h2 {
+        font-size: 16px;
+    }
+
+    .contenedor-preguntas {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .pregunta summary {
+        font-size: 15px;
+    }
+}

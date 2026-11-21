@@ -1,0 +1,312 @@
+/* ==========================================================
+   RUTA TROPICAL · vuelos.css (PALETA DE COLORES ADAPTADA)
+   ========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f7fb;
+    color: #1e293b;
+    padding-bottom: 80px;
+}
+
+.vuelos-header {
+    background: #ffffff;
+    height: 80px;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.vuelos-header .marca {
+    font-size: 24px;
+    font-weight: 800;
+    color: #dd4350; /* Rojo coral principal */
+    text-decoration: none;
+}
+
+.resumen-busqueda {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1096d0; /* Azul turquesa de tu paleta */
+    background: #f0f9ff;
+    padding: 10px 24px;
+    border-radius: 30px;
+    border: 1px solid #bae6fd;
+}
+
+.btn-nueva-busqueda {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    background: #dd4350; /* Botón en rojo coral */
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: background 0.2s;
+}
+
+.btn-nueva-busqueda:hover {
+    background: #c5303d;
+}
+
+/* Contenedor ampliado a 1400px */
+.contenedor-comparacion {
+    max-width: 1400px;
+    margin: 40px auto 0;
+    padding: 0 25px;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 30px;
+}
+
+/* Panel de Filtros */
+.panel-filtros {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+}
+
+.filtros-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.filtros-cabecera h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1096d0; /* Azul turquesa corporativo */
+    border-left: 4px solid #dd4350;
+    padding-left: 10px;
+}
+
+.btn-reset {
+    background: none;
+    border: none;
+    color: #81bac2;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+}
+.btn-reset:hover {
+    color: #1096d0;
+}
+
+.filtro-grupo {
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.filtro-grupo h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1096d0; /* Azul turquesa para subtítulos */
+    margin-bottom: 16px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: #475569;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    accent-color: #dd4350; /* Acento rojo coral */
+    width: 18px;
+    height: 18px;
+}
+
+.precio-filtro {
+    margin-left: auto;
+    color: #94a3b8;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.rango-precios {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rango-precios input {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 14px;
+}
+.rango-precios input:focus {
+    border-color: #1096d0;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(16, 150, 208, 0.15);
+}
+
+/* Tarjeta de Vuelos */
+.lista-vuelos {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tarjeta-vuelo {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid #f1f5f9;
+    transition: all 0.2s ease;
+}
+.tarjeta-vuelo:hover {
+    border-color: rgba(16, 150, 208, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.tramo-vuelo {
+    display: grid;
+    grid-template-columns: 140px 1.2fr 180px 1.2fr 150px;
+    align-items: center;
+    gap: 20px;
+}
+
+.aerolinea-badge {
+    font-weight: 900;
+    font-size: 22px;
+    color: #1096d0; /* Azul turquesa para las aerolíneas */
+}
+
+.hora-ciudad h4 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.fecha-txt {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.ciudad-txt {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 2px;
+}
+
+.trayecto-linea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.duracion {
+    font-size: 13px;
+    font-weight: 600;
+    color: #81bac2; /* Tono celeste de la paleta */
+}
+
+.linea-puntos {
+    width: 100%;
+    height: 2px;
+    background: #cbd5e1;
+    position: relative;
+    margin: 8px 0;
+}
+
+.linea-puntos::after {
+    content: "✈";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 0 6px;
+    color: #1096d0; /* Avión en azul turquesa */
+    font-size: 14px;
+}
+
+.precio-seccion {
+    text-align: right;
+}
+
+.precio-monto {
+    font-size: 30px;
+    font-weight: 900;
+    color: #dd4350; /* Precios en rojo coral llamativo */
+}
+
+.tarifa-sub {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.vuelo-pie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 18px;
+}
+
+.detalles-tarifa {
+    font-size: 14px;
+    color: #64748b;
+}
+
+.btn-reservar {
+    background: #dd4350; /* Botón de reservar en rojo coral */
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-reservar:hover {
+    background: #c5303d;
+}
+
+.tag-reembolso {
+    border: 1px solid #fecdd3;
+    background: #fff1f2;
+    color: #dd4350; /* Etiqueta en tono coral */
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .tramo-vuelo {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    .contenedor-comparacion {
+        grid-template-columns: 1fr;
+    }
+}

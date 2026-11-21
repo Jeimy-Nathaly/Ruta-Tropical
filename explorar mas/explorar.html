@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>Explorar Mapa Mundial · RuTa Tropical</title>
+
+    <!-- Fuentes y FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Leaflet.js CSS y JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="explorar.css">
+
+      <link rel="stylesheet" href="../pagina principal/chat-ias.css">
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <header class="topbar-tropical">
+        <div class="topbar-left">
+            <button type="button" class="btn-hamburguesa" id="btn-toggle-rail" title="Menú" onclick="document.getElementById('rail-lateral').classList.toggle('abierto')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="../pagina principal/Inicio.html" class="logo-marca-tropical">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+            <button type="button" class="btn-ia-top" onclick="activarTabDescribir()">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--coral);"></i> Usa la IA
+            </button>
+        </div>
+
+        <div class="topbar-right">
+            <div class="dropdown-moneda" id="dropdown-moneda-box">
+                <button type="button" class="btn-moneda-actual" onclick="toggleMenuMoneda(event)">
+                    <img src="https://flagcdn.com/w40/us.png" alt="US" id="img-bandera-top">
+                    <span id="txt-moneda-top">USD</span>
+                </button>
+                <div class="menu-moneda-desplegable">
+                    <div class="opcion-moneda" onclick="cambiarMoneda('USD', '$', 1, 'us')">USD ($)</div>
+                    <div class="opcion-moneda" onclick="cambiarMoneda('EUR', '€', 0.92, 'es')">EUR (€)</div>
+                    <div class="opcion-moneda" onclick="cambiarMoneda('DOP', 'RD$', 60.5, 'do')">DOP (RD$)</div>
+                    <div class="opcion-moneda" onclick="cambiarMoneda('SEK', 'kr', 10.5, 'se')">SEK (kr)</div>
+                </div>
+            </div>
+            <button type="button" class="btn-icono-redondo" title="Guardados"><i class="fa-solid fa-heart"></i></button>
+        
+   
+           <!-- BOTÓN Y MENÚ DE PERFIL (ESTRUCTURA DE INICIO.HTML) -->
+            <div class="rt-perfil-box" id="rtPerfilBox">
+                <button
+                    type="button"
+                    class="rt-perfil-btn"
+                    id="rtPerfilBtn"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-controls="rtPerfilMenu"
+                    title="Perfil de usuario"
+                >
+                    <img src="" alt="Foto de perfil" class="rt-perfil-foto" id="rtPerfilFotoBtn">
+                    <span class="rt-perfil-inicial" id="rtPerfilInicialBtn">J</span>
+                </button>
+
+                <div class="rt-perfil-menu" id="rtPerfilMenu" role="menu" aria-hidden="true">
+                    <div class="rt-perfil-cuentas-lista" id="rtPerfilCuentasLista"></div>
+
+                    <button type="button" class="rt-perfil-anadir" id="rtPerfilAnadirBtn" role="menuitem">
+                        <span class="rt-perfil-anadir-icono" aria-hidden="true">+👤</span>
+                        <span>Añadir usuario</span>
+                    </button>
+
+                    <div class="rt-perfil-separador"></div>
+
+                    <a href="/explora/explorar.html" class="rt-perfil-enlace" role="menuitem">Trips</a>
+                    <a href="../ayuda/ayuda.html" class="rt-perfil-enlace" role="menuitem">Ayuda/Preguntas frecuentes</a>
+                    <a href="../pagina principal/perfil-usuario.html" class="rt-perfil-enlace" role="menuitem">Tu cuenta</a>
+
+                    <button type="button" class="rt-perfil-salir" id="rtPerfilSalirBtn" role="menuitem">
+                        Cerrar sesión
+                    </button>
+                </div>
+            </div>
+
+      
+        </div>
+
+        
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="layout-principal-explore">
+
+        <!-- RAIL LATERAL IZQUIERDO -->
+   <aside class="rail-lateral" id="rail-lateral">
+    <!-- Cabecera -->
+    <div class="header-menu-hamburguesa">
+        <span>Ruta Tropical</span>
+        <button type="button" onclick="document.getElementById('rail-lateral').classList.remove('abierto')">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <!-- Enlaces principales -->
+    <nav class="rail-grupo">
+        <a href="vuelos.html" class="rail-link activo" data-tooltip="Vuelos">
+            <i class="fa-solid fa-plane"></i> <span class="texto-link-rail">Vuelos</span>
+        </a>
+        <a href="Inicio.html" class="rail-link" data-tooltip="Hoteles">
+            <i class="fa-solid fa-bed"></i> <span class="texto-link-rail">Hoteles</span>
+        </a>
+        <a href="Inicio.html" class="rail-link" data-tooltip="Autobús">
+            <i class="fa-solid fa-bus"></i> <span class="texto-link-rail">autobus</span>
+        </a>
+    </nav>
+
+    <!-- Enlaces secundarios con flecha -->
+    <nav class="rail-grupo menu-links-secundarios">
+        <a href="../pagina principal/Inicio.html#ia" class="rail-link"><i class="fa-solid fa-angle-right"></i> <span class="texto-link-rail">planifica con IA</span></a>
+        <a href="../descubre/descubre tu reserva tu proximo viaje.html" class="rail-link"><i class="fa-solid fa-angle-right"></i> <span class="texto-link-rail">planean tus viajes</span></a>
+        <a href="../acerca de/acerca de.html" class="rail-link"><i class="fa-solid fa-angle-right"></i> <span class="texto-link-rail">Sobre nosotros</span></a>
+        <a href="#" class="rail-link"><i class="fa-solid fa-angle-right"></i> <span class="texto-link-rail">Contacto</span></a>
+        <a href="../ayuda/ayuda.html" class="rail-link"><i class="fa-solid fa-angle-right"></i> <span class="texto-link-rail">Preguntas frecuentes</span></a>
+        <a href="explorar.html" class="rail-link"><i class="fa-solid fa-angle-right"></i> <span class="texto-link-rail">explorar</span></a>
+        <a href="#" class="rail-link"><i class="fa-solid fa-angle-right"></i> <span class="texto-link-rail">Términos y condiciones</span></a>
+        <a href="../rastreador/rastreo.html" class="rail-link"><i class="fa-solid fa-angle-right"></i> <span class="texto-link-rail">rastraedor de vuelos</span></a>
+        <a href="../explora/explorar.html" class="rail-link"><i class="fa-solid fa-angle-right"></i> <span class="texto-link-rail">viajes</span></a>
+    </nav>
+
+    <!-- Tarjeta de contacto inferior -->
+    <div class="caja-contacto-rail">
+        <div class="item-contacto-rail">
+            <i class="fa-solid fa-phone"></i>
+            <div class="info-contacto-texto">
+                <span class="lbl-contacto">Teléfono:</span>
+                <span class="badge-dato-rojo">+1-029-789-7542</span>
+            </div>
+        </div>
+        <div class="item-contacto-rail">
+            <i class="fa-solid fa-envelope"></i>
+            <div class="info-contacto-texto">
+                <span class="lbl-contacto">Correo:</span>
+                <span class="badge-dato-rojo">rutaTropical@tuempresa.com</span>
+            </div>
+        </div>
+    </div>
+</aside>
+
+        <!-- WORKSPACE CON MAPA MUNDIAL E INTERACTIVIDAD -->
+        <main class="workspace-mapa">
+            
+            <!-- PANEL FLOTANTE DE RESULTADOS Y DETALLES -->
+            <section class="panel-flotante-resultados">
+                
+                <!-- VISTA 1: LISTADO Y FILTROS INTERACTIVOS -->
+                <div id="vista-listado" class="panel-subvista">
+                    <div class="tabs-buscar-ia">
+                        <button type="button" class="tab-btn activa" id="tab-btn-buscar" onclick="seleccionarTab('buscar')">
+                            <i class="fa-solid fa-magnifying-glass"></i> Buscar
+                        </button>
+                        <button type="button" class="tab-btn" id="tab-btn-describir" onclick="seleccionarTab('describir')">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Describir con IA
+                        </button>
+                    </div>
+
+                    <div id="vista-tab-buscar">
+                        <div class="inputs-origen-destino">
+                            <div class="caja-input-exp">
+                                <input type="text" id="input-origen" value="Miami (MIA)" readonly onclick="toggleDropdownOrigen(event)">
+                                <div class="menu-desplegable-flotante" id="dropdown-origen">
+                                    <div class="header-sug">Ciudad de origen</div>
+                                    <div class="item-sug" onclick="seleccionarOrigen('Miami (MIA)')">✈️ Miami, EE.UU. (MIA)</div>
+                                    <div class="item-sug" onclick="seleccionarOrigen('Santo Domingo (SDQ)')">✈️ Santo Domingo, Rep. Dom. (SDQ)</div>
+                                    <div class="item-sug" onclick="seleccionarOrigen('Madrid (MAD)')">✈️ Madrid, España (MAD)</div>
+                                </div>
+                            </div>
+                            <div class="caja-input-exp">
+                                <input type="text" id="input-busqueda-destino" placeholder="Buscar país o ciudad..." onfocus="mostrarSugerenciasRapidas()" oninput="filtrarDestinosMundiales()">
+                                <div class="menu-desplegable-flotante" id="dropdown-destinos-rapidos">
+                                    <div class="header-sug">Destinos populares globales</div>
+                                    <div id="lista-sugerencias-rapidas"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flexibilidad-caja">
+                            <span><i class="fa-regular fa-calendar-days" style="color:var(--turquesa);"></i> En cualquier momento, duración flexible</span>
+                        </div>
+                        
+                        <div class="filtros-horizontales">
+                            <div class="select-wrapper">
+                                <select id="select-escala" onchange="filtrarDestinosMundiales()">
+                                    <option value="todos">Escalas: Todos</option>
+                                    <option value="Directo">Directos</option>
+                                    <option value="1 escala">1 escala</option>
+                                </select>
+                            </div>
+                            <div class="select-wrapper">
+                                <select id="select-precio" onchange="filtrarDestinosMundiales()">
+                                    <option value="99999">Precio máx.</option>
+                                    <option value="400">Hasta $400</option>
+                                    <option value="800">Hasta $800</option>
+                                    <option value="2000">Cualquiera</option>
+                                </select>
+                            </div>
+                            <div class="select-wrapper">
+                                <select id="select-continente" onchange="filtrarDestinosMundiales()">
+                                    <option value="Todos">Región: Todas</option>
+                                    <option value="América del Sur">América del Sur</option>
+                                    <option value="Norte y Centroamérica">Norte y Centroamérica</option>
+                                    <option value="Europa">Europa</option>
+                                    <option value="Asia">Asia</option>
+                                    <option value="África">África</option>
+                                    <option value="Oceanía">Oceanía</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="vista-tab-describir" style="display: none;">
+                        <div class="caja-ia-prompt">
+                            <textarea id="texto-prompt-ia" placeholder="Ej: Vuelo económico a Rusia, Tokio, pirámides de Egipto, París o playas del Caribe..." rows="3" oninput="filtrarPorIA()"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="contenedor-tarjetas-lista" id="lista-destinos-explore"></div>
+                </div>
+
+                <!-- VISTA 2: FICHA DETALLADA PREMIUM -->
+                <div id="vista-detalle" class="panel-subvista" style="display: none;">
+                    <div class="detalle-header-img">
+                        <button type="button" class="btn-volver-atras" onclick="regresarAlListado()">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <img id="det-img" src="" alt="Destino" onerror="this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80'">
+                        <span class="badge-categoria-pill" id="det-categoria-badge">Turismo</span>
+                    </div>
+
+                    <div class="detalle-cuerpo-scroll">
+                        <div class="detalle-titulo-row">
+                            <div>
+                                <h2 id="det-ciudad">Ciudad</h2>
+                                <p id="det-pais" style="color: #64748b; font-size: 13px; font-weight: 600;">País</p>
+                            </div>
+                            <button type="button" class="btn-fav-detalle" onclick="toggleFavoritoDetalle()">
+                                <i class="fa-regular fa-heart" id="det-icono-fav"></i>
+                            </button>
+                        </div>
+
+                        <div class="detalle-caja-precio">
+                            <div class="detalle-precio-info">
+                                <span class="lbl-barato"><i class="fa-solid fa-tag"></i> El más económico</span>
+                                <span class="val-precio" id="det-precio">$0</span>
+                                <span class="val-fechas" id="det-fechas">Fechas · Vuelo directo</span>
+                            </div>
+                            <button type="button" class="btn-ver-vuelos-pro" onclick="alert('Redirigiendo al cotizador de vuelos de RuTa Tropical...')">Ver vuelos</button>
+                        </div>
+
+                        <!-- TARJETAS DE INFORMACIÓN CREATIVAS -->
+                        <div class="experiencias-grid-creativo">
+                            <div class="tarjeta-info-card">
+                                <div class="card-icon-box" style="background: var(--turquesa-bg); color: var(--turquesa);">
+                                    <i class="fa-solid fa-compass"></i>
+                                </div>
+                                <div class="card-content-box">
+                                    <h4>Esencia del destino</h4>
+                                    <p id="det-texto-guia">Explora monumentos antiguos, cultura vibrante...</p>
+                                </div>
+                            </div>
+
+                            <div class="tarjeta-info-card">
+                                <div class="card-icon-box" style="background: #ecfdf5; color: #10b981;">
+                                    <i class="fa-solid fa-bus"></i>
+                                </div>
+                                <div class="card-content-box">
+                                    <h4>Transporte público</h4>
+                                    <p id="det-transporte">Red de autobuses y taxis oficiales.</p>
+                                </div>
+                            </div>
+
+                            <div class="tarjeta-info-card">
+                                <div class="card-icon-box" style="background: #fff1f2; color: var(--coral);">
+                                    <i class="fa-solid fa-utensils"></i>
+                                </div>
+                                <div class="card-content-box">
+                                    <h4>Gastronomía típica</h4>
+                                    <p id="det-comida">Platos tradicionales y alta cocina.</p>
+                                </div>
+                            </div>
+
+                            <div class="tarjeta-info-card">
+                                <div class="card-icon-box" style="background: #fffbeb; color: #f59e0b;">
+                                    <i class="fa-solid fa-cloud-sun"></i>
+                                </div>
+                                <div class="card-content-box">
+                                    <h4>Clima ideal</h4>
+                                    <p id="det-clima">Temperaturas agradables todo el año.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sección: Razones para visitar -->
+                        <div class="detalle-seccion-texto">
+                            <h3>Las mejores razones para visitar</h3>
+                            
+                            <div class="item-razon-detalle">
+                                <strong style="font-size: 13.5px; color: var(--texto-dark);">1. Centro Histórico y Monumentos</strong>
+                                <p style="margin-top: 3px;">Explora los sitios emblemáticos, la arquitectura colonial y museos imprescindibles.</p>
+                                <span class="link-ver-mas" onclick="alert('Más información sobre Centro Histórico')">Ver más</span>
+                            </div>
+
+                            <div class="item-razon-detalle">
+                                <strong style="font-size: 13.5px; color: var(--texto-dark);">2. Gastronomía local única</strong>
+                                <p style="margin-top: 3px;">Disfruta de los sabores típicos en mercados tradicionales y restaurantes de categoría mundial.</p>
+                                <span class="link-ver-mas" onclick="alert('Más información sobre Gastronomía')">Ver más</span>
+                            </div>
+
+                            <div class="item-razon-detalle">
+                                <strong style="font-size: 13.5px; color: var(--texto-dark);">3. Vida nocturna vibrante</strong>
+                                <p style="margin-top: 3px;">Teatros, bares, música en vivo y ambiente festivo que se extiende hasta el amanecer.</p>
+                                <span class="link-ver-mas" onclick="alert('Más información sobre Vida nocturna')">Ver más</span>
+                            </div>
+                        </div>
+
+                        <!-- BLOQUE LEGAL Y DE AYUDA -->
+                        <div class="footer-legal-panel">
+                            <p class="texto-legal-aviso">
+                                Los precios mostrados son estimados basados en búsquedas recientes en <strong>RuTa Tropical</strong> para una persona: (i) Ida y vuelta (ii) Clase económica (iii) Incluye impuestos y tarifas. Los precios y disponibilidad están sujetos a cambios.
+                            </p>
+                            <div class="links-legales-grid">
+                                <a href="#">© 2026 RuTa Tropical</a>
+                                <a href="#">Privacidad</a>
+                                <a href="#">Términos y condiciones</a>
+                                <a href="#">Ayuda / Soporte</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- MAPA MUNDIAL LEAFLET -->
+            <div id="mapa-leaflet-canvas"></div>
+        </main>
+    </div>
+
+   <script src="explorar.js"></script>
+<script src="../pagina principal/chat-ia.js"></script>
+
+<script>
+  // Asegurar que al tocar "Usa la IA" o "Explorar con IA" espere a que chat-ia.js esté listo y lo abra
+  document.addEventListener("click", function (e) {
+    const btnUsa = e.target.closest(".rt-btn-usa-ia-top");
+    const btnExplorar = e.target.closest("#rtBtnExplorarIA");
+
+    if (!btnUsa && !btnExplorar) return;
+
+    e.preventDefault();
+    const panel = document.getElementById("panelChatIzquierda");
+    const input = document.getElementById("inputPreguntaIa");
+    const btnEnviar = document.getElementById("btnEnviarMensaje");
+
+    if (!panel) return;
+
+    panel.classList.add("activo");
+
+    if (btnExplorar) {
+      panel.classList.add("expandido");
+      const ta = document.getElementById("rtTextoViajeIA");
+      const texto = (ta && ta.value.trim()) || "Recomiéndame un destino";
+      if (input) {
+        input.value = texto;
+        setTimeout(() => { if (btnEnviar) btnEnviar.click(); }, 150);
+      }
+    } else {
+      panel.classList.remove("expandido");
+      if (input) setTimeout(() => input.focus(), 150);
+    }
+  });
+</script>
+
+</body>
+</html>

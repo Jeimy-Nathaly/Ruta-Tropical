@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Vuelos - Ruta Tropical</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="vuelos.css">
+</head>
+<body>
+
+    <header class="vuelos-header">
+        <a href="Inicio.html" class="marca">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+        <div class="resumen-busqueda" id="resumen-busqueda">
+            Cargando consulta...
+        </div>
+        <a href="Inicio.html" class="btn-nueva-busqueda">Nueva Búsqueda</a>
+    </header>
+
+    <div class="contenedor-comparacion">
+        <!-- Panel Lateral de Filtros -->
+        <aside class="panel-filtros">
+            <div class="filtros-cabecera">
+                <h3>Filters</h3>
+                <button type="button" class="btn-reset" onclick="resetearFiltros()">Reset</button>
+            </div>
+
+            <!-- Escalas -->
+            <div class="filtro-grupo">
+                <h4>Stops</h4>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="directo" onchange="filtrarResultados()">
+                    <span>Non stop</span>
+                    <span class="precio-filtro">$158</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="1escala" onchange="filtrarResultados()">
+                    <span>1 Stop</span>
+                    <span class="precio-filtro">$119</span>
+                </label>
+            </div>
+
+            <!-- Rango de Precio -->
+            <div class="filtro-grupo">
+                <h4>Price Range</h4>
+                <div class="rango-precios">
+                    <input type="number" id="precio-min" placeholder="Min" oninput="filtrarResultados()">
+                    <span>→</span>
+                    <input type="number" id="precio-max" placeholder="Max" oninput="filtrarResultados()">
+                </div>
+            </div>
+
+            <!-- Aerolíneas -->
+            <div class="filtro-grupo">
+                <h4>Airlines</h4>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Vietjet" onchange="filtrarResultados()">
+                    <span>Vietjet</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="AirAsia" onchange="filtrarResultados()">
+                    <span>Air Asia</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Hkexpress" onchange="filtrarResultados()">
+                    <span>Hong Kong Airlines / HKexpress</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="ANA" onchange="filtrarResultados()">
+                    <span>ANA</span>
+                </label>
+            </div>
+        </aside>
+
+        <!-- Lista de Vuelos Disponibles -->
+        <main class="lista-vuelos" id="contenedor-vuelos">
+            <!-- Se renderiza desde vuelos.js -->
+        </main>
+    </div>
+
+    <script src="vuelos.js"></script>
+</body>
+</html>

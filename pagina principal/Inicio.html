@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viajes Explora el mundo</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="Pagina de inicio.css">
+<!-- Asegúrate de que la ruta apunte a la carpeta IA -->
+ <link rel="stylesheet" href="chat-ias.css">
+ 
+ <link rel="stylesheet" href="perfil-menu.css">
+ 
+
+</head>
+
+<body>
+<!-- BARRA DE NAVEGACIÓN -->
+<nav class="nav-sitio" id="nav-sitio">
+
+    <button class="nav-sitio__menu" id="abrir-menu" type="button"
+            aria-label="Abrir menú" aria-expanded="false" aria-controls="cajon">
+        <span></span><span></span><span></span>
+    </button>
+
+    <a class="nav-sitio__marca" href="Inicio.html">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+
+<!-- ==========================================================
+   SELECTORES DE MONEDA E IDIOMA (AMPLIOS Y LIMPIOS)
+   ========================================================== -->
+<div class="nav-sitio__derecha">
+
+    <!-- Selector de Moneda -->
+    <div class="dropdown-custom" id="drop-moneda">
+        <button type="button" class="btn-custom" onclick="abrirDropdown(event, 'drop-moneda')">
+            <span class="icono-moneda" id="simbolo-actual">$</span>
+            <span class="texto-selector" id="txt-moneda">USD</span>
+            <i class="fa-solid fa-chevron-down flechita"></i>
+        </button>
+        <div class="menu-flotante menu-ancho">
+            <div class="menu-titulo">Selecciona tu moneda</div>
+            <div class="menu-grid-opciones">
+                <div class="item-opcion activa" onclick="elegirMoneda('USD', '$')">
+                    <span class="badge-moneda">$</span>
+                    <div class="info-opcion"><strong>USD</strong><span>Dólar estadounidense</span></div>
+                </div>
+                <div class="item-opcion" onclick="elegirMoneda('EUR', '€')">
+                    <span class="badge-moneda">€</span>
+                    <div class="info-opcion"><strong>EUR</strong><span>Euro europeo</span></div>
+                </div>
+                <div class="item-opcion" onclick="elegirMoneda('DOP', 'RD$')">
+                    <span class="badge-moneda">RD$</span>
+                    <div class="info-opcion"><strong>DOP</strong><span>Peso dominicano</span></div>
+                </div>
+                <div class="item-opcion" onclick="elegirMoneda('GBP', '£')">
+                    <span class="badge-moneda">£</span>
+                    <div class="info-opcion"><strong>GBP</strong><span>Libra esterlina</span></div>
+                </div>
+                <div class="item-opcion" onclick="elegirMoneda('CAD', 'CA$')">
+                    <span class="badge-moneda">CA$</span>
+                    <div class="info-opcion"><strong>CAD</strong><span>Dólar canadiense</span></div>
+                </div>
+                <div class="item-opcion" onclick="elegirMoneda('COP', 'COL$')">
+                    <span class="badge-moneda">COL$</span>
+                    <div class="info-opcion"><strong>COP</strong><span>Peso colombiano</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- SELECTOR DE IDIOMA MASIVO Y CON BUSCADOR -->
+<div class="dropdown-custom" id="drop-idioma">
+    <button type="button" class="btn-custom" onclick="abrirDropdown(event, 'drop-idioma')">
+        <img id="img-bandera-actual" src="https://flagcdn.com/w40/es.png" alt="ES" class="img-bandera">
+        <span class="texto-selector" id="txt-idioma">ES</span>
+        <i class="fa-solid fa-chevron-down flechita"></i>
+    </button>
+    <div class="menu-flotante menu-ancho menu-idiomas-extendido">
+        <div class="menu-titulo">Selecciona tu idioma</div>
+        
+        <!-- Buscador de idiomas integrado -->
+        <div class="buscador-idiomas-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="input-buscar-idioma" placeholder="Buscar idioma..." onkeyup="filtrarIdiomas()">
+        </div>
+
+        <div class="menu-grid-opciones" id="lista-idiomas-contenedor">
+            <div class="item-opcion activa" onclick="elegirIdioma('es', 'https://flagcdn.com/w40/es.png', 'Español', 'ES')">
+                <img src="https://flagcdn.com/w40/es.png" class="img-bandera" alt="ES">
+                <div class="info-opcion"><strong>Español</strong><span>España / Latinoamérica</span></div>
+                <span class="sigla">ES</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('en', 'https://flagcdn.com/w40/us.png', 'English', 'EN')">
+                <img src="https://flagcdn.com/w40/us.png" class="img-bandera" alt="EN">
+                <div class="info-opcion"><strong>English</strong><span>United States</span></div>
+                <span class="sigla">EN</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('fr', 'https://flagcdn.com/w40/fr.png', 'Français', 'FR')">
+                <img src="https://flagcdn.com/w40/fr.png" class="img-bandera" alt="FR">
+                <div class="info-opcion"><strong>Français</strong><span>France</span></div>
+                <span class="sigla">FR</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('de', 'https://flagcdn.com/w40/de.png', 'Deutsch', 'DE')">
+                <img src="https://flagcdn.com/w40/de.png" class="img-bandera" alt="DE">
+                <div class="info-opcion"><strong>Deutsch</strong><span>Deutschland</span></div>
+                <span class="sigla">DE</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('it', 'https://flagcdn.com/w40/it.png', 'Italiano', 'IT')">
+                <img src="https://flagcdn.com/w40/it.png" class="img-bandera" alt="IT">
+                <div class="info-opcion"><strong>Italiano</strong><span>Italia</span></div>
+                <span class="sigla">IT</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('pt', 'https://flagcdn.com/w40/pt.png', 'Português', 'PT')">
+                <img src="https://flagcdn.com/w40/pt.png" class="img-bandera" alt="PT">
+                <div class="info-opcion"><strong>Português</strong><span>Portugal / Brasil</span></div>
+                <span class="sigla">PT</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('zh-CN', 'https://flagcdn.com/w40/cn.png', '中文', 'ZH')">
+                <img src="https://flagcdn.com/w40/cn.png" class="img-bandera" alt="ZH">
+                <div class="info-opcion"><strong>中文</strong><span>中国</span></div>
+                <span class="sigla">ZH</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('ja', 'https://flagcdn.com/w40/jp.png', '日本語', 'JA')">
+                <img src="https://flagcdn.com/w40/jp.png" class="img-bandera" alt="JA">
+                <div class="info-opcion"><strong>日本語</strong><span>日本</span></div>
+                <span class="sigla">JA</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('ru', 'https://flagcdn.com/w40/ru.png', 'Русский', 'RU')">
+                <img src="https://flagcdn.com/w40/ru.png" class="img-bandera" alt="RU">
+                <div class="info-opcion"><strong>Русский</strong><span>Россия</span></div>
+                <span class="sigla">RU</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('ar', 'https://flagcdn.com/w40/sa.png', 'العربية', 'AR')">
+                <img src="https://flagcdn.com/w40/sa.png" class="img-bandera" alt="AR">
+                <div class="info-opcion"><strong>العربية</strong><span>العالم العربي</span></div>
+                <span class="sigla">AR</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('ko', 'https://flagcdn.com/w40/kr.png', '한국어', 'KO')">
+                <img src="https://flagcdn.com/w40/kr.png" class="img-bandera" alt="KO">
+                <div class="info-opcion"><strong>한국어</strong><span>대한민국</span></div>
+                <span class="sigla">KO</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('tr', 'https://flagcdn.com/w40/tr.png', 'Türkçe', 'TR')">
+                <img src="https://flagcdn.com/w40/tr.png" class="img-bandera" alt="TR">
+                <div class="info-opcion"><strong>Türkçe</strong><span>Türkiye</span></div>
+                <span class="sigla">TR</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('nl', 'https://flagcdn.com/w40/nl.png', 'Nederlands', 'NL')">
+                <img src="https://flagcdn.com/w40/nl.png" class="img-bandera" alt="NL">
+                <div class="info-opcion"><strong>Nederlands</strong><span>Nederland</span></div>
+                <span class="sigla">NL</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('pl', 'https://flagcdn.com/w40/pl.png', 'Polski', 'PL')">
+                <img src="https://flagcdn.com/w40/pl.png" class="img-bandera" alt="PL">
+                <div class="info-opcion"><strong>Polski</strong><span>Polska</span></div>
+                <span class="sigla">PL</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('hi', 'https://flagcdn.com/w40/in.png', 'हिन्दी', 'HI')">
+                <img src="https://flagcdn.com/w40/in.png" class="img-bandera" alt="HI">
+                <div class="info-opcion"><strong>हिन्दी</strong><span>भारत</span></div>
+                <span class="sigla">HI</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('sv', 'https://flagcdn.com/w40/se.png', 'Svenska', 'SV')">
+                <img src="https://flagcdn.com/w40/se.png" class="img-bandera" alt="SV">
+                <div class="info-opcion"><strong>Svenska</strong><span>Sverige</span></div>
+                <span class="sigla">SV</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('el', 'https://flagcdn.com/w40/gr.png', 'Ελληνικά', 'EL')">
+                <img src="https://flagcdn.com/w40/gr.png" class="img-bandera" alt="EL">
+                <div class="info-opcion"><strong>Ελληνικά</strong><span>Ελλάδα</span></div>
+                <span class="sigla">EL</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('cs', 'https://flagcdn.com/w40/cz.png', 'Čeština', 'CS')">
+                <img src="https://flagcdn.com/w40/cz.png" class="img-bandera" alt="CS">
+                <div class="info-opcion"><strong>Čeština</strong><span>Česká republika</span></div>
+                <span class="sigla">CS</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('vi', 'https://flagcdn.com/w40/vn.png', 'Tiếng Việt', 'VI')">
+                <img src="https://flagcdn.com/w40/vn.png" class="img-bandera" alt="VI">
+                <div class="info-opcion"><strong>Tiếng Việt</strong><span>Việt Nam</span></div>
+                <span class="sigla">VI</span>
+            </div>
+            <div class="item-opcion" onclick="elegirIdioma('id', 'https://flagcdn.com/w40/id.png', 'Bahasa Indonesia', 'ID')">
+                <img src="https://flagcdn.com/w40/id.png" class="img-bandera" alt="ID">
+                <div class="info-opcion"><strong>Bahasa Indonesia</strong><span>Indonesia</span></div>
+                <span class="sigla">ID</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Botón Perfil -->
+<div class="rt-perfil-box" id="rtPerfilBox">
+  <button
+    type="button"
+    class="rt-perfil-btn"
+    id="rtPerfilBtn"
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-controls="rtPerfilMenu"
+    title="Perfil de usuario"
+  >
+    <span class="rt-perfil-inicial" id="rtPerfilInicialBtn">J</span>
+  </button>
+
+  <div class="rt-perfil-menu" id="rtPerfilMenu" role="menu" aria-hidden="true">
+    <div class="rt-perfil-cuentas-lista" id="rtPerfilCuentasLista"></div>
+
+    <button type="button" class="rt-perfil-anadir" id="rtPerfilAnadirBtn" role="menuitem">
+      <span class="rt-perfil-anadir-icono" aria-hidden="true">+👤</span>
+      <span>Añadir usuario</span>
+    </button>
+
+    <div class="rt-perfil-separador"></div>
+
+    <a href="../viajes/viajes.html" class="rt-perfil-enlace" role="menuitem">Trips</a>
+    <a href="../ayuda/ayuda.html" class="rt-perfil-enlace" role="menuitem">Ayuda/Preguntas frecuentes</a>
+    <a href="perfil-usuario.html" class="rt-perfil-enlace" role="menuitem">Tu cuenta</a>
+
+    <button type="button" class="rt-perfil-salir" id="rtPerfilSalirBtn" role="menuitem">
+      Cerrar sesión
+    </button>
+  </div>
+</div>
+
+
+
+</div>
+</nav>
+
+<!-- Fondo difuminado -->
+<div class="cajon-fondo" id="cajon-fondo"></div>
+
+<!-- ==================================================
+MENÚ LATERAL
+================================================== -->
+<aside class="cajon" id="cajon" aria-label="Menú principal">
+
+    <div class="cajon__cab">
+        <span class="cajon__marca">Ruta Tropical</span>
+        <button class="cajon__cerrar" id="cerrar-menu" type="button" aria-label="Cerrar menú">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <ul class="cajon__principal">
+        <li><a class="activa" href="#destinos"><i class="fa-solid fa-plane"></i> Vuelos</a></li>
+        <li><a href="#hoteles"><i class="fa-solid fa-hotel"></i> Hoteles</a></li>
+        <li><a href="#hoteles"><i class="fa-solid fa-hotel"></i> autobus</a></li>
+    </ul>
+
+    <ul class="cajon__enlaces">
+        <li><a href="../pagina principal/Inicio.html#ia"><i class="fa-solid fa-chevron-right"></i>planifica con IA</a></li>
+        <li><a href="../descubre/descubre tu reserva tu proximo viaje.html"><i class="fa-solid fa-chevron-right"></i> planean tus viajes</a></li>
+        <li><a href="../acerca de/acerca de.html"><i class="fa-solid fa-chevron-right"></i> Sobre nosotros</a></li>
+        <li><a href=""><i class="fa-solid fa-chevron-right"></i> Contacto</a></li>
+        <li><a href="../ayuda/ayuda.html"><i class="fa-solid fa-chevron-right"></i> Preguntas frecuentes</a></li>
+        <li><a href="../explorar mas/explorar.html"><i class="fa-solid fa-chevron-right"></i> explorar</a></li>
+        <li><a href=""><i class="fa-solid fa-chevron-right"></i> Términos y condiciones</a></li>
+        <li><a href="../rastreador/rastreo.html"><i class="fa-solid fa-chevron-right"></i> rastraedor de vuelos</a></li>
+        <li><a href="../viajes/viajes.html"><i class="fa-solid fa-chevron-right"></i> viajes</a></li>
+    </ul>
+
+    <div class="cajon__contacto">
+        <div class="contacto-fila">
+            <span class="contacto-fila__icono"><i class="fa-solid fa-phone"></i></span>
+            <div>
+                <strong>Teléfono:</strong>
+                <span class="info">+1-029-789-7542</span>
+            </div>
+        </div>
+        <div class="contacto-fila">
+            <span class="contacto-fila__icono"><i class="fa-solid fa-envelope"></i></span>
+            <div>
+                <strong>Correo:</strong>
+                <span class="info">rutaTropical@tuempresa.com</span>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- ==================================================
+1. PORTADA PRINCIPAL
+================================================== -->
+<header class="portada" id="inicio">
+    <div class="contenido">
+        <h1>
+            DESCUBRE<br>
+            NUEVOS MUNDOS
+        </h1>
+        <p class="descripcion">
+            Descubre lugares increíbles, disfruta de nuevas
+            experiencias y crea recuerdos inolvidables.
+            ¡Tu próxima aventura comienza aquí!
+        </p>
+    </div>
+    <a href="#destinos" class="bajar">↓</a>
+</header>
+
+<!-- ==================================================
+3. BUSCADOR DE VIAJES
+================================================== -->
+<main class="todoelcontenidodeelviaje" id="destinos">
+    <div class="formulario">
+    <section class="subtema">
+
+        <h1>Compara ofertas de viajes en cientos de webs.</h1>
+
+        <!-- Categorías -->
+        <div class="menudeopciones">
+            <div class="option active">
+                <div class="circulo">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <span>Vuelos</span>
+            </div>
+            <div class="option">
+                <div class="circulo">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <span>Alojamientos</span>
+            </div>
+            <div class="option">
+                <div class="circulo">
+                    <i class="fas fa-bus"></i>
+                </div>
+                <span>Autobús</span>
+            </div>
+        </div>
+
+        <!-- Tipo de viaje -->
+        <div class="tipo-viaje">
+            <label>
+                <input type="radio" name="tipoviaje" value="ida-vuelta" checked>
+                <span>Ida y vuelta</span>
+            </label>
+            <label>
+                <input type="radio" name="tipoviaje" value="solo-ida">
+                <span>Solo ida</span>
+            </label>
+        </div>
+
+        <!-- Formulario (CON LOS ID NECESARIOS PARA EL BUSCADOR) -->
+        <div class="selecciones">
+            <input type="text" id="input-origen" placeholder="Origen (ej. Bangkok)">
+            <input type="text" id="input-destino" placeholder="Destino (ej. Ho Chi Minh)">
+            <input type="date" class="fecha" id="fecha-ida" title="Fecha de ida">
+            <input type="date" class="fecha" id="fecha-regreso" title="Fecha de regreso">
+
+            <!-- Contador de viajeros y clase -->
+            <div class="viajeros">
+                <button type="button" class="viajeros__boton" id="viajeros-boton"
+                        aria-haspopup="dialog" aria-expanded="false" aria-controls="viajeros-panel"
+                        aria-labelledby="viajeros-etiqueta viajeros-resumen">
+                    <svg class="viajeros__icono" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
+                    </svg>
+                    <span id="viajeros-resumen">1 Viajero, Economía</span>
+                    <svg class="viajeros__flecha" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+
+                <div class="viajeros__panel" id="viajeros-panel" role="dialog" aria-label="Viajeros y clase" hidden>
+                    <div class="viajeros__clase">
+                        <select id="viajeros-clase" name="clase" aria-label="Clase de cabina">
+                            <option value="Economía">Economía</option>
+                            <option value="Economía premium">Economía premium</option>
+                            <option value="Business">Business</option>
+                            <option value="Primera clase">Primera clase</option>
+                        </select>
+                    </div>
+
+                    <div class="viajeros__fila">
+                        <div>
+                            <strong>Adultos</strong>
+                            <small>(12 años o más)</small>
+                        </div>
+                        <div class="contador" data-tipo="adultos">
+                            <button type="button" class="contador__btn" data-accion="restar" aria-label="Quitar un adulto">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg>
+                            </button>
+                            <output class="contador__valor" aria-live="polite">1</output>
+                            <button type="button" class="contador__btn" data-accion="sumar" aria-label="Agregar un adulto">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="viajeros__fila">
+                        <div>
+                            <strong>Niños</strong>
+                            <small>(2 años-12 años)</small>
+                        </div>
+                        <div class="contador" data-tipo="ninos">
+                            <button type="button" class="contador__btn" data-accion="restar" aria-label="Quitar un niño">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg>
+                            </button>
+                            <output class="contador__valor" aria-live="polite">0</output>
+                            <button type="button" class="contador__btn" data-accion="sumar" aria-label="Agregar un niño">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="viajeros__fila">
+                        <div>
+                            <strong>Bebés</strong>
+                            <small>(Menores de 2 años)</small>
+                        </div>
+                        <div class="contador" data-tipo="bebes">
+                            <button type="button" class="contador__btn" data-accion="restar" aria-label="Quitar un bebé">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg>
+                            </button>
+                            <output class="contador__valor" aria-live="polite">0</output>
+                            <button type="button" class="contador__btn" data-accion="sumar" aria-label="Agregar un bebé">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <p class="viajeros__nota"><b>Nota:</b> La edad se calculará en función de la fecha del viaje.</p>
+                    <button type="button" class="viajeros__hecho" id="viajeros-hecho">Hecho</button>
+                </div>
+
+                <input type="hidden" name="adultos" id="in-adultos" value="1">
+                <input type="hidden" name="ninos" id="in-ninos" value="0">
+                <input type="hidden" name="bebes" id="in-bebes" value="0">
+            </div>
+        </div>
+
+        <!-- Botón de búsqueda que redirige a la página aparte -->
+        <div class="botondebusqueda">
+            <button type="button" id="btn-buscar-principal" onclick="irAResultados()">Buscar</button>
+        </div>
+    </section>
+    </div>
+</main>
+
+<!-- ==========================================================
+   SECCIÓN DE CUPONES Y OFERTAS EXCLUSIVAS (EN ESPAÑOL)
+   ========================================================== -->
+<section class="seccion-cupones-aerolineas">
+    
+    <!-- Bloque 1: Cupones de descuento -->
+    <div class="contenedor-bloque-cupones">
+        <div class="cabecera-subtitulo">
+            <span class="subtitulo-linea">EXPLORA LAS MEJORES OFERTAS ONLINE</span>
+        </div>
+        <h2 class="titulo-seccion-principal">Top de Cupones, Códigos Promocionales y Descuentos Exclusivos</h2>
+
+        <div class="cupones-grid">
+            
+            <!-- Cupon 1 -->
+            <div class="cupon-card">
+                <div class="cupon-lateral-rojo">CUPÓN</div>
+                <div class="cupon-cuerpo">
+                    <div class="cupon-superior">
+                        <span class="codigo-badge">RDEALFLY <i class="fa-regular fa-copy"></i></span>
+                        <span class="cupon-fecha">30 Dic, 2027</span>
+                    </div>
+                    <p class="cupon-texto">Usa este código de cupón y obtén <strong class="texto-resaltado">hasta 2$</strong> de descuento en tu reserva.</p>
+                    <a href="#" class="cupon-enlace">Ver más →</a>
+                </div>
+            </div>
+
+            <!-- Cupon 2 -->
+            <div class="cupon-card">
+                <div class="cupon-lateral-rojo">CUPÓN</div>
+                <div class="cupon-cuerpo">
+                    <div class="cupon-superior">
+                        <span class="codigo-badge">RDEALFIRST <i class="fa-regular fa-copy"></i></span>
+                        <span class="cupon-fecha">25 Dic, 2027</span>
+                    </div>
+                    <p class="cupon-texto">Usa este código de cupón y obtén <strong class="texto-resaltado">hasta 2$</strong> de descuento en tu reserva.</p>
+                    <a href="#" class="cupon-enlace">Ver más →</a>
+                </div>
+            </div>
+
+            <!-- Cupon 3 -->
+            <div class="cupon-card">
+                <div class="cupon-lateral-rojo">CUPÓN</div>
+                <div class="cupon-cuerpo">
+                    <div class="cupon-superior">
+                        <span class="codigo-badge">RDEALPROMO <i class="fa-regular fa-copy"></i></span>
+                        <span class="cupon-fecha">30 Mar, 2027</span>
+                    </div>
+                    <p class="cupon-texto">Usa este código de cupón y obtén <strong class="texto-resaltado">hasta 2$</strong> de descuento en tu reserva.</p>
+                    <a href="#" class="cupon-enlace">Ver más →</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bloque 2: Las mejores ofertas de aerolíneas -->
+    <div class="contenedor-bloque-aerolineas" style="margin-top: 60px;">
+        <div class="cabecera-subtitulo">
+            <span class="subtitulo-linea">ENCUENTRA VUELOS BARATOS, DESCUENTOS Y OFERTAS DE VIAJE.</span>
+        </div>
+        <h2 class="titulo-seccion-principal">Las Mejores Ofertas de Aerolíneas Con Los Precios Más Bajos y Descuentos Únicos.</h2>
+
+        <div class="aerolineas-deals-grid">
+            
+            <!-- Deal 1 -->
+            <div class="aerolinea-deal-card">
+                <div class="deal-logo-box"><i class="fa-solid fa-plane-departure" style="font-size: 24px; color: #dd4350;"></i></div>
+                <div class="deal-trayecto">
+                    <span class="deal-etiqueta">Desde</span>
+                    <strong>LAX</strong>
+                </div>
+                <div class="deal-linea-central">
+                    <i class="fa-solid fa-plane" style="color: #dd4350;"></i>
+                </div>
+                <div class="deal-trayecto text-right">
+                    <span class="deal-etiqueta">Hasta</span>
+                    <strong>LAS</strong>
+                </div>
+            </div>
+
+            <!-- Deal 2 -->
+            <div class="aerolinea-deal-card">
+                <div class="deal-logo-box"><i class="fa-solid fa-plane-departure" style="font-size: 24px; color: #dd4350;"></i></div>
+                <div class="deal-trayecto">
+                    <span class="deal-etiqueta">Desde</span>
+                    <strong>SFO</strong>
+                </div>
+                <div class="deal-linea-central">
+                    <i class="fa-solid fa-plane" style="color: #dd4350;"></i>
+                </div>
+                <div class="deal-trayecto text-right">
+                    <span class="deal-etiqueta">Hasta</span>
+                    <strong>EWR</strong>
+                </div>
+            </div>
+
+            <!-- Deal 3 -->
+            <div class="aerolinea-deal-card">
+                <div class="deal-logo-box"><i class="fa-solid fa-plane-departure" style="font-size: 24px; color: #dd4350;"></i></div>
+                <div class="deal-trayecto">
+                    <span class="deal-etiqueta">Desde</span>
+                    <strong>SFO</strong>
+                </div>
+                <div class="deal-linea-central">
+                    <i class="fa-solid fa-plane" style="color: #dd4350;"></i>
+                </div>
+                <div class="deal-trayecto text-right">
+                    <span class="deal-etiqueta">Hasta</span>
+                    <strong>JFK</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Indicadores de paginación o puntos -->
+        <div class="carrusel-puntos">
+            <span class="punto activo"></span>
+            <span class="punto"></span>
+            <span class="punto"></span>
+            <span class="punto"></span>
+        </div>
+    </div>
+
+</section>
+
+<!-- ==================================================
+OFERTAS DE PAÍSES
+================================================== -->
+<section class="ofertas" aria-labelledby="ofertas-titulo">
+  <div class="ofertas__cab">
+    <h2 id="ofertas-titulo" class="ofertas__titulo">Ofertas de viaje por país</h2>
+    <a class="ofertas__mas" href="#">Explora más <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+
+  <div class="ofertas__filtros" id="ofertas-filtros" role="group" aria-label="Filtrar por continente">
+    <button type="button" class="filtro" data-continente="Todos" aria-pressed="true">Todos</button>
+    <button type="button" class="filtro" data-continente="América" aria-pressed="false">América</button>
+    <button type="button" class="filtro" data-continente="Europa" aria-pressed="false">Europa</button>
+    <button type="button" class="filtro" data-continente="Asia" aria-pressed="false">Asia</button>
+    <button type="button" class="filtro" data-continente="África" aria-pressed="false">África</button>
+    <button type="button" class="filtro" data-continente="Oceanía" aria-pressed="false">Oceanía</button>
+  </div>
+
+  <div class="ofertas__carrusel">
+    <ul class="ofertas__pista" id="ofertas-pista"></ul>
+    <div class="ofertas__controles">
+      <button class="of-flecha" id="of-anterior" type="button" aria-label="Anterior" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="of-flecha" id="of-siguiente" type="button" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+   SECCIÓN DE TARJETAS DE CONFIANZA / ESTADÍSTICAS (CORREGIDO)
+   ========================================================== -->
+<section class="seccion-confianza">
+    <div class="contenedor-tarjetas">
+        
+        <!-- Tarjeta 1: Logos de marcas -->
+        <div class="tarjeta-info">
+            <div class="tarjeta-iconos-marcas">
+                <span class="logo-marca budget">Budget</span>
+                <span class="logo-marca thrifty">Thrifty</span>
+                <span class="logo-marca dollar">dollar</span>
+                <span class="logo-marca avis">AVIS</span>
+                <span class="logo-marca sixt">SIXT</span>
+            </div>
+            <div class="tarjeta-contenido-texto">
+                <h3>Ahorra al comparar</h3>
+                <p>Más ofertas, más webs, una sola búsqueda</p>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2: Avatares y búsquedas -->
+        <div class="tarjeta-info">
+            <div class="tarjeta-avatares">
+                <div class="avatar-circulo" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100');"></div>
+                <div class="avatar-circulo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100');"></div>
+                <div class="avatar-circulo" style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100');"></div>
+            </div>
+            <div class="tarjeta-contenido-texto">
+                <h3 class="numero-destacado">41.000.000+</h3>
+                <p>búsquedas esta semana</p>
+            </div>
+        </div>
+
+        <!-- Tarjeta 3: Estrellas de valoración -->
+        <div class="tarjeta-info">
+            <div class="estrellas-rating">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <div class="tarjeta-contenido-texto">
+                <h3>La comunidad viajera nos adora</h3>
+                <p>Más de 1 millón de puntuaciones en nuestra app</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- ==================================================
+GUÍA PARA VIAJEROS
+================================================== -->
+<section class="pros" aria-labelledby="pros-titulo">
+    <h2 id="pros-titulo" class="pros__titulo">Para viajeros expertos</h2>
+
+    <div class="carrusel">
+      <ul class="carrusel__pista" id="pista">
+        <li class="tarjeta">
+          <a href="#">
+            <h3>Planifica con IA</h3>
+            <p>Resuelve tus dudas de viaje</p>
+            <div class="tarjeta__img">
+              <img src="imagenes/targeta 1.png" alt="">
+            </div>
+          </a>
+        </li>
+
+        <li class="tarjeta">
+          <a href="/descubre/descubre tu reserva tu proximo viaje.html">
+            <h3>Mejor época para viajar</h3>
+            <p>Sabe cuándo ahorrar</p>
+            <div class="tarjeta__img">
+              <img src="imagenes/targeta 2.png" alt="">
+            </div>
+          </a>
+        </li>
+
+        <li class="tarjeta">
+          <a href="#">
+            <h3>Explorar</h3>
+            <p>Mira destinos según tu presupuesto</p>
+            <div class="tarjeta__img">
+              <img src="imagenes/targeta 3.png" alt="">
+            </div>
+          </a>
+        </li>
+
+        <li class="tarjeta">
+          <a href="/viajes/viajes.html">
+            <h3>Viajes</h3>
+            <p>Todos tus planes en un solo lugar</p>
+            <div class="tarjeta__img">
+              <img src="imagenes/targeta 4.png" alt="">
+            </div>
+          </a>
+        </li>
+
+        <li class="tarjeta">
+          <a href="#">
+            <h3>Alertas de precio</h3>
+            <p>Entérate cuando cambien los precios</p>
+            <div class="tarjeta__img">
+              <img src="imagenes/targeta 5.png" alt="">
+            </div>
+          </a>
+        </li>
+
+        <li class="tarjeta">
+          <a href="/rastreador/rastreo.html">
+            <h3>Rastreador de vuelos</h3>
+            <p>Mira los retrasos en tiempo real</p>
+            <div class="tarjeta__img">
+              <img src="imagenes/targeta 6.png" alt="">
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <div class="carrusel__controles">
+        <button class="flecha" id="anterior" aria-label="Anterior" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+        <button class="flecha" id="siguiente" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </div>
+    </div>
+</section>
+
+<!-- ==========================================================
+   SECCIÓN DE PREGUNTAS FRECUENTES (FAQS INTERACTIVAS)
+   ========================================================== -->
+<section class="seccion-faqs">
+    <div class="faqs-contenedor-principal">
+        
+        <h2 class="faqs-titulo-principal">Preguntas frecuentes</h2>
+
+        <div class="faqs-grid-dos-columnas">
+            
+            <!-- Columna Izquierda -->
+            <div class="faqs-columna">
+                <div class="faq-card" onclick="this.classList.toggle('abierta')">
+                    <div class="faq-cabecera">
+                        <div class="faq-contenido">
+                            <div class="faq-icono-pregunta"><i class="fa-solid fa-circle-question"></i></div>
+                            <span class="faq-texto">¿Cuál es el día más barato de la semana para reservar un vuelo?</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down faq-flecha"></i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Por lo general, los días martes y miércoles suelen ofrecer las tarifas más económicas, ya que las aerolíneas lanzan ofertas definidos a mitad de semana y hay menos demanda de viajeros de fin de semana.</p>
+                    </div>
+                </div>
+
+                <div class="faq-card" onclick="this.classList.toggle('abierta')">
+                    <div class="faq-cabecera">
+                        <div class="faq-contenido">
+                            <div class="faq-icono-pregunta"><i class="fa-solid fa-circle-question"></i></div>
+                            <span class="faq-texto">¿En qué mes del año están más baratos los vuelos?</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down faq-flecha"></i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Los meses de temporada baja como febrero, marzo (fuera de vacaciones de primavera), septiembre y octubre suelen registrar los precios más bajos del año.</p>
+                    </div>
+                </div>
+
+                <div class="faq-card" onclick="this.classList.toggle('abierta')">
+                    <div class="faq-cabecera">
+                        <div class="faq-contenido">
+                            <div class="faq-icono-pregunta"><i class="fa-solid fa-circle-question"></i></div>
+                            <span class="faq-texto">¿Cuándo es mejor comprar boletos de avión: a última hora o con anticipación?</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down faq-flecha"></i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Lo ideal es reservar entre 3 y 6 semanas antes para vuelos nacionales, y de 2 a 5 meses antes para vuelos internacionales, evitando los precios elevados de última hora.</p>
+                    </div>
+                </div>
+
+                <div class="faq-card" onclick="this.classList.toggle('abierta')">
+                    <div class="faq-cabecera">
+                        <div class="faq-contenido">
+                            <div class="faq-icono-pregunta"><i class="fa-solid fa-circle-question"></i></div>
+                            <span class="faq-texto">¿Puedo ahorrar dinero tomando un vuelo internacional con escala?</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down faq-flecha"></i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Sí, los vuelos con una o dos escalas suelen ser notablemente más económicos que los vuelos directos, permitiéndote recortar gastos significativos en rutas largas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha -->
+            <div class="faqs-columna">
+                <div class="faq-card" onclick="this.classList.toggle('abierta')">
+                    <div class="faq-cabecera">
+                        <div class="faq-contenido">
+                            <div class="faq-icono-pregunta"><i class="fa-solid fa-circle-question"></i></div>
+                            <span class="faq-texto">¿Cómo encuentra RuTa Tropical unos precios tan bajos?</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down faq-flecha"></i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Analizamos y comparamos en tiempo real cientos de webs de aerolíneas y proveedores turísticos simultáneamente para mostrarte siempre la tarifa más competitiva.</p>
+                    </div>
+                </div>
+
+                <div class="faq-card" onclick="this.classList.toggle('abierta')">
+                    <div class="faq-cabecera">
+                        <div class="faq-contenido">
+                            <div class="faq-icono-pregunta"><i class="fa-solid fa-circle-question"></i></div>
+                            <span class="faq-texto">¿Cómo encuentro las mejores ofertas de vuelos en la plataforma?</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down faq-flecha"></i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Utilizando nuestro buscador principal con fechas flexibles y explorando el carrusel de ofertas por país para descubrir destinos económicos al instante.</p>
+                    </div>
+                </div>
+
+                <div class="faq-card" onclick="this.classList.toggle('abierta')">
+                    <div class="faq-cabecera">
+                        <div class="faq-contenido">
+                            <div class="faq-icono-pregunta"><i class="fa-solid fa-circle-question"></i></div>
+                            <span class="faq-texto">¿Cómo puedo ahorrar dinero combinando tarifas flexibles?</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down faq-flecha"></i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Combinando aerolíneas de ida y vuelta independientes o ajustando tus días de salida según las recomendaciones de precios de nuestro calendario interactivo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-card" onclick="this.classList.toggle('abierta')">
+                    <div class="faq-cabecera">
+                        <div class="faq-contenido">
+                            <div class="faq-icono-pregunta"><i class="fa-solid fa-circle-question"></i></div>
+                            <span class="faq-texto">¿Buscamos en más proveedores de vuelos que la competencia?</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down faq-flecha"></i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Sí, integramos tanto aerolíneas tradicionales como aerolíneas de bajo coste (low cost) internacionales para garantizarte una cobertura de búsqueda superior.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================
+   SECCIÓN COMPLETA HTML: PIE DE PÁGINA (RUTA TROPICAL)
+   ========================================================== -->
+<footer class="rt-footer">
+  <div class="rt-footer__contenedor">
+    <!-- Fila 1: 5 columnas principales -->
+    <div class="rt-footer__grid">
+      <!-- Columna 1: Marca y redes -->
+      <div class="rt-footer__col rt-footer__col--marca">
+        <a href="Inicio.html" class="rt-footer__logo">RuTa Tropical</a>
+        <p class="rt-footer__desc">
+          Tu agencia de confianza para descubrir el mundo al mejor precio. Compara, ahorra y vuela sin límites.
+        </p>
+        <div class="rt-footer__redes" aria-label="Redes sociales">
+          <a href="#" class="rt-footer__red" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="rt-footer__red" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="rt-footer__red" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="rt-footer__red" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- Columna 2: Empresa -->
+      <div class="rt-footer__col">
+        <h4 class="rt-footer__titulo">Empresa</h4>
+        <ul class="rt-footer__lista">
+          <li><a href="../acerca de/acerca de.html"><i class="fa-solid fa-chevron-right"></i> Acerca de</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Prensa</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Afiliados</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Socios</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Contacto -->
+      <div class="rt-footer__col">
+        <h4 class="rt-footer__titulo">Contacto</h4>
+        <ul class="rt-footer__lista">
+          <li><a href="../ayuda/ayuda.html"><i class="fa-solid fa-chevron-right"></i> Ayuda / FAQ</a></li>
+          <li><a href="#hoteles"><i class="fa-solid fa-chevron-right"></i> Hoteles</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Publicidad</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Más -->
+      <div class="rt-footer__col">
+        <h4 class="rt-footer__titulo">Más</h4>
+        <ul class="rt-footer__lista">
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Tarifas aéreas</a></li>
+          <li><a href="#destinos"><i class="fa-solid fa-chevron-right"></i> Ofertas bajas</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Privacidad</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 5: Descarga la app -->
+      <div class="rt-footer__col">
+        <h4 class="rt-footer__titulo">Descarga la app</h4>
+        <p class="rt-footer__app-texto">Lleva tus reservas y ofertas siempre contigo.</p>
+        <div class="rt-footer__tiendas">
+          <a href="#" class="rt-footer__tienda-btn" aria-label="Disponible en Google Play">
+            <i class="fa-brands fa-google-play"></i>
+            <div>
+              <span>DISPONIBLE EN</span>
+              <strong>Google Play</strong>
+            </div>
+          </a>
+          <a href="#" class="rt-footer__tienda-btn" aria-label="Consíguelo en App Store">
+            <i class="fa-brands fa-apple"></i>
+            <div>
+              <span>CONSÍGUELO EN</span>
+              <strong>App Store</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila 2: Copyright y enlaces legales -->
+    <div class="rt-footer__legal">
+      <p class="rt-footer__copy">© 2026 RuTa Tropical. Todos los derechos reservados.</p>
+      <div class="rt-footer__legal-links">
+        <a href="#">Privacidad</a>
+        <span>•</span>
+        <a href="#">Términos y condiciones</a>
+        <span>•</span>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+
+    <!-- Fila 3: Marcas asociadas -->
+    <div class="rt-footer__marcas" aria-label="Marcas asociadas">
+      <span class="rt-marca-booking">Booking.com</span>
+      <span class="rt-marca-kayak">
+        <span>K</span><span>A</span><span>Y</span><span>A</span><span>K</span>
+      </span>
+      <span class="rt-marca-opentable">
+        <span class="dot"></span><span class="ring"></span> OpenTable
+      </span>
+      <span class="rt-marca-priceline">priceline</span>
+      <span class="rt-marca-agoda">
+        agoda
+        <span class="dots"><i></i><i></i><i></i><i></i><i></i></span>
+      </span>
+    </div>
+
+    <!-- Fila 4: Aerolíneas -->
+    <div class="rt-footer__aerolineas">
+      <strong>Aerolíneas</strong>
+      <div class="rt-footer__aerolineas-lista">
+        <a href="#">Arajet</a>
+        <a href="#">American</a>
+        <a href="#">Copa</a>
+        <a href="#">Delta</a>
+        <a href="#">Iberia</a>
+        <a href="#">JetBlue</a>
+        <a href="#">Air France</a>
+        <a href="#">United</a>
+        <a href="#">Avianca</a>
+        <a href="#">Air Europa</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="google_translate_element" style="display:none;"></div>
+
+<meta name="google" content="notranslate">
+
+
+<!-- Script principal -->
+<script src="script.js"></script>
+<script src="chat-ia.js"></script>
+<script src="perfil-usuario.js"></script>
+<script src="perfil-menu.js"></script>
+
+
+
+</body>
+</html>
