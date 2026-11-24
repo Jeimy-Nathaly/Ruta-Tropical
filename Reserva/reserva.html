@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reserva de Vuelo – Ruta Tropical</title>
+  <link rel="stylesheet" href="reserva.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="reserva.js" defer></script>
+</head>
+<body class="pagina-reserva">
+
+  <!-- ==========================================================
+  1. BARRA DE NAVEGACIÓN
+       ========================================================== -->
+  <nav class="nav-sitio" id="nav-sitio">
+    <button class="nav-sitio__menu" id="abrir-menu" type="button"
+            aria-label="Abrir menú" aria-expanded="false" aria-controls="cajon">
+      <span></span><span></span><span></span>
+    </button>
+
+    <a class="nav-sitio__marca" href="../pagina principal/Inicio.html">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+
+    <div class="nav-sitio__derecha">
+      <div class="moneda" id="moneda-control">
+        <button class="moneda__boton" id="moneda-boton" type="button"
+                aria-haspopup="listbox" aria-expanded="false" aria-controls="moneda-lista"
+                aria-label="Moneda">
+          <span class="moneda__simbolo" id="moneda-simbolo" aria-hidden="true">$</span>
+          <span class="moneda__codigo" id="moneda-codigo">USD</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <ul class="moneda__lista" id="moneda-lista" role="listbox" aria-label="Elegir moneda" hidden>
+          <li role="option" data-moneda="usd" data-simbolo="$" aria-selected="true">
+            <span class="moneda__op-simbolo">$</span>
+            <span>USD</span>
+            <small>Dólar</small>
+          </li>
+          <li role="option" data-moneda="eur" data-simbolo="€" aria-selected="false">
+            <span class="moneda__op-simbolo">€</span>
+            <span>EUR</span>
+            <small>Euro</small>
+          </li>
+          <li role="option" data-moneda="dop" data-simbolo="RD$" aria-selected="false">
+            <span class="moneda__op-simbolo">RD$</span>
+            <span>DOP</span>
+            <small>Peso RD</small>
+          </li>
+          <li role="option" data-moneda="gbp" data-simbolo="£" aria-selected="false">
+            <span class="moneda__op-simbolo">£</span>
+            <span>GBP</span>
+            <small>Libra</small>
+          </li>
+        </ul>
+      </div>
+
+      <div class="idioma" id="idioma">
+        <button class="idioma__boton" id="idioma-boton" type="button"
+                aria-haspopup="listbox" aria-expanded="false" aria-controls="idioma-lista"
+                aria-label="Idioma">
+          <img id="idioma-bandera" src="https://flagcdn.com/w40/es.png" alt="" width="24" height="16">
+          <span class="idioma__codigo" id="idioma-codigo">ES</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="idioma__panel" id="idioma-lista" role="dialog" aria-label="Elegir idioma" hidden>
+          <div class="idioma__encabezado" id="idioma-titulo">SELECT YOUR LANGUAGE</div>
+          <div class="idioma__buscador">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input type="search" id="idioma-buscar" placeholder="Search language..." aria-label="Buscar idioma" autocomplete="off">
+          </div>
+          <ul class="idioma__opciones" id="idioma-opciones" role="listbox"></ul>
+        </div>
+      </div>
+
+      <div class="usuario-menu" id="usuario-menu">
+        <button class="nav-sitio__usuario" id="usuario-boton" type="button"
+                aria-haspopup="menu" aria-expanded="false" aria-controls="usuario-dropdown"
+                aria-label="Menú de usuario">
+          <span class="nav-sitio__inicial" id="usuario-inicial">J</span>
+          <img id="avatar-usuario" src="" alt="Perfil de usuario" width="40" height="40" hidden>
+        </button>
+
+        <div class="usuario-dropdown" id="usuario-dropdown" role="menu" hidden>
+          <button type="button" class="usuario-dropdown__agregar" id="btn-anadir-usuario" role="menuitem">
+            <span class="usuario-dropdown__agregar-ico" aria-hidden="true">
+              <i class="fa-solid fa-user-plus"></i>
+            </span>
+            <span>Añadir usuario</span>
+          </button>
+          <div class="usuario-dropdown__sep"></div>
+          <a href="#trips" class="usuario-dropdown__link" role="menuitem">Trips</a>
+          <a href="ayuda.html" class="usuario-dropdown__link" role="menuitem">Ayuda/Preguntas frecuentes</a>
+          <a href="login.html" class="usuario-dropdown__link" role="menuitem">Tu cuenta</a>
+          <button type="button" class="usuario-dropdown__cerrar" id="btn-cerrar-sesion" role="menuitem">
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================
+  2. MENÚ LATERAL
+       ========================================================== -->
+  <div class="cajon-fondo" id="cajon-fondo"></div>
+
+  <aside class="cajon" id="cajon" aria-label="Menú principal">
+    <div class="cajon__cab">
+      <span class="cajon__marca">Ruta Tropical</span>
+      <button class="cajon__cerrar" id="cerrar-menu" type="button" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <ul class="cajon__principal">
+      <li><a class="activa" href="reserva.html"><i class="fa-solid fa-plane" aria-hidden="true"></i> Vuelos</a></li>
+      <li><a href="#hoteles"><i class="fa-solid fa-hotel" aria-hidden="true"></i> Hoteles</a></li>
+      <li><a href="#autobus"><i class="fa-solid fa-bus" aria-hidden="true"></i> Autobús</a></li>
+    </ul>
+
+     <ul class="cajon__enlaces">
+        <li><a href="../pagina principal/Inicio.html#ia"><i class="fa-solid fa-chevron-right"></i>planifica con IA</a></li>
+        <li><a href="../descubre/descubre tu reserva tu proximo viaje.html"><i class="fa-solid fa-chevron-right"></i> viajes</a></li>
+        <li><a href="../acerca de/acerca de.html"><i class="fa-solid fa-chevron-right"></i> Sobre nosotros</a></li>
+        <li><a href="../contactanos/contactanos.html"><i class="fa-solid fa-chevron-right"></i> Contacto</a></li>
+        <li><a href="../ayuda/ayuda.html"><i class="fa-solid fa-chevron-right"></i> Preguntas frecuentes</a></li>
+        <li><a href="../explorar mas/explorar.html"><i class="fa-solid fa-chevron-right"></i> explorar</a></li>
+        <li><a href="../terminos/termino.html"><i class="fa-solid fa-chevron-right"></i> Términos y condiciones</a></li>
+        <li><a href="../rastreador/rastreo.html"><i class="fa-solid fa-chevron-right"></i> rastraedor de vuelos</a></li>
+        <li><a href="../viajes/viajes.html"><i class="fa-solid fa-chevron-right"></i> planean tus viajes</a></li>
+    </ul>
+
+    <div class="cajon__contacto">
+      <div class="contacto-fila">
+        <span class="contacto-fila__icono"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+        <div>
+          <strong>Teléfono:</strong>
+          <span class="info">+1-029-789-7542</span>
+        </div>
+      </div>
+      <div class="contacto-fila">
+        <span class="contacto-fila__icono"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+        <div>
+          <strong>Correo:</strong>
+          <span class="info">rutaTropical@tuempresa.com</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================
+  3. CONTENIDO PRINCIPAL DE RESERVA
+       ========================================================== -->
+  <main class="reserva-layout">
+    <div class="reserva-layout__grid" id="vista-reserva">
+
+      <!-- COLUMNA IZQUIERDA: PASO 1 (TARIFAS) + PASO 2 (PROVEEDORES) + FORMULARIO -->
+      <section class="reserva-izq">
+
+        <!-- PASO 1: ELIGE UNA TARIFA -->
+        <div class="paso-bloque">
+          <div class="paso-encabezado">
+            <h1 id="paso1-titulo">Paso 1: elige una tarifa</h1>
+            <p id="paso1-sub">
+              <a href="#detalles-tarifa" class="enlace-subrayado">Mira los límites de tamaño y peso de equipaje.</a>
+              Los precios totales pueden incluir tarifas estimadas de equipaje y flexibilidad. Consulta los términos y condiciones en la web de reserva.
+            </p>
+          </div>
+
+          <div class="tarifas-grid" role="radiogroup" aria-label="Elige una tarifa">
+            <article class="tarifa-card activa" data-tarifa-id="basic" data-extra-usd="0" tabindex="0">
+              <h2 class="tarifa-card__nombre">Basic + Economy Basic</h2>
+              <p class="tarifa-card__precio" data-base-usd="322">$322</p>
+              <hr class="tarifa-card__divisor">
+              <ul class="tarifa-card__lista">
+                <li class="no-incluido"><i class="fa-regular fa-circle-xmark" aria-hidden="true"></i> <span>Sin equipaje de mano</span></li>
+                <li><i class="fa-solid fa-circle-dollar-to-slot" aria-hidden="true"></i> <span>Equipaje documentado (tasa)</span></li>
+                <li><i class="fa-solid fa-circle-dollar-to-slot" aria-hidden="true"></i> <span>Selección de asientos (de pago)</span></li>
+              </ul>
+            </article>
+
+            <article class="tarifa-card" data-tarifa-id="light" data-extra-usd="78" tabindex="0">
+              <h2 class="tarifa-card__nombre">Light + Economy Light</h2>
+              <p class="tarifa-card__precio" data-base-usd="400">$400</p>
+              <hr class="tarifa-card__divisor">
+              <ul class="tarifa-card__lista">
+                <li class="incluido"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span>1 equipaje de mano</span></li>
+                <li><i class="fa-solid fa-circle-dollar-to-slot" aria-hidden="true"></i> <span>Equipaje documentado (tasa)</span></li>
+                <li><i class="fa-solid fa-circle-dollar-to-slot" aria-hidden="true"></i> <span>Selección de asientos (de pago)</span></li>
+              </ul>
+            </article>
+
+            <article class="tarifa-card" data-tarifa-id="maxflex" data-extra-usd="110" tabindex="0">
+              <h2 class="tarifa-card__nombre">Light + Economy MaxFlex</h2>
+              <p class="tarifa-card__precio" data-base-usd="432">$432</p>
+              <hr class="tarifa-card__divisor">
+              <ul class="tarifa-card__lista">
+                <li class="incluido"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span>1 equipaje de mano</span></li>
+                <li><i class="fa-solid fa-circle-dollar-to-slot" aria-hidden="true"></i> <span>Equipaje documentado (tasa)</span></li>
+                <li><i class="fa-solid fa-circle-dollar-to-slot" aria-hidden="true"></i> <span>Selección de asientos (de pago)</span></li>
+              </ul>
+            </article>
+          </div>
+
+          <button type="button" class="ver-detalles-btn" id="btn-detalles-tarifa" aria-expanded="false">
+            <span>Ver detalles de la tarifa</span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <div class="detalles-tarifa-panel" id="detalles-tarifa" hidden>
+            <p>
+              <strong>Equipaje de mano:</strong> Hasta 10 kg (55 × 35 × 25 cm) en tarifas Light y MaxFlex.
+              <strong>Cambios y reembolsos:</strong> MaxFlex permite cambios de fecha sin penalidad de tarifa.
+            </p>
+          </div>
+        </div>
+
+        <!-- PASO 2: ELIGE DÓNDE QUIERES REALIZAR LA RESERVA -->
+        <div class="paso-bloque">
+          <div class="paso-encabezado">
+            <h2 id="paso2-titulo">Paso 2: elige dónde quieres realizar la reserva</h2>
+            <p id="paso2-sub">Ruta Tropical compara opciones y tarifas disponibles para tu vuelo seleccionado.</p>
+          </div>
+
+          <div class="proveedores-lista" id="proveedores-lista">
+            <div class="proveedor-fila seleccionada" data-proveedor="Booking.com" data-base-usd="332">
+              <div class="proveedor-fila__izq">
+                <span class="proveedor-logo proveedor-logo--booking">B.</span>
+                <span class="proveedor-nombre">Booking.com</span>
+                <span class="proveedor-anuncio">Anuncio</span>
+              </div>
+              <div class="proveedor-fila__der">
+                <i class="fa-solid fa-circle-info proveedor-info-ico" aria-hidden="true"></i>
+                <span class="proveedor-precio" data-base-usd="332">$332</span>
+                <button type="button" class="btn-reservar-marca" data-proveedor="Booking.com">Reservar</button>
+              </div>
+            </div>
+
+            <div class="proveedor-fila" data-proveedor="Expedia" data-base-usd="322">
+              <div class="proveedor-fila__izq">
+                <span class="proveedor-logo proveedor-logo--expedia"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                <span class="proveedor-nombre">Expedia</span>
+              </div>
+              <div class="proveedor-fila__der">
+                <i class="fa-solid fa-circle-info proveedor-info-ico" aria-hidden="true"></i>
+                <span class="proveedor-precio" data-base-usd="322">$322</span>
+                <button type="button" class="btn-reservar-marca" data-proveedor="Expedia">Reservar</button>
+              </div>
+            </div>
+
+            <div class="proveedor-fila" data-proveedor="Orbitz" data-base-usd="322">
+              <div class="proveedor-fila__izq">
+                <span class="proveedor-logo proveedor-logo--orbitz"><i class="fa-solid fa-globe"></i></span>
+                <span class="proveedor-nombre">Orbitz</span>
+              </div>
+              <div class="proveedor-fila__der">
+                <i class="fa-solid fa-circle-info proveedor-info-ico" aria-hidden="true"></i>
+                <span class="proveedor-precio" data-base-usd="322">$322</span>
+                <button type="button" class="btn-reservar-marca" data-proveedor="Orbitz">Reservar</button>
+              </div>
+            </div>
+
+            <div class="proveedor-fila" data-proveedor="Travelocity" data-base-usd="322">
+              <div class="proveedor-fila__izq">
+                <span class="proveedor-logo proveedor-logo--travelocity"><i class="fa-solid fa-sun"></i></span>
+                <span class="proveedor-nombre">Travelocity</span>
+              </div>
+              <div class="proveedor-fila__der">
+                <i class="fa-solid fa-circle-info proveedor-info-ico" aria-hidden="true"></i>
+                <span class="proveedor-precio" data-base-usd="322">$322</span>
+                <button type="button" class="btn-reservar-marca" data-proveedor="Travelocity">Reservar</button>
+              </div>
+            </div>
+
+            <div class="proveedor-fila" data-proveedor="Mytrip" data-base-usd="332">
+              <div class="proveedor-fila__izq">
+                <span class="proveedor-logo proveedor-logo--mytrip"><i class="fa-solid fa-plane"></i></span>
+                <span class="proveedor-nombre">Mytrip</span>
+              </div>
+              <div class="proveedor-fila__der">
+                <i class="fa-solid fa-circle-info proveedor-info-ico" aria-hidden="true"></i>
+                <span class="proveedor-precio" data-base-usd="332">$332</span>
+                <button type="button" class="btn-reservar-marca" data-proveedor="Mytrip">Reservar</button>
+              </div>
+            </div>
+
+            <div class="proveedor-fila" data-proveedor="CheapOair" data-base-usd="364">
+              <div class="proveedor-fila__izq">
+                <span class="proveedor-logo proveedor-logo--cheapoair"><i class="fa-solid fa-suitcase"></i></span>
+                <span class="proveedor-nombre">CheapOair</span>
+              </div>
+              <div class="proveedor-fila__der">
+                <i class="fa-solid fa-circle-info proveedor-info-ico" aria-hidden="true"></i>
+                <span class="proveedor-precio" data-base-usd="364">$364</span>
+                <button type="button" class="btn-reservar-marca" data-proveedor="CheapOair">Reservar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMULARIO DE DATOS DEL CLIENTE -->
+        <form class="form-cliente-caja" id="form-reserva-cliente">
+          <div class="form-cliente-caja__cab">
+            <h2>Completa tus datos de reserva</h2>
+            <p>
+              Tarifa: <strong id="form-resumen-tarifa">Basic + Economy Basic</strong> ·
+              Proveedor: <strong id="form-resumen-proveedor">Booking.com</strong> ·
+              Total estimado: <strong id="form-resumen-total">$332</strong>
+            </p>
+          </div>
+
+          <div class="form-fila">
+            <div class="campo">
+              <label for="cliente-nombre">Nombre completo</label>
+              <input type="text" id="cliente-nombre" name="nombre" placeholder="Ej. Jeimy Concepción" required>
+            </div>
+            <div class="campo">
+              <label for="cliente-email">Correo electrónico</label>
+              <input type="email" id="cliente-email" name="email" placeholder="nombre@ejemplo.com" required>
+            </div>
+          </div>
+
+          <div class="form-fila form-fila--tres">
+            <div class="campo">
+              <label for="cliente-telefono">Teléfono</label>
+              <input type="tel" id="cliente-telefono" name="telefono" placeholder="+1 809 000 0000" required>
+            </div>
+            <div class="campo">
+              <label for="cliente-documento">Pasaporte / Documento</label>
+              <input type="text" id="cliente-documento" name="documento" placeholder="Número de documento" required>
+            </div>
+            <div class="campo">
+              <label for="cliente-pasajeros">Viajeros</label>
+              <select id="cliente-pasajeros" name="pasajeros">
+                <option value="1">1 viajero</option>
+                <option value="2" selected>2 viajeros</option>
+                <option value="3">3 viajeros</option>
+                <option value="4">4 viajeros</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="cliente-notas">Solicitudes especiales (opcional)</label>
+            <input type="text" id="cliente-notas" name="notas" placeholder="Asientos juntos, asistencia en aeropuerto...">
+          </div>
+
+          <button type="submit" class="btn-reservar-marca btn-reservar-marca--grande">
+            Confirmar solicitud de reserva
+          </button>
+        </form>
+      </section>
+
+      <!-- COLUMNA DERECHA: RESUMEN DEL ITINERARIO -->
+      <aside class="reserva-der">
+        <div class="itinerario-cabecera">
+          <div class="itinerario-acciones">
+            <button type="button" class="icono-accion-btn" id="btn-guardar-vuelo" aria-label="Guardar vuelo">
+              <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="icono-accion-btn" id="btn-compartir-vuelo" aria-label="Compartir vuelo">
+              <i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i>
+            </button>
+          </div>
+          <h2>De Montevideo a Santiago de Chile</h2>
+          <p>Ida y vuelta, <span id="itinerario-viajeros">2 viajeros</span></p>
+        </div>
+
+        <div class="tramo-card">
+          <div class="tramo-card__top">
+            <span class="tramo-aerolinea-badge tramo-aerolinea-badge--latam">LATAM</span>
+            <div>
+              <div class="tramo-ruta">
+                <strong>MVD → SCL</strong>
+                <span>mar. 22 dic.</span>
+              </div>
+              <div class="tramo-sub">directo · 2h 30m</div>
+            </div>
+          </div>
+
+          <div class="tramo-detalle">
+            <p class="tramo-hora"><strong>18:45 - 21:15</strong> (2h 30m)</p>
+            <p>Internacional de Carrasco (MVD) - Internacional Arturo Merino Benítez (SCL)</p>
+            <p class="tramo-meta">LATAM Airlines 411</p>
+            <p class="tramo-meta">Económica</p>
+            <p class="tramo-meta">Operado por Latam Airlines Group</p>
+            <p class="tramo-meta">Avión de fuselaje estrecho</p>
+            <span class="aeronave-pill">Airbus A320-100/200</span>
+            <div class="tramo-servicios" aria-label="Servicios a bordo">
+              <i class="fa-solid fa-wifi" title="Wi-Fi"></i>
+              <i class="fa-solid fa-tv" title="Entretenimiento"></i>
+              <i class="fa-solid fa-plug" title="Enchufe"></i>
+              <i class="fa-solid fa-chair" title="Asiento"></i>
+              <i class="fa-solid fa-utensils" title="Comidas"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="tramo-card">
+          <div class="tramo-card__top">
+            <span class="tramo-aerolinea-badge tramo-aerolinea-badge--sky">SKY</span>
+            <div>
+              <div class="tramo-ruta">
+                <strong>SCL → MVD</strong>
+                <span>sáb. 26 dic.</span>
+              </div>
+              <div class="tramo-sub">directo · 2h 15m</div>
+            </div>
+          </div>
+
+          <div class="tramo-detalle">
+            <p class="tramo-hora"><strong>6:00 - 8:15</strong> (2h 15m)</p>
+            <p>Internacional Arturo Merino Benítez (SCL) - Internacional de Carrasco (MVD)</p>
+            <p class="tramo-meta">Sky Airline 1800</p>
+            <p class="tramo-meta">Económica</p>
+            <p class="tramo-meta">Avión de fuselaje estrecho</p>
+            <span class="aeronave-pill">Airbus A320neo</span>
+            <div class="tramo-servicios" aria-label="Servicios a bordo">
+              <i class="fa-solid fa-plug" title="Enchufe"></i>
+              <i class="fa-solid fa-chair" title="Asiento"></i>
+              <i class="fa-solid fa-utensils" title="Comidas"></i>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- COMPROBANTE TRAS CONFIRMAR -->
+    <section class="comprobante-reserva" id="vista-comprobante" hidden>
+      <div class="comprobante-reserva__icono">
+        <i class="fa-solid fa-check" aria-hidden="true"></i>
+      </div>
+      <h2>Reserva confirmada</h2>
+      <p class="comprobante-reserva__codigo">Código: <strong id="comprobante-codigo">RT-50291</strong></p>
+      <div class="comprobante-reserva__datos" id="comprobante-datos"></div>
+      <button type="button" class="btn-reservar-marca" id="btn-volver-reserva">Nueva reserva</button>
+    </section>
+  </main>
+
+  <!-- ==========================================================
+  4. PIE DE PÁGINA RUTA TROPICAL
+       ========================================================== -->
+  <footer class="pie-sitio" id="pie-sitio">
+    <div class="pie-sitio__contenido">
+      <div class="pie-sitio__marca-col">
+        <a class="pie-sitio__logo" href="../pagina principal/Inicio.html">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+        <p id="pie-descripcion">
+          Your trusted agency to discover the world at the best price. Compare, save and fly without limits.
+        </p>
+        <div class="pie-sitio__redes" aria-label="Redes sociales">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="pie-sitio__col">
+        <h3 id="pie-col-company">Company</h3>
+        <ul>
+          <li><a href="acerca-de.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> About</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Press</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Affiliates</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Partners</a></li>
+        </ul>
+      </div>
+
+      <div class="pie-sitio__col">
+        <h3 id="pie-col-contact">Contact</h3>
+        <ul>
+          <li><a href="ayuda.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Help / FAQ</a></li>
+          <li><a href="#hoteles"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Hotels</a></li>
+          <li><a href="contactanos.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Advertising</a></li>
+        </ul>
+      </div>
+
+      <div class="pie-sitio__col">
+        <h3 id="pie-col-further">Further</h3>
+        <ul>
+          <li><a href="reserva.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Airfares</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Low offers</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="pie-sitio__app-col">
+        <h3 id="pie-col-app">Download the app</h3>
+        <p id="pie-app-desc">Always carry your reservations and offers with you.</p>
+        <div class="pie-sitio__tiendas">
+          <a href="#" class="tienda-btn" aria-label="Disponible en Google Play">
+            <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+            <span>
+              <small>DISPONIBLE EN</small>
+              <strong>Google Play</strong>
+            </span>
+          </a>
+          <a href="#" class="tienda-btn" aria-label="Consíguelo en App Store">
+            <i class="fa-brands fa-apple" aria-hidden="true"></i>
+            <span>
+              <small>CONSÍGUELO EN</small>
+              <strong>App Store</strong>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pie-sitio__legal">
+      <div class="pie-sitio__legal-fila">
+        <span id="pie-derechos">© 2026 <strong class="pie-marca-mini">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</strong>. All rights reserved.</span>
+        <div class="pie-sitio__politicas">
+          <a href="#">Privacy</a>
+          <span>·</span>
+          <a href="#">Terms and conditions</a>
+          <span>·</span>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+
+      <div class="pie-sitio__marcas" aria-label="Aliados y aerolíneas">
+        <div class="pie-sitio__aliados">
+          <span class="aliado-logo aliado-booking">Booking.com</span>
+          <span class="aliado-logo aliado-kayak">K A Y A K</span>
+          <span class="aliado-logo aliado-opentable"><i class="fa-regular fa-circle" aria-hidden="true"></i> OpenTable</span>
+          <span class="aliado-logo aliado-priceline">priceline</span>
+          <span class="aliado-logo aliado-agoda">agoda</span>
+        </div>
+        <div class="pie-sitio__aerolineas">
+          <a href="#">Iberia</a>
+          <a href="#">JetBlue</a>
+          <a href="#">Air France</a>
+          <a href="#">United</a>
+          <a href="#">Avianca</a>
+          <a href="#">Air Europa</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -195,262 +195,970 @@
    ========================================================== */
 (function () {
   const IDIOMAS = [
-    ["es", "Español", "es"],
-    ["en", "English", "us"],
-    ["fr", "Français", "fr"],
-    ["de", "Deutsch", "de"],
-    ["it", "Italiano", "it"],
-    ["pt", "Português", "pt"],
-    ["nl", "Nederlands", "nl"],
-    ["ru", "Русский", "ru"],
-    ["zh", "中文", "cn"],
-    ["ja", "日本語", "jp"],
-    ["ko", "한국어", "kr"],
-    ["ar", "العربية", "sa"],
-    ["hi", "हिन्दी", "in"],
-    ["bn", "বাংলা", "bd"],
-    ["ur", "اردو", "pk"],
-    ["fa", "فارسی", "ir"],
-    ["tr", "Türkçe", "tr"],
-    ["he", "עברית", "il"],
-    ["pl", "Polski", "pl"],
-    ["uk", "Українська", "ua"],
-    ["cs", "Čeština", "cz"],
-    ["sk", "Slovenčina", "sk"],
-    ["hu", "Magyar", "hu"],
-    ["ro", "Română", "ro"],
-    ["bg", "Български", "bg"],
-    ["el", "Ελληνικά", "gr"],
-    ["sr", "Српски", "rs"],
-    ["hr", "Hrvatski", "hr"],
-    ["sl", "Slovenščina", "si"],
-    ["sv", "Svenska", "se"],
-    ["no", "Norsk", "no"],
-    ["da", "Dansk", "dk"],
-    ["fi", "Suomi", "fi"],
-    ["is", "Íslenska", "is"],
-    ["et", "Eesti", "ee"],
-    ["lv", "Latviešu", "lv"],
-    ["lt", "Lietuvių", "lt"],
-    ["th", "ไทย", "th"],
-    ["vi", "Tiếng Việt", "vn"],
-    ["id", "Bahasa Indonesia", "id"],
-    ["ms", "Bahasa Melayu", "my"],
-    ["tl", "Filipino", "ph"],
-    ["sw", "Kiswahili", "ke"],
-    ["ga", "Gaeilge", "ie"]
+    { codigo: "ES", nombre: "Español", region: "España / Latinoamérica", pais: "es" },
+    { codigo: "EN", nombre: "English", region: "United States", pais: "us" },
+    { codigo: "FR", nombre: "Français", region: "France", pais: "fr" },
+    { codigo: "DE", nombre: "Deutsch", region: "Deutschland", pais: "de" },
+    { codigo: "IT", nombre: "Italiano", region: "Italia", pais: "it" },
+    { codigo: "PT", nombre: "Português", region: "Portugal / Brasil", pais: "pt" },
+    { codigo: "ZH", nombre: "中文", region: "中国", pais: "cn" },
+    { codigo: "JA", nombre: "日本語", region: "日本", pais: "jp" },
+    { codigo: "RU", nombre: "Русский", region: "Россия", pais: "ru" },
+    { codigo: "AR", nombre: "العربية", region: "العالم العربي", pais: "sa" }
   ];
 
   const TRADUCCIONES = {
-    es: {
-      titulo: "Rastreador",
+    ES: {
+      tituloDoc: "Rastreador de vuelos",
+      usaIa: "Usa la IA",
+      menuVuelos: "Vuelos",
+      menuHoteles: "Hoteles",
+      menuAutobus: "Autobús",
+      planificaIa: "Planifica con IA",
+      rastreadorTitulo: "Rastreador",
       tabVuelo: "N.° de vuelo",
       tabAeropuerto: "Aeropuerto",
-      aerolinea: "Aerolínea",
-      numVuelo: "Número de vuelo",
-      aeropuertoReq: "Aeropuerto (obligatorio)",
-      aerolineaOpc: "Aerolínea (opcional)",
-      buscar: "Rastrear vuelo",
-      horarios: [
+      phAerolinea: "Aerolínea",
+      phNumVuelo: "Número de vuelo",
+      phAeropuertoReq: "Aeropuerto (obligatorio)",
+      phAerolineaOpc: "Aerolínea (opcional)",
+      buscarBtn: "Rastrear vuelo",
+      franjas: [
         "Mañana 6:00 a.m. a 12:00 p.m.",
         "Tarde 12:00 p.m. a 6:00 p.m.",
         "Noche 6:00 p.m. a 12:00 a.m.",
         "Madrugada 12:00 a.m. a 6:00 a.m."
       ]
     },
-    en: {
-      titulo: "Flight Tracker",
+    EN: {
+      tituloDoc: "Flight Tracker",
+      usaIa: "Use AI",
+      menuVuelos: "Flights",
+      menuHoteles: "Hotels",
+      menuAutobus: "Bus",
+      planificaIa: "Plan with AI",
+      rastreadorTitulo: "Flight Tracker",
       tabVuelo: "Flight No.",
       tabAeropuerto: "Airport",
-      aerolinea: "Airline",
-      numVuelo: "Flight number",
-      aeropuertoReq: "Airport (required)",
-      aerolineaOpc: "Airline (optional)",
-      buscar: "Track flight",
-      horarios: [
-        "Morning 6:00 a.m. to 12:00 p.m.",
-        "Afternoon 12:00 p.m. to 6:00 p.m.",
-        "Evening 6:00 p.m. to 12:00 a.m.",
-        "Night 12:00 a.m. to 6:00 a.m."
+      phAerolinea: "Airline",
+      phNumVuelo: "Flight number",
+      phAeropuertoReq: "Airport (required)",
+      phAerolineaOpc: "Airline (optional)",
+      buscarBtn: "Track flight",
+      franjas: [
+        "Morning 6:00 AM - 12:00 PM",
+        "Afternoon 12:00 PM - 6:00 PM",
+        "Evening 6:00 PM - 12:00 AM",
+        "Late Night 12:00 AM - 6:00 AM"
       ]
     },
-    fr: {
-      titulo: "Suivi des vols",
+    FR: {
+      tituloDoc: "Suivi des vols",
+      usaIa: "Utiliser l'IA",
+      menuVuelos: "Vols",
+      menuHoteles: "Hôtels",
+      menuAutobus: "Bus",
+      planificaIa: "Planifier avec l'IA",
+      rastreadorTitulo: "Suivi des vols",
       tabVuelo: "N° de vol",
       tabAeropuerto: "Aéroport",
-      aerolinea: "Compagnie aérienne",
-      numVuelo: "Numéro de vol",
-      aeropuertoReq: "Aéroport (obligatoire)",
-      aerolineaOpc: "Compagnie aérienne (facultatif)",
-      buscar: "Suivre le vol",
-      horarios: [
-        "Matin 6h00 à 12h00",
-        "Après-midi 12h00 à 18h00",
-        "Soirée 18h00 à 00h00",
-        "Nuit 00h00 à 6h00"
+      phAerolinea: "Compagnie aérienne",
+      phNumVuelo: "Numéro de vol",
+      phAeropuertoReq: "Aéroport (obligatoire)",
+      phAerolineaOpc: "Compagnie aérienne (facultatif)",
+      buscarBtn: "Suivre le vol",
+      franjas: [
+        "Matin 6h00 - 12h00",
+        "Après-midi 12h00 - 18h00",
+        "Soirée 18h00 - 00h00",
+        "Nuit 00h00 - 6h00"
       ]
     },
-    pt: {
-      titulo: "Rastreador de voos",
+    DE: {
+      tituloDoc: "Flugtracker",
+      usaIa: "KI nutzen",
+      menuVuelos: "Flüge",
+      menuHoteles: "Hotels",
+      menuAutobus: "Bus",
+      planificaIa: "Mit KI planen",
+      rastreadorTitulo: "Flugtracker",
+      tabVuelo: "Flugnr.",
+      tabAeropuerto: "Flughafen",
+      phAerolinea: "Fluggesellschaft",
+      phNumVuelo: "Flugnummer",
+      phAeropuertoReq: "Flughafen (erforderlich)",
+      phAerolineaOpc: "Fluggesellschaft (optional)",
+      buscarBtn: "Flug verfolgen",
+      franjas: [
+        "Vormittag 06:00 - 12:00",
+        "Nachmittag 12:00 - 18:00",
+        "Abend 18:00 - 00:00",
+        "Nacht 00:00 - 06:00"
+      ]
+    },
+    IT: {
+      tituloDoc: "Tracciamento voli",
+      usaIa: "Usa l'IA",
+      menuVuelos: "Voli",
+      menuHoteles: "Hotel",
+      menuAutobus: "Autobus",
+      planificaIa: "Pianifica con l'IA",
+      rastreadorTitulo: "Tracciamento voli",
+      tabVuelo: "N. volo",
+      tabAeropuerto: "Aeroporto",
+      phAerolinea: "Compagnia aerea",
+      phNumVuelo: "Numero di volo",
+      phAeropuertoReq: "Aeroporto (obbligatorio)",
+      phAerolineaOpc: "Compagnia aerea (opzionale)",
+      buscarBtn: "Traccia volo",
+      franjas: [
+        "Mattina 06:00 - 12:00",
+        "Pomeriggio 12:00 - 18:00",
+        "Sera 18:00 - 00:00",
+        "Notte 00:00 - 06:00"
+      ]
+    },
+    PT: {
+      tituloDoc: "Rastreador de voos",
+      usaIa: "Usar a IA",
+      menuVuelos: "Voos",
+      menuHoteles: "Hotéis",
+      menuAutobus: "Ônibus",
+      planificaIa: "Planejar com IA",
+      rastreadorTitulo: "Rastreador",
       tabVuelo: "N.º do voo",
       tabAeropuerto: "Aeroporto",
-      aerolinea: "Companhia aérea",
-      numVuelo: "Número do voo",
-      aeropuertoReq: "Aeroporto (obrigatório)",
-      aerolineaOpc: "Companhia aérea (opcional)",
-      buscar: "Rastrear voo",
-      horarios: [
-        "Manhã 6h00 às 12h00",
-        "Tarde 12h00 às 18h00",
-        "Noite 18h00 às 00h00",
-        "Madrugada 00h00 às 6h00"
+      phAerolinea: "Companhia aérea",
+      phNumVuelo: "Número do voo",
+      phAeropuertoReq: "Aeroporto (obrigatório)",
+      phAerolineaOpc: "Companhia aérea (opcional)",
+      buscarBtn: "Rastrear voo",
+      franjas: [
+        "Manhã 06:00 - 12:00",
+        "Tarde 12:00 - 18:00",
+        "Noite 18:00 - 00:00",
+        "Madrugada 00:00 - 06:00"
+      ]
+    },
+    ZH: {
+      tituloDoc: "航班追踪器",
+      usaIa: "使用 AI",
+      menuVuelos: "航班",
+      menuHoteles: "酒店",
+      menuAutobus: "巴士",
+      planificaIa: "使用 AI 规划",
+      rastreadorTitulo: "航班追踪",
+      tabVuelo: "航班号",
+      tabAeropuerto: "机场",
+      phAerolinea: "航空公司",
+      phNumVuelo: "航班编号",
+      phAeropuertoReq: "机场（必填）",
+      phAerolineaOpc: "航空公司（选填）",
+      buscarBtn: "追踪航班",
+      franjas: [
+        "上午 06:00 - 12:00",
+        "下午 12:00 - 18:00",
+        "晚上 18:00 - 00:00",
+        "凌晨 00:00 - 06:00"
+      ]
+    },
+    JA: {
+      tituloDoc: "フライトトラッカー",
+      usaIa: "AIを使う",
+      menuVuelos: "フライト",
+      menuHoteles: "ホテル",
+      menuAutobus: "バス",
+      planificaIa: "AIで計画する",
+      rastreadorTitulo: "フライト追跡",
+      tabVuelo: "便名",
+      tabAeropuerto: "空港",
+      phAerolinea: "航空会社",
+      phNumVuelo: "便番号",
+      phAeropuertoReq: "空港（必須）",
+      phAerolineaOpc: "航空会社（任意）",
+      buscarBtn: "フライトを追跡",
+      franjas: [
+        "午前 6:00 - 12:00",
+        "午後 12:00 - 18:00",
+        "夜 18:00 - 24:00",
+        "深夜 0:00 - 6:00"
+      ]
+    },
+    RU: {
+      tituloDoc: "Трекер рейсов",
+      usaIa: "Использовать ИИ",
+      menuVuelos: "Рейсы",
+      menuHoteles: "Отели",
+      menuAutobus: "Автобус",
+      planificaIa: "Планировать с ИИ",
+      rastreadorTitulo: "Трекер рейсов",
+      tabVuelo: "№ рейса",
+      tabAeropuerto: "Аэропорт",
+      phAerolinea: "Авиакомпания",
+      phNumVuelo: "Номер рейса",
+      phAeropuertoReq: "Аэропорт (обязательно)",
+      phAerolineaOpc: "Авиакомпания (необязательно)",
+      buscarBtn: "Отследить рейс",
+      franjas: [
+        "Утро 06:00 - 12:00",
+        "День 12:00 - 18:00",
+        "Вечер 18:00 - 00:00",
+        "Ночь 00:00 - 06:00"
+      ]
+    },
+    AR: {
+      tituloDoc: "متتبع الرحلات",
+      usaIa: "استخدم الذكاء الاصطناعي",
+      menuVuelos: "الرحلات",
+      menuHoteles: "الفنادق",
+      menuAutobus: "الحافلات",
+      planificaIa: "خطط بالذكاء الاصطناعي",
+      rastreadorTitulo: "متتبع الرحلات",
+      tabVuelo: "رقم الرحلة",
+      tabAeropuerto: "المطار",
+      phAerolinea: "شركة الطيران",
+      phNumVuelo: "رقم الرحلة",
+      phAeropuertoReq: "المطار (إجباري)",
+      phAerolineaOpc: "شركة الطيران (اختياري)",
+      buscarBtn: "تتبع الرحلة",
+      franjas: [
+        "الصباح 6:00 - 12:00",
+        "بعد الظهر 12:00 - 6:00",
+        "المساء 6:00 - 12:00",
+        "منتصف الليل 12:00 - 6:00"
       ]
     }
   };
 
-  function traducirPagina(cod) {
-    const t = TRADUCCIONES[cod] || TRADUCCIONES.es;
-    const h1 = document.querySelector("main h1");
-    if (h1) h1.textContent = t.titulo;
+  const STORAGE_IDIOMA = "rt_idioma_seleccionado";
 
-    const tabs = document.querySelectorAll(".tabs .tab");
-    if (tabs[0]) tabs[0].textContent = t.tabVuelo;
-    if (tabs[1]) tabs[1].textContent = t.tabAeropuerto;
+  function traducirPagina(codigo) {
+    const dict = TRADUCCIONES[codigo] || TRADUCCIONES.ES;
+    document.title = dict.tituloDoc;
+    document.documentElement.lang = codigo.toLowerCase();
+    document.documentElement.dir = codigo === "AR" ? "rtl" : "ltr";
 
-    const formVuelo = document.getElementById("form-vuelo");
-    if (formVuelo) {
-      const inputs = formVuelo.querySelectorAll('input[type="text"]');
-      if (inputs[0]) inputs[0].placeholder = t.aerolinea;
-      if (inputs[1]) inputs[1].placeholder = t.numVuelo;
-      const btn = formVuelo.querySelector("button.buscar");
-      if (btn) btn.textContent = t.buscar;
+    const btnIaSpan = document.querySelector(".rt-btn-usa-ia span");
+    if (btnIaSpan) btnIaSpan.textContent = dict.usaIa;
+
+    const h1 = document.querySelector("main .card h1");
+    if (h1) h1.textContent = dict.rastreadorTitulo;
+
+    const tabs = document.querySelectorAll("main .tabs .tab");
+    if (tabs[0]) tabs[0].textContent = dict.tabVuelo;
+    if (tabs[1]) tabs[1].textContent = dict.tabAeropuerto;
+
+    const formVueloInputs = document.querySelectorAll("#form-vuelo input[type='text']");
+    if (formVueloInputs[0]) formVueloInputs[0].placeholder = dict.phAerolinea;
+    if (formVueloInputs[1]) formVueloInputs[1].placeholder = dict.phNumVuelo;
+
+    const formAeroInputs = document.querySelectorAll("#form-aeropuerto input[type='text']");
+    if (formAeroInputs[0]) formAeroInputs[0].placeholder = dict.phAeropuertoReq;
+    if (formAeroInputs[1]) formAeroInputs[1].placeholder = dict.phAerolineaOpc;
+
+    const franjaSelect = document.querySelector("#form-aeropuerto select");
+    if (franjaSelect && dict.franjas) {
+      Array.from(franjaSelect.options).forEach((opt, idx) => {
+        if (dict.franjas[idx]) opt.textContent = dict.franjas[idx];
+      });
     }
 
-    const formAero = document.getElementById("form-aeropuerto");
-    if (formAero) {
-      const inputs = formAero.querySelectorAll('input[type="text"]');
-      if (inputs[0]) inputs[0].placeholder = t.aeropuertoReq;
-      if (inputs[1]) inputs[1].placeholder = t.aerolineaOpc;
-      const btn = formAero.querySelector("button.buscar");
-      if (btn) btn.textContent = t.buscar;
+    document.querySelectorAll("main form button.buscar").forEach((btn) => {
+      btn.textContent = dict.buscarBtn;
+    });
 
-      const selectHora = formAero.querySelector("select");
-      if (selectHora && t.horarios) {
-        Array.from(selectHora.options).forEach(function (opt, idx) {
-          if (t.horarios[idx]) opt.textContent = t.horarios[idx];
+    const cajonLinks = document.querySelectorAll(".cajon__principal a");
+    if (cajonLinks[0]) cajonLinks[0].lastChild.textContent = ` ${dict.menuVuelos}`;
+    if (cajonLinks[1]) cajonLinks[1].lastChild.textContent = ` ${dict.menuHoteles}`;
+    if (cajonLinks[2]) cajonLinks[2].lastChild.textContent = ` ${dict.menuAutobus}`;
+
+    const planLink = document.querySelector(".cajon__enlaces li:first-child a");
+    if (planLink) planLink.lastChild.textContent = ` ${dict.planificaIa}`;
+  }
+
+  function aplicarIdioma(codigo, guardar = true) {
+    const item = IDIOMAS.find((i) => i.codigo === codigo) || IDIOMAS[0];
+    const banderaBtn = document.getElementById("idioma-bandera");
+    const codigoBtn = document.getElementById("idioma-codigo");
+    const listaEl = document.getElementById("idioma-lista");
+
+    if (banderaBtn) {
+      banderaBtn.src = `https://flagcdn.com/w40/${item.pais}.png`;
+      banderaBtn.alt = item.nombre;
+    }
+    if (codigoBtn) {
+      codigoBtn.textContent = item.codigo;
+    }
+
+    if (listaEl) {
+      listaEl.querySelectorAll(".idioma__opcion").forEach((op) => {
+        const esActual = op.dataset.codigo === item.codigo;
+        op.classList.toggle("activa", esActual);
+        op.setAttribute("aria-selected", esActual ? "true" : "false");
+      });
+    }
+
+    traducirPagina(item.codigo);
+
+    if (guardar) {
+      try {
+        localStorage.setItem(STORAGE_IDIOMA, item.codigo);
+      } catch (_) {}
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const boton = document.getElementById("idioma-boton");
+    const lista = document.getElementById("idioma-lista");
+    if (!boton || !lista) return;
+
+    lista.innerHTML = IDIOMAS.map(
+      (item) => `
+      <li role="option" aria-selected="false">
+        <button type="button" class="idioma__opcion" data-codigo="${item.codigo}">
+          <span class="idioma__opcion-izq">
+            <img src="https://flagcdn.com/w40/${item.pais}.png" alt="${item.nombre}" width="24" height="16">
+            <span class="idioma__opcion-textos">
+              <span class="idioma__opcion-nombre">${item.nombre}</span>
+              <span class="idioma__opcion-region">${item.region}</span>
+            </span>
+          </span>
+          <span class="idioma__opcion-codigo">${item.codigo}</span>
+        </button>
+      </li>
+    `
+    ).join("");
+
+    boton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const estaAbierto = !lista.hidden;
+      lista.hidden = estaAbierto;
+      boton.setAttribute("aria-expanded", String(!estaAbierto));
+    });
+
+    lista.addEventListener("click", (e) => {
+      const opcionBtn = e.target.closest(".idioma__opcion");
+      if (!opcionBtn) return;
+      aplicarIdioma(opcionBtn.dataset.codigo, true);
+      lista.hidden = true;
+      boton.setAttribute("aria-expanded", "false");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest("#idioma")) {
+        lista.hidden = true;
+        boton.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    let inicial = "ES";
+    try {
+      const guardada = (localStorage.getItem(STORAGE_IDIOMA) || "").toUpperCase();
+      if (IDIOMAS.some((i) => i.codigo === guardada)) {
+        inicial = guardada;
+      }
+    } catch (_) {}
+
+    aplicarIdioma(inicial, false);
+  });
+})();
+
+/* ==========================================================
+   MENÚ VISUAL DE MONEDA + TRADUCCIÓN COMPLETA TODOS LOS IDIOMAS
+   ========================================================== */
+(function () {
+  const OPCIONES_MONEDA = [
+    { codigo: "usd", etiqueta: "USD", simbolo: "$" },
+    { codigo: "eur", etiqueta: "EUR", simbolo: "€" },
+    { codigo: "dop", etiqueta: "DOP", simbolo: "RD$" },
+    { codigo: "gbp", etiqueta: "GBP", simbolo: "£" }
+  ];
+
+  const DICT_COMPLETO = {
+    ES: {
+      menuHoteles: "Hoteles", menuAutobus: "Autobús",
+      planificaViajes: "Planifica con IA", tarifasEquipaje: "Tarifas de equipaje",
+      planeaViajes: "Planea tus viajes", sobreNosotros: "Sobre nosotros",
+      contacto: "Contacto", preguntasFrecuentes: "Preguntas frecuentes",
+      explorar: "Explorar", terminos: "Términos y condiciones",
+      rastreadorVuelos: "Rastreador de vuelos", viajes: "Viajes",
+      telLabel: "Teléfono:", correoLabel: "Correo:",
+      footerDesc: "Tu agencia de confianza para descubrir el mundo al mejor precio. Compara, ahorra y vuela sin límites.",
+      colEmpresa: "Empresa", acercaDe: "Acerca de", prensa: "Prensa", afiliados: "Afiliados", socios: "Socios",
+      colContacto: "Contacto", ayudaFaq: "Ayuda / FAQ", hoteles: "Hoteles", publicidad: "Publicidad",
+      colMas: "Más", tarifasAereas: "Tarifas aéreas", ofertasBajas: "Ofertas bajas", privacidad: "Privacidad",
+      descargaApp: "Descarga la app", appTexto: "Lleva tus reservas y ofertas siempre contigo.",
+      derechos: "© 2026 RuTa Tropical. Todos los derechos reservados.", aerolineas: "Aerolíneas"
+    },
+    EN: {
+      menuHoteles: "Hotels", menuAutobus: "Bus",
+      planificaViajes: "Plan with AI", tarifasEquipaje: "Baggage fees",
+      planeaViajes: "Plan your trips", sobreNosotros: "About us",
+      contacto: "Contact", preguntasFrecuentes: "FAQ",
+      explorar: "Explore", terminos: "Terms and conditions",
+      rastreadorVuelos: "Flight tracker", viajes: "Trips",
+      telLabel: "Phone:", correoLabel: "Email:",
+      footerDesc: "Your trusted agency to discover the world at the best price. Compare, save, and fly without limits.",
+      colEmpresa: "Company", acercaDe: "About", prensa: "Press", afiliados: "Affiliates", socios: "Partners",
+      colContacto: "Contact", ayudaFaq: "Help / FAQ", hoteles: "Hotels", publicidad: "Advertising",
+      colMas: "More", tarifasAereas: "Airfares", ofertasBajas: "Low fare deals", privacidad: "Privacy",
+      descargaApp: "Download the app", appTexto: "Take your bookings and deals with you everywhere.",
+      derechos: "© 2026 RuTa Tropical. All rights reserved.", aerolineas: "Airlines"
+    },
+    FR: {
+      menuHoteles: "Hôtels", menuAutobus: "Bus",
+      planificaViajes: "Planifier avec l'IA", tarifasEquipaje: "Frais de bagages",
+      planeaViajes: "Planifiez vos voyages", sobreNosotros: "À propos",
+      contacto: "Contact", preguntasFrecuentes: "FAQ",
+      explorar: "Explorer", terminos: "Conditions générales",
+      rastreadorVuelos: "Suivi des vols", viajes: "Voyages",
+      telLabel: "Téléphone :", correoLabel: "E-mail :",
+      footerDesc: "Votre agence de confiance pour découvrir le monde au meilleur prix. Comparez, économisez et voyagez sans limites.",
+      colEmpresa: "Entreprise", acercaDe: "À propos", prensa: "Presse", afiliados: "Affiliés", socios: "Partenaires",
+      colContacto: "Contact", ayudaFaq: "Aide / FAQ", hoteles: "Hôtels", publicidad: "Publicité",
+      colMas: "Plus", tarifasAereas: "Tarifs aériens", ofertasBajas: "Meilleurs tarifs", privacidad: "Confidentialité",
+      descargaApp: "Téléchargez l'appli", appTexto: "Emportez vos réservations et offres partout avec vous.",
+      derechos: "© 2026 RuTa Tropical. Tous droits réservés.", aerolineas: "Compagnies aériennes"
+    },
+    DE: {
+      menuHoteles: "Hotels", menuAutobus: "Bus",
+      planificaViajes: "Mit KI planen", tarifasEquipaje: "Gepäckgebühren",
+      planeaViajes: "Reisen planen", sobreNosotros: "Über uns",
+      contacto: "Kontakt", preguntasFrecuentes: "FAQ",
+      explorar: "Entdecken", terminos: "AGB",
+      rastreadorVuelos: "Flugtracker", viajes: "Reisen",
+      telLabel: "Telefon:", correoLabel: "E-Mail:",
+      footerDesc: "Deine zuverlässige Reiseagentur für die besten Preise weltweit. Vergleichen, sparen und unbeschwert fliegen.",
+      colEmpresa: "Unternehmen", acercaDe: "Über uns", prensa: "Presse", afiliados: "Partnerprogramm", socios: "Partner",
+      colContacto: "Kontakt", ayudaFaq: "Hilfe / FAQ", hoteles: "Hotels", publicidad: "Werbung",
+      colMas: "Mehr", tarifasAereas: "Flugpreise", ofertasBajas: "Günstige Flüge", privacidad: "Datenschutz",
+      descargaApp: "App herunterladen", appTexto: "Buchungen und Angebote immer dabei.",
+      derechos: "© 2026 RuTa Tropical. Alle Rechte vorbehalten.", aerolineas: "Fluggesellschaften"
+    },
+    IT: {
+      menuHoteles: "Hotel", menuAutobus: "Autobus",
+      planificaViajes: "Pianifica con l'IA", tarifasEquipaje: "Tariffe bagagli",
+      planeaViajes: "Pianifica i viaggi", sobreNosotros: "Chi siamo",
+      contacto: "Contatti", preguntasFrecuentes: "FAQ",
+      explorar: "Esplora", terminos: "Termini e condizioni",
+      rastreadorVuelos: "Tracciamento voli", viajes: "Viaggi",
+      telLabel: "Telefono:", correoLabel: "Email:",
+      footerDesc: "La tua agenzia di fiducia per scoprire il mondo al miglior prezzo. Confronta, risparmia e vola senza limiti.",
+      colEmpresa: "Azienda", acercaDe: "Chi siamo", prensa: "Stampa", afiliados: "Affiliati", socios: "Partner",
+      colContacto: "Contatti", ayudaFaq: "Aiuto / FAQ", hoteles: "Hotel", publicidad: "Pubblicità",
+      colMas: "Altro", tarifasAereas: "Tariffe aeree", ofertasBajas: "Offerte low cost", privacidad: "Privacy",
+      descargaApp: "Scarica l'app", appTexto: "Porta prenotazioni e offerte sempre con te.",
+      derechos: "© 2026 RuTa Tropical. Tutti i diritti riservati.", aerolineas: "Compagnie aeree"
+    },
+    PT: {
+      menuHoteles: "Hotéis", menuAutobus: "Ônibus",
+      planificaViajes: "Planejar com IA", tarifasEquipaje: "Taxas de bagagem",
+      planeaViajes: "Planeje suas viagens", sobreNosotros: "Sobre nós",
+      contacto: "Contato", preguntasFrecuentes: "Perguntas frequentes",
+      explorar: "Explorar", terminos: "Termos e condições",
+      rastreadorVuelos: "Rastreador de voos", viajes: "Viagens",
+      telLabel: "Telefone:", correoLabel: "E-mail:",
+      footerDesc: "Sua agência de confiança para descobrir o mundo pelo melhor preço. Compare, economize e voe sem limites.",
+      colEmpresa: "Empresa", acercaDe: "Sobre", prensa: "Imprensa", afiliados: "Afiliados", socios: "Parceiros",
+      colContacto: "Contato", ayudaFaq: "Ajuda / FAQ", hoteles: "Hotéis", publicidad: "Publicidade",
+      colMas: "Mais", tarifasAereas: "Tarifas aéreas", ofertasBajas: "Ofertas baixas", privacidad: "Privacidade",
+      descargaApp: "Baixe o app", appTexto: "Leve suas reservas e ofertas sempre com você.",
+      derechos: "© 2026 RuTa Tropical. Todos os direitos reservados.", aerolineas: "Companhias aéreas"
+    },
+    ZH: {
+      menuHoteles: "酒店", menuAutobus: "巴士",
+      planificaViajes: "使用 AI 规划", tarifasEquipaje: "行李费用",
+      planeaViajes: "规划行程", sobreNosotros: "关于我们",
+      contacto: "联系我们", preguntasFrecuentes: "常见问题",
+      explorar: "探索", terminos: "条款与条件",
+      rastreadorVuelos: "航班追踪", viajes: "行程",
+      telLabel: "电话：", correoLabel: "邮箱：",
+      footerDesc: "您值得信赖的旅行机构，以最优价格畅游世界。比价、省钱、无忧飞行。",
+      colEmpresa: "公司", acercaDe: "关于我们", prensa: "媒体", afiliados: "联盟", socios: "合作伙伴",
+      colContacto: "联系", ayudaFaq: "帮助 / 常见问题", hoteles: "酒店", publicidad: "广告合作",
+      colMas: "更多", tarifasAereas: "机票价格", ofertasBajas: "特价机票", privacidad: "隐私政策",
+      descargaApp: "下载应用", appTexto: "随时随地管理预订和优惠。",
+      derechos: "© 2026 RuTa Tropical. 保留所有权利。", aerolineas: "航空公司"
+    },
+    JA: {
+      menuHoteles: "ホテル", menuAutobus: "バス",
+      planificaViajes: "AIで計画する", tarifasEquipaje: "手荷物料金",
+      planeaViajes: "旅行を計画", sobreNosotros: "会社概要",
+      contacto: "お問い合わせ", preguntasFrecuentes: "よくある質問",
+      explorar: "探索", terminos: "利用規約",
+      rastreadorVuelos: "フライト追跡", viajes: "旅行",
+      telLabel: "電話：", correoLabel: "メール：",
+      footerDesc: "ベストプライスで世界を巡る信頼のトラベルパートナー。比較して、お得に、自由に空の旅へ。",
+      colEmpresa: "会社情報", acercaDe: "概要", prensa: "プレス", afiliados: "アフィリエイト", socios: "パートナー",
+      colContacto: "お問い合わせ", ayudaFaq: "ヘルプ / FAQ", hoteles: "ホテル", publicidad: "広告掲載",
+      colMas: "その他", tarifasAereas: "航空運賃", ofertasBajas: "格安航空券", privacidad: "プライバシー",
+      descargaApp: "アプリをダウンロード", appTexto: "予約とお得な情報をいつでも手元に。",
+      derechos: "© 2026 RuTa Tropical. All rights reserved.", aerolineas: "航空会社"
+    },
+    RU: {
+      menuHoteles: "Отели", menuAutobus: "Автобус",
+      planificaViajes: "Планировать с ИИ", tarifasEquipaje: "Сборы за багаж",
+      planeaViajes: "Планируйте поездки", sobreNosotros: "О нас",
+      contacto: "Контакты", preguntasFrecuentes: "Частые вопросы",
+      explorar: "Обзор", terminos: "Условия использования",
+      rastreadorVuelos: "Трекер рейсов", viajes: "Поездки",
+      telLabel: "Телефон:", correoLabel: "Почта:",
+      footerDesc: "Надёжное агентство для путешествий по лучшим ценам. Сравнивайте, экономьте и летайте без границ.",
+      colEmpresa: "Компания", acercaDe: "О нас", prensa: "Пресса", afiliados: "Партнёрам", socios: "Партнёры",
+      colContacto: "Контакты", ayudaFaq: "Помощь / FAQ", hoteles: "Отели", publicidad: "Реклама",
+      colMas: "Ещё", tarifasAereas: "Авиатарифы", ofertasBajas: "Выгодные цены", privacidad: "Конфиденциальность",
+      descargaApp: "Скачать приложение", appTexto: "Бронирования и скидки всегда под рукой.",
+      derechos: "© 2026 RuTa Tropical. Все права защищены.", aerolineas: "Авиакомпании"
+    },
+    AR: {
+      menuHoteles: "الفنادق", menuAutobus: "الحافلات",
+      planificaViajes: "خطط بالذكاء الاصطناعي", tarifasEquipaje: "رسوم الأمتعة",
+      planeaViajes: "خطط لرحلاتك", sobreNosotros: "من نحن",
+      contacto: "اتصل بنا", preguntasFrecuentes: "الأسئلة الشائعة",
+      explorar: "استكشف", terminos: "الشروط والأحكام",
+      rastreadorVuelos: "متتبع الرحلات", viajes: "الرحلات",
+      telLabel: "الهاتف:", correoLabel: "البريد:",
+      footerDesc: "وكالتك الموثوقة لاكتشاف العالم بأفضل الأسعار. قارن ووفّر وسافر بلا حدود.",
+      colEmpresa: "الشركة", acercaDe: "من نحن", prensa: "الصحافة", afiliados: "الشركاء التابعون", socios: "الشركاء",
+      colContacto: "تواصل", ayudaFaq: "المساعدة / الأسئلة", hoteles: "الفنادق", publicidad: "الإعلانات",
+      colMas: "المزيد", tarifasAereas: "أسعار الطيران", ofertasBajas: "عروض منخفضة", privacidad: "الخصوصية",
+      descargaApp: "حمّل التطبيق", appTexto: "احتفظ بحجوزاتك وعروضك معك دائمًا.",
+      derechos: "© 2026 RuTa Tropical. جميع الحقوق محفوظة.", aerolineas: "شركات الطيران"
+    }
+  };
+
+  function traducirTodo(codigo) {
+    const d = DICT_COMPLETO[codigo] || DICT_COMPLETO.ES;
+    const cajonLinks = document.querySelectorAll(".cajon__principal a");
+    if (cajonLinks[1] && cajonLinks[1].lastChild) cajonLinks[1].lastChild.textContent = ` ${d.menuHoteles}`;
+    if (cajonLinks[2] && cajonLinks[2].lastChild) cajonLinks[2].lastChild.textContent = ` ${d.menuAutobus}`;
+
+    const secLinks = document.querySelectorAll(".cajon__enlaces a");
+    const ordenSec = [
+      d.planificaViajes, d.planeaViajes, d.sobreNosotros,
+      d.contacto, d.preguntasFrecuentes, d.explorar, d.terminos, d.rastreadorVuelos, d.viajes
+    ];
+    secLinks.forEach((a, i) => {
+      if (ordenSec[i] && a.lastChild) a.lastChild.textContent = ` ${ordenSec[i]}`;
+    });
+
+    const fuertes = document.querySelectorAll(".cajon__contacto strong");
+    if (fuertes[0]) fuertes[0].textContent = d.telLabel;
+    if (fuertes[1]) fuertes[1].textContent = d.correoLabel;
+
+    const desc = document.querySelector(".rt-footer__desc");
+    if (desc) desc.textContent = d.footerDesc;
+    const appTxt = document.querySelector(".rt-footer__app-texto");
+    if (appTxt) appTxt.textContent = d.appTexto;
+    const derechos = document.querySelector(".rt-footer__legal > span");
+    if (derechos) derechos.textContent = d.derechos;
+    const aeroTit = document.querySelector(".rt-footer__aero-titulo");
+    if (aeroTit) aeroTit.textContent = d.aerolineas;
+
+    const cols = document.querySelectorAll(".rt-footer__col");
+    if (cols[0]) {
+      const h3 = cols[0].querySelector("h3");
+      if (h3) h3.textContent = d.colEmpresa;
+      const l = cols[0].querySelectorAll("ul a");
+      const arr = [d.acercaDe, d.prensa, d.afiliados, d.socios];
+      l.forEach((a, i) => { if (arr[i] && a.lastChild) a.lastChild.textContent = ` ${arr[i]}`; });
+    }
+    if (cols[1]) {
+      const h3 = cols[1].querySelector("h3");
+      if (h3) h3.textContent = d.colContacto;
+      const l = cols[1].querySelectorAll("ul a");
+      const arr = [d.ayudaFaq, d.hoteles, d.publicidad];
+      l.forEach((a, i) => { if (arr[i] && a.lastChild) a.lastChild.textContent = ` ${arr[i]}`; });
+    }
+    if (cols[2]) {
+      const h3 = cols[2].querySelector("h3");
+      if (h3) h3.textContent = d.colMas;
+      const l = cols[2].querySelectorAll("ul a");
+      const arr = [d.tarifasAereas, d.ofertasBajas, d.privacidad];
+      l.forEach((a, i) => { if (arr[i] && a.lastChild) a.lastChild.textContent = ` ${arr[i]}`; });
+    }
+    if (cols[3]) {
+      const h3 = cols[3].querySelector("h3");
+      if (h3) h3.textContent = d.descargaApp;
+    }
+    const legLinks = document.querySelectorAll(".rt-footer__legales-links a");
+    if (legLinks[0]) legLinks[0].textContent = d.privacidad;
+    if (legLinks[1]) legLinks[1].textContent = d.terminos;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const labelMoneda = document.querySelector("label.moneda");
+    const selectMoneda = document.getElementById("currency");
+    const simboloEl = document.getElementById("moneda-simbolo");
+    const chevronEl = labelMoneda ? labelMoneda.querySelector("i") : null;
+
+    if (labelMoneda && selectMoneda && !document.getElementById("rtMonedaLista")) {
+      selectMoneda.classList.add("rt-select-oculto");
+
+      const btnActual = document.createElement("button");
+      btnActual.type = "button";
+      btnActual.className = "rt-moneda-actual-btn";
+      btnActual.id = "rtMonedaActualBtn";
+      btnActual.textContent = (selectMoneda.value || "usd").toUpperCase();
+
+      const lista = document.createElement("ul");
+      lista.className = "rt-moneda-lista";
+      lista.id = "rtMonedaLista";
+      lista.hidden = true;
+
+      lista.innerHTML = OPCIONES_MONEDA.map((op) => `
+        <li>
+          <button type="button" class="rt-moneda-opcion" data-moneda="${op.codigo}">
+            <span>${op.etiqueta}</span>
+            <span>${op.simbolo}</span>
+          </button>
+        </li>
+      `).join("");
+
+      if (chevronEl) {
+        labelMoneda.insertBefore(btnActual, chevronEl);
+      } else {
+        labelMoneda.appendChild(btnActual);
+      }
+      labelMoneda.appendChild(lista);
+
+      const sincronizarUI = (cod) => {
+        const encontrada = OPCIONES_MONEDA.find((m) => m.codigo === cod) || OPCIONES_MONEDA[0];
+        btnActual.textContent = encontrada.etiqueta;
+        if (simboloEl) simboloEl.textContent = encontrada.simbolo;
+        lista.querySelectorAll(".rt-moneda-opcion").forEach((b) => {
+          b.classList.toggle("activa", b.dataset.moneda === encontrada.codigo);
         });
+      };
+
+      btnActual.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const listaIdioma = document.getElementById("idioma-lista");
+        if (listaIdioma) listaIdioma.hidden = true;
+        lista.hidden = !lista.hidden;
+      });
+
+      lista.addEventListener("click", (e) => {
+        const opBtn = e.target.closest(".rt-moneda-opcion");
+        if (!opBtn) return;
+        const nuevoCod = opBtn.dataset.moneda;
+        selectMoneda.value = nuevoCod;
+        selectMoneda.dispatchEvent(new Event("change", { bubbles: true }));
+        sincronizarUI(nuevoCod);
+        lista.hidden = true;
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest("label.moneda")) {
+          lista.hidden = true;
+        }
+      });
+
+      sincronizarUI((selectMoneda.value || "usd").toLowerCase());
+    }
+
+    const listaIdioma = document.getElementById("idioma-lista");
+    if (listaIdioma) {
+      listaIdioma.addEventListener("click", (e) => {
+        const op = e.target.closest(".idioma__opcion");
+        if (op && op.dataset.codigo) {
+          traducirTodo(op.dataset.codigo);
+        }
+      });
+    }
+
+    try {
+      const guard = (localStorage.getItem("rt_idioma_seleccionado") || "ES").toUpperCase();
+      traducirTodo(guard);
+    } catch (_) {}
+  });
+})();
+
+/* ==========================================================
+   TRADUCCIÓN DEL PANEL IA Y PASTILLA SUGERIDA - RASTREO.JS
+   ========================================================== */
+(function () {
+  const TRAD_IA = {
+    ES: {
+      nuevoChat: "Nuevo chat",
+      saludoPrefix: "¿Cuál es tu próximo destino,",
+      estasEnPrefix: "Estás en",
+      sug1: "Busca vuelos desde MVD para diciembre",
+      sug2: "Encuentra destinos económicos desde MVD",
+      sug3: "Recomiéndame un destino",
+      placeholder: "Pregunta más detalles...",
+      avisoIa: "Con tecnología de la IA de RuTa Tropical. La IA puede cometer errores.",
+      pillSugerencia: "Vuelos a Nueva York, NY el próximo fin de semana"
+    },
+    EN: {
+      nuevoChat: "New chat",
+      saludoPrefix: "What is your next destination,",
+      estasEnPrefix: "You are in",
+      sug1: "Find flights from MVD for December",
+      sug2: "Find budget destinations from MVD",
+      sug3: "Recommend a destination",
+      placeholder: "Ask for more details...",
+      avisoIa: "Powered by RuTa Tropical AI. AI can make mistakes.",
+      pillSugerencia: "Flights to New York, NY next weekend"
+    },
+    FR: {
+      nuevoChat: "Nouveau chat",
+      saludoPrefix: "Quelle est votre prochaine destination,",
+      estasEnPrefix: "Vous êtes à",
+      sug1: "Trouver des vols depuis MVD pour décembre",
+      sug2: "Trouver des destinations économiques depuis MVD",
+      sug3: "Recommandez-moi une destination",
+      placeholder: "Posez plus de détails...",
+      avisoIa: "Propulsé par l'IA de RuTa Tropical. L'IA peut faire des erreurs.",
+      pillSugerencia: "Vols vers New York, NY le week-end prochain"
+    },
+    DE: {
+      nuevoChat: "Neuer Chat",
+      saludoPrefix: "Was ist dein nächstes Ziel,",
+      estasEnPrefix: "Du bist in",
+      sug1: "Flüge ab MVD für Dezember suchen",
+      sug2: "Günstige Ziele ab MVD finden",
+      sug3: "Empfiehl mir ein Reiseziel",
+      placeholder: "Stelle weitere Fragen...",
+      avisoIa: "Unterstützt von RuTa Tropical KI. KI kann Fehler machen.",
+      pillSugerencia: "Flüge nach New York, NY nächstes Wochenende"
+    },
+    IT: {
+      nuevoChat: "Nuova chat",
+      saludoPrefix: "Qual è la tua prossima destinazione,",
+      estasEnPrefix: "Ti trovi a",
+      sug1: "Cerca voli da MVD per dicembre",
+      sug2: "Trova destinazioni economiche da MVD",
+      sug3: "Consigliami una destinazione",
+      placeholder: "Chiedi maggiori dettagli...",
+      avisoIa: "Basato sull'IA di RuTa Tropical. L'IA può commettere errori.",
+      pillSugerencia: "Voli per New York, NY il prossimo fine settimana"
+    },
+    PT: {
+      nuevoChat: "Novo chat",
+      saludoPrefix: "Qual é o seu próximo destino,",
+      estasEnPrefix: "Você está em",
+      sug1: "Buscar voos de MVD para dezembro",
+      sug2: "Encontrar destinos econômicos de MVD",
+      sug3: "Recomende um destino",
+      placeholder: "Pergunte mais detalhes...",
+      avisoIa: "Com tecnologia da IA da RuTa Tropical. A IA pode cometer erros.",
+      pillSugerencia: "Voos para Nova York, NY no próximo fim de semana"
+    },
+    ZH: {
+      nuevoChat: "新聊天",
+      saludoPrefix: "你的下一个目的地是哪里，",
+      estasEnPrefix: "你当前在",
+      sug1: "查找十二月从 MVD 出发的航班",
+      sug2: "查找从 MVD 出发的经济型目的地",
+      sug3: "给我推荐一个目的地",
+      placeholder: "询问更多详情...",
+      avisoIa: "由 RuTa Tropical AI 提供支持。AI 可能会出错。",
+      pillSugerencia: "下周末飞往纽约 NY 的航班"
+    },
+    JA: {
+      nuevoChat: "新しいチャット",
+      saludoPrefix: "次の目的地はどこですか、",
+      estasEnPrefix: "現在地：",
+      sug1: "12月発 MVD からのフライトを検索",
+      sug2: "MVD からの格安目的地を探す",
+      sug3: "おすすめの目的地を教えて",
+      placeholder: "さらに詳しく質問する...",
+      avisoIa: "RuTa Tropical AI 搭載。AI は誤りを犯す可能性があります。",
+      pillSugerencia: "来週末のニューヨーク（NY）行きフライト"
+    },
+    RU: {
+      nuevoChat: "Новый чат",
+      saludoPrefix: "Какое твоё следующее направление,",
+      estasEnPrefix: "Вы находитесь в",
+      sug1: "Найти рейсы из MVD на декабрь",
+      sug2: "Найти бюджетные направления из MVD",
+      sug3: "Посоветуй направление",
+      placeholder: "Задайте уточняющий вопрос...",
+      avisoIa: "На базе ИИ RuTa Tropical. ИИ может допускать ошибки.",
+      pillSugerencia: "Рейсы в Нью-Йорк, NY в следующие выходные"
+    },
+    AR: {
+      nuevoChat: "دردشة جديدة",
+      saludoPrefix: "ما وجهتك القادمة،",
+      estasEnPrefix: "أنت في",
+      sug1: "ابحث عن رحلات من MVD لشهر ديسمبر",
+      sug2: "اعثر على وجهات اقتصادية من MVD",
+      sug3: "رشّح لي وجهة",
+      placeholder: "اسأل عن مزيد من التفاصيل...",
+      avisoIa: "مدعوم بذكاء RuTa Tropical الاصطناعي. قد يرتكب الذكاء الاصطناعي أخطاء.",
+      pillSugerencia: "رحلات إلى نيويورك، NY عطلة نهاية الأسبوع القادمة"
+    }
+  };
+
+  function aplicarTraduccionIa(codigo) {
+    const cod = (codigo || "ES").toUpperCase();
+    const t = TRAD_IA[cod] || TRAD_IA.ES;
+
+    const tituloActual = document.getElementById("tituloChatActual");
+    if (tituloActual && (!tituloActual.dataset.editado || tituloActual.textContent === "Nuevo chat" || Object.values(TRAD_IA).some(x => x.nuevoChat === tituloActual.textContent))) {
+      tituloActual.textContent = t.nuevoChat;
+    }
+
+    const btnNuevoSidebar = document.getElementById("btnNuevoChatSidebar");
+    if (btnNuevoSidebar) {
+      const icono = btnNuevoSidebar.querySelector("i");
+      btnNuevoSidebar.innerHTML = "";
+      if (icono) btnNuevoSidebar.appendChild(icono);
+      btnNuevoSidebar.append(` ${t.nuevoChat}`);
+    }
+
+    const saludoH2 = document.querySelector("#bloqueSaludo h2");
+    if (saludoH2) {
+      const textoActual = saludoH2.textContent.trim();
+      const comaIdx = textoActual.lastIndexOf(",");
+      const usuario = comaIdx !== -1 ? textoActual.slice(comaIdx + 1).trim() : "jeimycr9?";
+      saludoH2.textContent = `${t.saludoPrefix} ${usuario}`;
+    }
+
+    const saludoP = document.querySelector("#bloqueSaludo p");
+    if (saludoP) {
+      const strongEl = saludoP.querySelector("strong");
+      const ciudad = strongEl ? strongEl.textContent : "Montreal";
+      saludoP.innerHTML = `${t.estasEnPrefix} <strong>${ciudad}</strong>`;
+    }
+
+    const sugs = document.querySelectorAll("#bloqueSugerencias .sugerencia-item");
+    const textosSug = [t.sug1, t.sug2, t.sug3];
+    sugs.forEach((item, idx) => {
+      if (!textosSug[idx]) return;
+      const icon = item.querySelector("i");
+      item.innerHTML = "";
+      if (icon) item.appendChild(icon);
+      item.append(` ${textosSug[idx]}`);
+      item.setAttribute("data-pregunta", textosSug[idx]);
+    });
+
+    const inputIa = document.getElementById("inputPreguntaIa");
+    if (inputIa) {
+      inputIa.placeholder = t.placeholder;
+    }
+
+    const aviso = document.querySelector("#panelChatIzquierda .contenedor-centrado-ia > div:last-child");
+    if (aviso) {
+      aviso.textContent = t.avisoIa;
+    }
+
+    const pillTexto = document.querySelector(".texto-ia-sugerencia");
+    if (pillTexto) {
+      pillTexto.setAttribute("data-text", t.pillSugerencia);
+      if (pillTexto.classList.contains("terminado") || pillTexto.textContent.trim().length > 0) {
+        pillTexto.textContent = t.pillSugerencia;
+        pillTexto.classList.add("terminado");
       }
     }
   }
 
-  const contenedor = document.getElementById("idioma");
-  const boton = document.getElementById("idioma-boton");
-  const lista = document.getElementById("idioma-lista");
-  const bandera = document.getElementById("idioma-bandera");
-  const codigo = document.getElementById("idioma-codigo");
-  if (!contenedor || !boton || !lista || !bandera || !codigo) return;
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      try {
+        const guard = (localStorage.getItem("rt_idioma_seleccionado") || "ES").toUpperCase();
+        aplicarTraduccionIa(guard);
+      } catch (_) {}
+    }, 120);
 
-  const url = function (pais) { return "https://flagcdn.com/w40/" + pais + ".png"; };
-
-  let actual = "es";
-  try { actual = localStorage.getItem("idioma") || "es"; } catch (_) {}
-  if (!IDIOMAS.some(function (i) { return i[0] === actual; })) actual = "es";
-
-  lista.innerHTML = "";
-  IDIOMAS.forEach(function (i) {
-    const li = document.createElement("li");
-    li.setAttribute("role", "option");
-    li.dataset.codigo = i[0];
-    li.tabIndex = -1;
-    li.innerHTML =
-      '<img src="' + url(i[2]) + '" alt="" width="28" height="19" loading="lazy">' +
-      "<span>" + i[1] + "</span><small>" + i[0].toUpperCase() + "</small>";
-    lista.appendChild(li);
-  });
-
-  function items() { return Array.from(lista.children); }
-
-  function elegir(cod) {
-    const datos = IDIOMAS.find(function (i) { return i[0] === cod; });
-    if (!datos) return;
-    actual = cod;
-    bandera.src = url(datos[2]);
-    codigo.textContent = cod.toUpperCase();
-    document.documentElement.lang = cod;
-    try { localStorage.setItem("idioma", cod); } catch (_) {}
-
-    items().forEach(function (li) {
-      li.setAttribute("aria-selected", String(li.dataset.codigo === cod));
-    });
-
-    traducirPagina(cod);
-    document.dispatchEvent(new CustomEvent("idioma:cambio", { detail: { idioma: cod } }));
-  }
-
-  function abrir() {
-    lista.hidden = false;
-    boton.setAttribute("aria-expanded", "true");
-    const sel = items().find(function (li) { return li.dataset.codigo === actual; });
-    if (sel) { enfocar(sel); sel.scrollIntoView({ block: "center" }); }
-  }
-
-  function cerrar() {
-    lista.hidden = true;
-    boton.setAttribute("aria-expanded", "false");
-    items().forEach(function (li) { li.classList.remove("enfocado"); });
-  }
-
-  function enfocar(li) {
-    items().forEach(function (x) { x.classList.remove("enfocado"); });
-    li.classList.add("enfocado");
-    li.scrollIntoView({ block: "nearest" });
-  }
-
-  boton.addEventListener("click", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (lista.hidden) abrir();
-    else cerrar();
-  });
-
-  lista.addEventListener("click", function (e) {
-    const li = e.target.closest("li");
-    if (!li) return;
-    e.preventDefault();
-    e.stopPropagation();
-    elegir(li.dataset.codigo);
-    cerrar();
-    boton.focus();
-  });
-
-  contenedor.addEventListener("keydown", function (e) {
-    const todos = items();
-    let idx = todos.findIndex(function (li) { return li.classList.contains("enfocado"); });
-
-    if (e.key === "Escape" && !lista.hidden) { cerrar(); boton.focus(); return; }
-
-    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-      e.preventDefault();
-      if (lista.hidden) { abrir(); return; }
-      idx = e.key === "ArrowDown" ? Math.min(idx + 1, todos.length - 1) : Math.max(idx - 1, 0);
-      enfocar(todos[idx]);
-    }
-
-    if (e.key === "Enter" && !lista.hidden && idx >= 0) {
-      e.preventDefault();
-      elegir(todos[idx].dataset.codigo);
-      cerrar();
-      boton.focus();
+    const listaIdioma = document.getElementById("idioma-lista");
+    if (listaIdioma) {
+      listaIdioma.addEventListener("click", (e) => {
+        const op = e.target.closest(".idioma__opcion");
+        if (op && op.dataset.codigo) {
+          aplicarTraduccionIa(op.dataset.codigo);
+        }
+      });
     }
   });
-
-  document.addEventListener("click", function (e) {
-    if (!lista.hidden && !contenedor.contains(e.target)) cerrar();
-  });
-
-  elegir(actual);
 })();
 
+
+
+/* ==========================================================
+   SELECTOR DE MONEDA FUNCIONAL - RASTREO.JS
+   ========================================================== */
+(function () {
+  const TASAS_MONEDA = {
+    usd: { simbolo: "$", tasa: 1, etiqueta: "USD" },
+    eur: { simbolo: "€", tasa: 0.92, etiqueta: "EUR" },
+    dop: { simbolo: "RD$", tasa: 60.5, etiqueta: "DOP" },
+    gbp: { simbolo: "£", tasa: 0.79, etiqueta: "GBP" }
+  };
+
+  const STORAGE_MONEDA = "rt_moneda_seleccionada";
+
+  function formatearMonto(montoUsd, codigo) {
+    const config = TASAS_MONEDA[codigo] || TASAS_MONEDA.usd;
+    const convertido = montoUsd * config.tasa;
+    const valorFormateado = convertido.toLocaleString("en-US", {
+      minimumFractionDigits: codigo === "dop" ? 0 : 2,
+      maximumFractionDigits: codigo === "dop" ? 0 : 2
+    });
+    return `${config.simbolo}${valorFormateado}`;
+  }
+
+  function actualizarPreciosEnPagina(codigo) {
+    document.querySelectorAll("[data-precio-usd]").forEach((el) => {
+      const base = parseFloat(el.getAttribute("data-precio-usd"));
+      if (!Number.isNaN(base)) {
+        el.textContent = formatearMonto(base, codigo);
+      }
+    });
+  }
+
+  function aplicarMoneda(codigoNormalizado, guardar = true) {
+    const codigo = TASAS_MONEDA[codigoNormalizado] ? codigoNormalizado : "usd";
+    const info = TASAS_MONEDA[codigo];
+
+    const selectMoneda = document.getElementById("currency");
+    const simboloEl = document.getElementById("moneda-simbolo");
+
+    if (selectMoneda && selectMoneda.value !== codigo) {
+      selectMoneda.value = codigo;
+    }
+    if (simboloEl) {
+      simboloEl.textContent = info.simbolo;
+    }
+
+    if (guardar) {
+      try {
+        localStorage.setItem(STORAGE_MONEDA, codigo);
+      } catch (_) {}
+    }
+
+    actualizarPreciosEnPagina(codigo);
+    document.dispatchEvent(
+      new CustomEvent("rt:monedaCambiada", {
+        detail: { moneda: codigo, simbolo: info.simbolo, tasa: info.tasa }
+      })
+    );
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const selectMoneda = document.getElementById("currency");
+    let monedaInicial = "usd";
+
+    try {
+      const guardada = (localStorage.getItem(STORAGE_MONEDA) || "").toLowerCase();
+      if (TASAS_MONEDA[guardada]) {
+        monedaInicial = guardada;
+      } else if (selectMoneda && TASAS_MONEDA[selectMoneda.value.toLowerCase()]) {
+        monedaInicial = selectMoneda.value.toLowerCase();
+      }
+    } catch (_) {}
+
+    aplicarMoneda(monedaInicial, false);
+
+    if (selectMoneda) {
+      selectMoneda.addEventListener("change", (e) => {
+        aplicarMoneda((e.target.value || "usd").toLowerCase(), true);
+      });
+    }
+  });
+})();
 
 /* ==========================================================
    4. CONTADOR Y ESTRELLAS (SI EXISTE .datos EN LA PÁGINA)
@@ -813,4 +1521,30 @@
     true
   );
 })();
+
+document.addEventListener("click", function (e) {
+  const trigger = e.target.closest("#btnUsaIaRastreo, .rt-btn-usa-ia, .btn-ia-top");
+  if (!trigger) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const abrir = () => {
+    const panel = document.getElementById("panelChatIzquierda");
+    const input = document.getElementById("inputPreguntaIa");
+    if (!panel) return false;
+
+    panel.classList.add("activo");
+    panel.classList.remove("expandido");
+    if (input) {
+      setTimeout(() => input.focus(), 120);
+    }
+    return true;
+  };
+
+  if (!abrir()) {
+    setTimeout(abrir, 120);
+  }
+}, true);
+
 })();

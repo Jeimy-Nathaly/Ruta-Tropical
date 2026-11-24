@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Queremos tus comentarios – Ruta Tropical</title>
+  <link rel="stylesheet" href="links estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="informacion.js" defer></script>
+</head>
+<body class="pagina-form">
+
+  <!-- ==========================================================
+  1. BARRA DE NAVEGACIÓN
+       ========================================================== -->
+  <nav class="nav-sitio" id="nav-sitio">
+    <button class="nav-sitio__menu" id="abrir-menu" type="button"
+            aria-label="Abrir menú" aria-expanded="false" aria-controls="cajon">
+      <span></span><span></span><span></span>
+    </button>
+
+    <a class="nav-sitio__marca" href="../pagina principal/Inicio.html">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+
+    <div class="nav-sitio__derecha">
+      <!-- Moneda -->
+      <div class="moneda" id="moneda-control">
+        <button class="moneda__boton" id="moneda-boton" type="button"
+                aria-haspopup="listbox" aria-expanded="false" aria-controls="moneda-lista"
+                aria-label="Moneda">
+          <span class="moneda__simbolo" id="moneda-simbolo" aria-hidden="true">$</span>
+          <span class="moneda__codigo" id="moneda-codigo">USD</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <ul class="moneda__lista" id="moneda-lista" role="listbox" aria-label="Elegir moneda" hidden>
+          <li role="option" data-moneda="usd" data-simbolo="$" aria-selected="true">
+            <span class="moneda__op-simbolo">$</span>
+            <span>USD</span>
+            <small>Dólar</small>
+          </li>
+          <li role="option" data-moneda="eur" data-simbolo="€" aria-selected="false">
+            <span class="moneda__op-simbolo">€</span>
+            <span>EUR</span>
+            <small>Euro</small>
+          </li>
+          <li role="option" data-moneda="dop" data-simbolo="RD$" aria-selected="false">
+            <span class="moneda__op-simbolo">RD$</span>
+            <span>DOP</span>
+            <small>Peso RD</small>
+          </li>
+          <li role="option" data-moneda="gbp" data-simbolo="£" aria-selected="false">
+            <span class="moneda__op-simbolo">£</span>
+            <span>GBP</span>
+            <small>Libra</small>
+          </li>
+        </ul>
+        <select id="currency" aria-hidden="true" tabindex="-1" class="sr-only">
+          <option value="usd" selected>USD</option>
+          <option value="eur">EUR</option>
+          <option value="dop">DOP</option>
+          <option value="gbp">GBP</option>
+        </select>
+      </div>
+
+      <!-- Idioma -->
+      <div class="idioma" id="idioma">
+        <button class="idioma__boton" id="idioma-boton" type="button"
+                aria-haspopup="listbox" aria-expanded="false" aria-controls="idioma-lista"
+                aria-label="Idioma">
+          <img id="idioma-bandera" src="https://flagcdn.com/w40/es.png" alt="" width="24" height="16">
+          <span class="idioma__codigo" id="idioma-codigo">ES</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="idioma__panel" id="idioma-lista" role="dialog" aria-label="Elegir idioma" hidden>
+          <div class="idioma__encabezado" id="idioma-titulo">SELECT YOUR LANGUAGE</div>
+          <div class="idioma__buscador">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input type="search" id="idioma-buscar" placeholder="Search language..." aria-label="Buscar idioma" autocomplete="off">
+          </div>
+          <ul class="idioma__opciones" id="idioma-opciones" role="listbox"></ul>
+        </div>
+      </div>
+
+      <!-- Usuario + menú desplegable -->
+      <div class="usuario-menu" id="usuario-menu">
+        <button class="nav-sitio__usuario" id="usuario-boton" type="button"
+                aria-haspopup="menu" aria-expanded="false" aria-controls="usuario-dropdown"
+                aria-label="Menú de usuario">
+          <span class="nav-sitio__inicial" id="usuario-inicial">J</span>
+          <img id="avatar-usuario" src="" alt="Perfil de usuario" width="40" height="40" hidden>
+        </button>
+
+        <div class="usuario-dropdown" id="usuario-dropdown" role="menu" hidden>
+          <button type="button" class="usuario-dropdown__agregar" id="btn-anadir-usuario" role="menuitem">
+            <span class="usuario-dropdown__agregar-ico" aria-hidden="true">
+              <i class="fa-solid fa-user-plus"></i>
+            </span>
+            <span>Añadir usuario</span>
+          </button>
+
+          <div class="usuario-dropdown__sep"></div>
+
+          <a href="#trips" class="usuario-dropdown__link" role="menuitem">Trips</a>
+          <a href="ayuda.html" class="usuario-dropdown__link" role="menuitem">Ayuda/Preguntas frecuentes</a>
+          <a href="login.html" class="usuario-dropdown__link" role="menuitem">Tu cuenta</a>
+
+          <button type="button" class="usuario-dropdown__cerrar" id="btn-cerrar-sesion" role="menuitem">
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================
+  2. MENÚ LATERAL
+       ========================================================== -->
+  <div class="cajon-fondo" id="cajon-fondo"></div>
+
+  <aside class="cajon" id="cajon" aria-label="Menú principal">
+    <div class="cajon__cab">
+      <span class="cajon__marca">Ruta Tropical</span>
+      <button class="cajon__cerrar" id="cerrar-menu" type="button" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <ul class="cajon__principal">
+      <li><a class="activa" href="#destinos"><i class="fa-solid fa-plane" aria-hidden="true"></i> Vuelos</a></li>
+      <li><a href="#hoteles"><i class="fa-solid fa-hotel" aria-hidden="true"></i> Hoteles</a></li>
+      <li><a href="#autobus"><i class="fa-solid fa-bus" aria-hidden="true"></i> Autobús</a></li>
+    </ul>
+
+    <ul class="cajon__enlaces">
+      <li><a href="../pagina principal/Inicio.html#ia"><i class="fa-solid fa-chevron-right"></i>planifica con IA</a></li>
+        <li><a href="../descubre/descubre tu reserva tu proximo viaje.html"><i class="fa-solid fa-chevron-right"></i> viajes</a></li>
+        <li><a href="../acerca de/acerca de.html"><i class="fa-solid fa-chevron-right"></i> Sobre nosotros</a></li>
+        <li><a href="../contactanos/contactanos.html"><i class="fa-solid fa-chevron-right"></i> Contacto</a></li>
+        <li><a href="../ayuda/ayuda.html"><i class="fa-solid fa-chevron-right"></i> Preguntas frecuentes</a></li>
+        <li><a href="../explorar mas/explorar.html"><i class="fa-solid fa-chevron-right"></i> explorar</a></li>
+        <li><a href="../terminos/termino.html"><i class="fa-solid fa-chevron-right"></i> Términos y condiciones</a></li>
+        <li><a href="../rastreador/rastreo.html"><i class="fa-solid fa-chevron-right"></i> rastraedor de vuelos</a></li>
+        <li><a href="../viajes/viajes.html"><i class="fa-solid fa-chevron-right"></i> planean tus viajes</a></li>
+    </ul>
+
+    <div class="cajon__contacto">
+      <div class="contacto-fila">
+        <span class="contacto-fila__icono"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+        <div>
+          <strong>Teléfono:</strong>
+          <span class="info">+1-029-789-7542</span>
+        </div>
+      </div>
+      <div class="contacto-fila">
+        <span class="contacto-fila__icono"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+        <div>
+          <strong>Correo:</strong>
+          <span class="info">rutaTropical@tuempresa.com</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================
+  3. CONTENIDO PRINCIPAL
+       ========================================================== -->
+  <main class="form-pagina" id="form-top">
+    <div class="form-cabecera">
+      <span class="form-cabecera__badge">
+        <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+        <span>Centro de comentarios</span>
+      </span>
+      <h1>Queremos tus comentarios</h1>
+    </div>
+
+    <div class="form-layout">
+      <form class="form-col" id="form-comentarios" action="#" method="post" enctype="multipart/form-data">
+        <div class="campo">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="nombre@ejemplo.com" required>
+        </div>
+
+        <div class="campo">
+          <label for="nombre">Nombre (opcional)</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Introduce tu nombre">
+        </div>
+
+        <div class="campo">
+          <label id="asunto-label" for="asunto-boton">Asunto</label>
+          <div class="select-custom" id="asunto-custom">
+            <button type="button" class="select-custom__boton" id="asunto-boton"
+                    aria-haspopup="listbox" aria-expanded="false" aria-labelledby="asunto-label asunto-texto">
+              <span class="select-custom__valor">
+                <span class="select-custom__ico" id="asunto-ico" aria-hidden="true">
+                  <i class="fa-solid fa-layer-group"></i>
+                </span>
+                <span id="asunto-texto">Otros</span>
+              </span>
+              <i class="fa-solid fa-chevron-down select-custom__flecha" aria-hidden="true"></i>
+            </button>
+
+            <ul class="select-custom__lista" id="asunto-lista" role="listbox" aria-labelledby="asunto-label" hidden>
+              <li role="option" data-valor="Otros" data-icono="fa-layer-group" aria-selected="true">
+                <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                <span>Otros</span>
+              </li>
+              <li role="option" data-valor="Sugerencia" data-icono="fa-lightbulb" aria-selected="false">
+                <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+                <span>Sugerencia</span>
+              </li>
+              <li role="option" data-valor="Problema con la app" data-icono="fa-mobile-screen-button" aria-selected="false">
+                <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+                <span>Problema con la app</span>
+              </li>
+              <li role="option" data-valor="Problema con el sitio web" data-icono="fa-globe" aria-selected="false">
+                <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                <span>Problema con el sitio web</span>
+              </li>
+            </ul>
+
+            <select id="asunto" name="asunto" class="sr-only" tabindex="-1" aria-hidden="true">
+              <option value="Otros" selected>Otros</option>
+              <option value="Sugerencia">Sugerencia</option>
+              <option value="Problema con la app">Problema con la app</option>
+              <option value="Problema con el sitio web">Problema con el sitio web</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="6" placeholder="Cuéntanos qué podemos mejorar o qué ocurrió..." required></textarea>
+        </div>
+
+        <div class="campo">
+          <label for="captura">Captura de pantalla</label>
+          <label class="archivo-drop" for="captura" id="archivo-drop">
+            <span class="archivo-drop__btn">
+              <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+              <span id="archivo-btn-texto">Elegir archivos</span>
+            </span>
+            <span class="archivo-drop__nombre" id="archivo-nombre">Ningún archivo seleccionado</span>
+            <input type="file" id="captura" name="captura" accept=".jpeg,.jpg,.png,.gif,.bmp" multiple class="sr-only">
+          </label>
+          <p class="nota" id="estado-archivo">Se permiten archivos que no superen los 5 MB cada uno. Total permitido: 20 MB. Formatos aceptados: jpeg, jpg, png, gif, bmp.</p>
+        </div>
+
+        <p class="nota">Ten en cuenta que Ruta Tropical podrá compartir partes de la información proporcionada, incluyendo datos personales, con los proveedores de viaje mencionados en los comentarios.</p>
+
+        <div class="form-acciones">
+          <button type="submit" class="btn">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            <span>Enviar comentario</span>
+          </button>
+        </div>
+
+        <div class="form-alerta" id="form-alerta" role="status" aria-live="polite" hidden></div>
+      </form>
+
+      <aside class="lateral">
+        <div class="lateral__bloque">
+          <span class="lateral__ico"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
+          <p>Consulta nuestra sección de <a href="ayuda.html">Ayuda</a> en línea antes de enviarnos tus comentarios.</p>
+        </div>
+
+        <div class="lateral__bloque">
+          <span class="lateral__ico"><i class="fa-solid fa-globe" aria-hidden="true"></i></span>
+          <p>Ruta Tropical busca las mejores ofertas de viajes en más de <a href="#">30 idiomas</a>, y nuestros especialistas estarán encantados de recibir tus comentarios. Pruébalo.</p>
+        </div>
+
+        <div class="lateral__asistente">
+          <p class="lateral__subtitulo">Asistente Virtual</p>
+          <p class="lateral__desc">¿Necesitas ayuda rápida con tu búsqueda o reserva?</p>
+          <a href="#" class="btn btn--secundario">
+            <i class="fa-regular fa-comments" aria-hidden="true"></i>
+            <span>Chat</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ==========================================================
+  4. PIE DE PÁGINA ACTUAL
+       ========================================================== -->
+  <footer class="rt-footer">
+    <div class="rt-footer__inner">
+
+      <div class="rt-footer__top">
+        <div class="rt-footer__brand-col">
+          <a class="rt-footer__logo" href="../pagina principal/Inicio.html">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+          <p class="rt-footer__desc">Tu agencia de confianza para descubrir el mundo al mejor precio. Compara, ahorra y vuela sin límites.</p>
+          <div class="rt-footer__social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <nav class="rt-footer__col" aria-label="Empresa">
+            <h3>Empresa</h3>
+          <ul>
+            <li><a href="../acerca de/acerca de.html"><span class="rt-chev">&rsaquo;</span> Acerca de</a></li>
+            <li><a href="../contactanos/contactanos.html"><span class="rt-chev">&rsaquo;</span> Contactanos</a></li>
+            <li><a href="#"><span class="rt-chev">&rsaquo;</span> Afiliados</a></li>
+            <li><a href="../funcion de servicio/funcion de servicio.html"><span class="rt-chev">&rsaquo;</span> Funcion de servicio</a></li>
+          </ul>
+        </nav>
+
+        <nav class="rt-footer__col" aria-label="Contacto">
+          <h3>Contacto</h3>
+          <ul>
+            <li><a href="../ayuda/ayuda.html"><span class="rt-chev">&rsaquo;</span> Ayuda / FAQ</a></li>
+            <li><a href="../ayuda/comentarios.html"><span class="rt-chev">&rsaquo;</span> Comentarios</a></li>
+            <li><a href="../rastreador/rastreo.html"><span class="rt-chev">&rsaquo;</span> Rastreador de vuelos</a></li>
+          </ul>
+        </nav>
+
+        <nav class="rt-footer__col" aria-label="Más">
+          <h3>Más</h3>
+          <ul>
+            <li><a href="../tarifa baja/tarifa.html"><span class="rt-chev">&rsaquo;</span> Tarifas aéreas</a></li>
+            <li><a href="../terminos/termino.html"><span class="rt-chev">&rsaquo;</span> Terminos y condiciones</a></li>
+            <li><a href="../seguridad/seguridad.html"><span class="rt-chev">&rsaquo;</span> Seguridad</a></li>
+          </ul>
+        </nav>
+
+        <div class="rt-footer__app">
+          <h3>Descarga la app</h3>
+          <p class="rt-footer__app-texto">Lleva tus reservas y ofertas siempre contigo.</p>
+          <div class="rt-footer__apps">
+            <a class="rt-store-btn rt-store-btn--play" href="#" aria-label="Disponible en Google Play">
+              <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+              <span><small>DISPONIBLE EN</small><strong>Google Play</strong></span>
+            </a>
+            <a class="rt-store-btn rt-store-btn--apple" href="#" aria-label="Consíguelo en App Store">
+              <i class="fa-brands fa-apple" aria-hidden="true"></i>
+              <span><small>CONSÍGUELO EN</small><strong>App Store</strong></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rt-footer__legal">
+        <span>© 2026 Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝. Todos los derechos reservados.</span>
+        <div class="rt-footer__legales-links">
+          <a href="#">Privacidad</a>
+          <span class="rt-dot" aria-hidden="true">&bull;</span>
+          <a href="#">Términos y condiciones</a>
+          <span class="rt-dot" aria-hidden="true">&bull;</span>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+
+      <div class="rt-footer__partners" aria-label="Marcas aliadas">
+        <span class="rt-partner rt-partner--booking">Booking.com</span>
+        <span class="rt-partner rt-partner--kayak"><span>K</span><span>A</span><span>Y</span><span>A</span><span>K</span></span>
+        <span class="rt-partner rt-partner--opentable"><i class="fa-regular fa-circle" aria-hidden="true"></i> OpenTable</span>
+        <span class="rt-partner rt-partner--priceline">priceline</span>
+        <span class="rt-partner rt-partner--agoda">agoda</span>
+      </div>
+
+      <div class="rt-footer__airlines">
+        <span>Iberia</span>
+        <span>JetBlue</span>
+        <span>Air France</span>
+        <span>United</span>
+        <span>Avianca</span>
+        <span>Air Europa</span>
+      </div>
+
+    </div>
+  </footer>
+</body>
+</html>

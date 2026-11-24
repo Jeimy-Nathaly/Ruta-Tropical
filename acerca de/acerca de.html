@@ -8,106 +8,133 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="acercade.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-      <link rel="javascript" href="acerca de.js">
+  <link rel="stylesheet" href="../pagina principal/perfil-menu.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
- <!-- ==================================================
-     BARRA DE NAVEGACIÓN
-     ================================================== -->
-<nav class="nav-sitio" id="nav-sitio">
-
-    <button class="nav-sitio__menu" id="abrir-menu" type="button"
-            aria-label="Abrir menú" aria-expanded="false" aria-controls="cajon">
+  <!-- ==================================================
+       BARRA DE NAVEGACIÓN
+       ================================================== -->
+  <nav class="nav-sitio" id="nav-sitio">
+    <div class="nav-sitio__izq">
+      <button class="nav-sitio__menu" id="abrir-menu" type="button"
+              aria-label="Abrir menú" aria-expanded="false" aria-controls="cajon">
         <span></span><span></span><span></span>
-    </button>
+      </button>
 
-    <a class="nav-sitio__marca" href="/pagina principal/Inicio.html">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+      <a class="nav-sitio__marca" href="../pagina principal/Inicio.html">Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</a>
+    </div>
 
     <div class="nav-sitio__derecha">
-        <label class="moneda">
-            <img id="bandera" src="https://flagcdn.com/w40/us.png" alt="" width="38" height="26">
-            <select id="currency" aria-label="Moneda">
-                <option value="usd">USD</option>
-                <option value="eur">EUR</option>
-                <option value="dop">DOP</option>
-                <option value="gbp">GBP</option>
-            </select>
-            <i class="fa-solid fa-caret-down" aria-hidden="true"></i>
-        </label>
-<div class="idioma" id="idioma">
-    <button class="idioma__boton" id="idioma-boton" type="button"
-            aria-haspopup="listbox" aria-expanded="false" aria-controls="idioma-lista"
-            aria-label="Idioma">
-        <img id="idioma-bandera" src="https://flagcdn.com/w40/es.png" alt="" width="38" height="26">
-        <span class="idioma__codigo" id="idioma-codigo">ES</span>
+      <label class="moneda" for="currency">
+        <span class="moneda__icono" id="moneda-simbolo" aria-hidden="true">$</span>
+        <select id="currency" aria-label="Moneda">
+          <option value="usd">USD</option>
+          <option value="eur">EUR</option>
+          <option value="dop">DOP</option>
+          <option value="gbp">GBP</option>
+        </select>
         <i class="fa-solid fa-caret-down" aria-hidden="true"></i>
-    </button>
+      </label>
 
-    <ul class="idioma__lista" id="idioma-lista" role="listbox" aria-label="Elegir idioma" hidden></ul>
-</div>
-        <a class="nav-sitio__usuario" href="login.html" aria-label="Iniciar sesión">
-            <i class="fa-solid fa-user" aria-hidden="true"></i>
-        </a>
-    </div>
-</nav>
-
-<!-- Fondo difuminado -->
-<div class="cajon-fondo" id="cajon-fondo"></div>
-
-<!-- ==================================================
-MENÚ LATERAL
-================================================== -->
-<aside class="cajon" id="cajon" aria-label="Menú principal">
-
-    <div class="cajon__cab">
-        <span class="cajon__marca">Ruta Tropical</span>
-        <button class="cajon__cerrar" id="cerrar-menu" type="button" aria-label="Cerrar menú">
-            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      <div class="idioma" id="idioma">
+        <button class="idioma__boton" id="idioma-boton" type="button"
+                aria-haspopup="listbox" aria-expanded="false" aria-controls="idioma-lista"
+                aria-label="Idioma">
+          <img id="idioma-bandera" src="https://flagcdn.com/w40/es.png" alt="" width="24" height="16">
+          <span class="idioma__codigo" id="idioma-codigo">ES</span>
+          <i class="fa-solid fa-caret-down" aria-hidden="true"></i>
         </button>
+
+        <ul class="idioma__lista" id="idioma-lista" role="listbox" aria-label="Elegir idioma" hidden></ul>
+      </div>
+
+      <div class="rt-perfil-box" id="rtPerfilBox">
+        <button
+          type="button"
+          class="rt-perfil-btn"
+          id="rtPerfilBtn"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="rtPerfilMenu"
+          title="Perfil de usuario"
+        >
+          <span class="rt-perfil-inicial" id="rtPerfilInicialBtn">J</span>
+        </button>
+
+        <div class="rt-perfil-menu" id="rtPerfilMenu" role="menu" aria-hidden="true">
+          <div class="rt-perfil-cuentas-lista" id="rtPerfilCuentasLista"></div>
+
+          <button type="button" class="rt-perfil-anadir" id="rtPerfilAnadirBtn" role="menuitem">
+            <span class="rt-perfil-anadir-icono" aria-hidden="true">+👤</span>
+            <span>Añadir usuario</span>
+          </button>
+
+          <div class="rt-perfil-separador"></div>
+
+          <a href="../viajes/viajes.html" class="rt-perfil-enlace" role="menuitem">Trips</a>
+          <a href="../ayuda/ayuda.html" class="rt-perfil-enlace" role="menuitem">Ayuda/Preguntas frecuentes</a>
+          <a href="../pagina principal/perfil-usuario.html" class="rt-perfil-enlace" role="menuitem">Tu cuenta</a>
+
+          <button type="button" class="rt-perfil-salir" id="rtPerfilSalirBtn" role="menuitem">
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Fondo difuminado -->
+  <div class="cajon-fondo" id="cajon-fondo"></div>
+
+  <!-- ==================================================
+       MENÚ LATERAL
+       ================================================== -->
+  <aside class="cajon" id="cajon" aria-label="Menú principal">
+    <div class="cajon__cab">
+      <span class="cajon__marca">Ruta Tropical</span>
+      <button class="cajon__cerrar" id="cerrar-menu" type="button" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
     </div>
 
     <ul class="cajon__principal">
-        <li><a class="activa" href="#destinos"><i class="fa-solid fa-plane"></i> Vuelos</a></li>
-        <li><a href="#hoteles"><i class="fa-solid fa-hotel"></i> Hoteles</a></li>
-        <li><a href="#hoteles"><i class="fa-solid fa-hotel"></i> autobus</a></li>
+      <li><a class="activa" href="#destinos"><i class="fa-solid fa-plane"></i> Vuelos</a></li>
+      <li><a href="#hoteles"><i class="fa-solid fa-hotel"></i> Hoteles</a></li>
+      <li><a href="#autobus"><i class="fa-solid fa-bus"></i> Autobús</a></li>
     </ul>
 
-
-
     <ul class="cajon__enlaces">
-        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> planifica con IA</a></li>
-        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Tarifas de equipaje</a></li>
-        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> planean tus viajes</a></li>
-        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Sobre nosotros</a></li>
-        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Contacto</a></li>
-        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Preguntas frecuentes</a></li>
-        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> explorar</a></li>
-        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Términos y condiciones</a></li>
-        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> rastraedor de vuelos</a></li>
-        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> viajes</a></li>
+        <li><a href="../acerca de/acerca de.html#chat-ia><i class="fa-solid fa-chevron-right"></i>planifica con IA</a></li>
+        <li><a href="../descubre/descubre tu reserva tu proximo viaje.html"><i class="fa-solid fa-chevron-right"></i> viajes</a></li>
+        <li><a href="../acerca de/acerca de.html"><i class="fa-solid fa-chevron-right"></i> Sobre nosotros</a></li>
+        <li><a href="../contactanos/contactanos.html"><i class="fa-solid fa-chevron-right"></i> Contacto</a></li>
+        <li><a href="../ayuda/ayuda.html"><i class="fa-solid fa-chevron-right"></i> Preguntas frecuentes</a></li>
+        <li><a href="../explorar mas/explorar.html"><i class="fa-solid fa-chevron-right"></i> explorar</a></li>
+        <li><a href="../terminos/termino.html"><i class="fa-solid fa-chevron-right"></i> Términos y condiciones</a></li>
+        <li><a href="../rastreador/rastreo.html"><i class="fa-solid fa-chevron-right"></i> rastraedor de vuelos</a></li>
+        <li><a href="../viajes/viajes.html"><i class="fa-solid fa-chevron-right"></i> planean tus viajes</a></li>
     </ul>
 
     <div class="cajon__contacto">
-        <div class="contacto-fila">
-            <span class="contacto-fila__icono"><i class="fa-solid fa-phone"></i></span>
-            <div>
-                <strong>Teléfono:</strong>
-                <span class="info">+1-029-789-7542</span>
-            </div>
+      <div class="contacto-fila">
+        <span class="contacto-fila__icono"><i class="fa-solid fa-phone"></i></span>
+        <div>
+          <strong>Teléfono:</strong>
+          <span class="info">+1-029-789-7542</span>
         </div>
-        <div class="contacto-fila">
-            <span class="contacto-fila__icono"><i class="fa-solid fa-envelope"></i></span>
-            <div>
-                <strong>Correo:</strong>
-                <span class="info">rutaTropical@tuempresa.com</span>
-            </div>
+      </div>
+      <div class="contacto-fila">
+        <span class="contacto-fila__icono"><i class="fa-solid fa-envelope"></i></span>
+        <div>
+          <strong>Correo:</strong>
+          <span class="info">rutaTropical@tuempresa.com</span>
         </div>
+      </div>
     </div>
+  </aside>
 
-</aside>
   <header class="banner">
     <h1>Tu viaje empieza en Ruta Tropical.</h1>
   </header>
@@ -124,7 +151,7 @@ MENÚ LATERAL
     </p>
 
     <p>
-      Creemos que planificar unas vacaciones no debería ser complicado. Por eso construimos una
+      Creemos que planificar unas vacaciones debería ser complicado. Por eso construimos una
       plataforma que reúne en un solo lugar vuelos, hoteles, alquiler de autos y paquetes, para que
       compares con calma y elijas lo que mejor se adapte a ti. Somos pioneros en la búsqueda de viajes
       enfocada en destinos tropicales, siempre pensando en quien viaja. No importa tu presupuesto, tus
@@ -173,89 +200,116 @@ MENÚ LATERAL
     </section>
   </main>
 
-<!---------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------
-pie de pagina
------------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------->
-<footer class="footer">
-    <div class="footer__inner">
+  <!-- ==========================================================
+       PIE DE PÁGINA - ESTILO RUTA TROPICAL
+       ========================================================== -->
+  <footer class="rt-footer">
+    <div class="rt-footer__inner">
+      <div class="rt-footer__top">
+        <div class="rt-footer__marca">
+          <a href="../pagina principal/Inicio.html" class="rt-footer__logo">RuTa Tropical</a>
+          <p class="rt-footer__desc">
+            Tu agencia de confianza para descubrir el mundo al mejor precio. Compara, ahorra y vuela sin límites.
+          </p>
+          <div class="rt-footer__redes" aria-label="Redes sociales">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+          </div>
+        </div>
 
-      <div class="footer__columnas">
-        <nav aria-label="Empresa">
+        <nav class="rt-footer__col" aria-label="Empresa">
           <h3>Empresa</h3>
           <ul>
-            <li><a href="/acerca de/acerca de.html">Acerca de</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="../acerca de/acerca de.html"><span class="rt-chev">&rsaquo;</span> Acerca de</a></li>
+            <li><a href="../contactanos/contactanos.html"><span class="rt-chev">&rsaquo;</span> Contactanos</a></li>
+            <li><a href="#"><span class="rt-chev">&rsaquo;</span> Afiliados</a></li>
+            <li><a href="../funcion de servicio/funcion de servicio.html"><span class="rt-chev">&rsaquo;</span> Funcion de servicio</a></li>
           </ul>
         </nav>
 
-        <nav aria-label="Contacto">
+        <nav class="rt-footer__col" aria-label="Contacto">
           <h3>Contacto</h3>
           <ul>
-            <li><a href="#">Ayuda/FAQ</a></li>
-            <li><a href="#">Prensa</a></li>
-            <li><a href="#">Afiliados</a></li>
-            <li><a href="#">Dueños de hoteles</a></li>
-            <li><a href="#">Socios</a></li>
-            <li><a href="#">Anúnciate con nosotros</a></li>
+            <li><a href="../ayuda/ayuda.html"><span class="rt-chev">&rsaquo;</span> Ayuda / FAQ</a></li>
+            <li><a href="../ayuda/comentarios.html"><span class="rt-chev">&rsaquo;</span> Comentarios</a></li>
+            <li><a href="../rastreador/rastreo.html"><span class="rt-chev">&rsaquo;</span> Rastreador de vuelos</a></li>
           </ul>
         </nav>
 
-        <nav aria-label="Más">
+        <nav class="rt-footer__col" aria-label="Más">
           <h3>Más</h3>
           <ul>
-            <li><a href="#">Tarifas de aerolíneas</a></li>
-            <li><a href="#">Aerolíneas</a></li>
-            <li><a href="#">Consejos de tarifas bajas</a></li>
-            <li><a href="#">Insignias y certificados</a></li>
-            <li><a href="#">Seguridad</a></li>
+            <li><a href="../tarifa baja/tarifa.html"><span class="rt-chev">&rsaquo;</span> Tarifas aéreas</a></li>
+            <li><a href="../terminos/termino.html"><span class="rt-chev">&rsaquo;</span> Terminos y condiciones</a></li>
+            <li><a href="../seguridad/seguridad.html"><span class="rt-chev">&rsaquo;</span> Seguridad</a></li>
           </ul>
         </nav>
 
-        <div>
+        <div class="rt-footer__col rt-footer__app">
           <h3>Descarga la app</h3>
-          <div class="apps">
-            <a class="app-btn" href="#" aria-label="Disponible en Google Play">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 2.5v19l10-9.5L3 2.5z"/>
-                <path d="M16 9l3.5 2c.7.4.7 1.6 0 2L16 15l-3-3 3-3z"/>
-              </svg>
-              <div><small>Get it on</small><span>Google Play</span></div>
+          <p class="rt-footer__app-texto">Lleva tus reservas y ofertas siempre contigo.</p>
+          <div class="rt-footer__tiendas">
+            <a href="#" class="rt-tienda-btn" aria-label="Disponible en Google Play">
+              <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+              <span class="rt-tienda-btn__txt">
+                <small>DISPONIBLE EN</small>
+                <strong>Google Play</strong>
+              </span>
             </a>
-            <a class="app-btn" href="#" aria-label="Descargar en App Store">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M16.4 12.7c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9s-1.9-.9-3.2-.8c-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.700-.8 3.100-.8s1.800.8 3.100.8 2.100-1.200 2.900-2.300c.9-1.300 1.300-2.600 1.300-2.700-.1 0-2.300-.9-2.300-3.700zM14 5.4c.7-.8 1.100-1.900 1-3-1 0-2.100.7-2.800 1.500-.6.700-1.100 1.800-1 2.900 1.100.1 2.100-.6 2.800-1.400z"/>
-              </svg>
-              <div><small>Download on the</small><span>App Store</span></div>
+            <a href="#" class="rt-tienda-btn" aria-label="Consíguelo en App Store">
+              <i class="fa-brands fa-apple" aria-hidden="true"></i>
+              <span class="rt-tienda-btn__txt">
+                <small>CONSÍGUELO EN</small>
+                <strong>App Store</strong>
+              </span>
             </a>
           </div>
         </div>
       </div>
 
-      <div class="footer__legal">
-        <div class="footer__legal-links">
-          <span>©2026 Ɽ𝕦Ƭ𝕒 ƬⱤ𝕠℘ɩ𝕔𝕒𝕝</span>
+      <div class="rt-footer__legal">
+        <span>&copy; 2026 RuTa Tropical. Todos los derechos reservados.</span>
+        <div class="rt-footer__legales-links">
           <a href="#">Privacidad</a>
+          <span aria-hidden="true">&bull;</span>
           <a href="#">Términos y condiciones</a>
+          <span aria-hidden="true">&bull;</span>
+          <a href="#">Cookies</a>
         </div>
+      </div>
 
-        <div class="social">
-          <a href="#" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.100 0 2.200.2 2.200.2v2.500h-1.300c-1.200 0-1.600.8-1.600 1.600V12h2.800l-.4 2.900h-2.300v7A10 10 0 0012 2z"/></svg>
-          </a>
-          <a href="#" aria-label="YouTube">
-            <svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.500 2.500 0 00-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 002.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 001.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 001.800-1.800c.4-1.600.4-4.800.4-4.800s0-3.200-.4-4.800zM10 15V9l5.200 3L10 15z"/></svg>
-          </a>
-          <a href="#" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.500A4.500 4.500 0 1112 16.500a4.500 4.500 0 010-9zm0 2A2.500 2.500 0 1012 14.500a2.500 2.500 0 000-5zM17.500 6a1 1 0 110 2 1 1 0 010-2z"/></svg>
-          </a>
+      <div class="rt-footer__socios" aria-label="Plataformas asociadas">
+        <span class="rt-socio rt-socio--booking">Booking.com</span>
+        <span class="rt-socio rt-socio--kayak">
+          <i>K</i><i>A</i><i>Y</i><i>A</i><i>K</i>
+        </span>
+        <span class="rt-socio rt-socio--opentable">&bull; &#9711; OpenTable</span>
+        <span class="rt-socio rt-socio--priceline">priceline</span>
+        <span class="rt-socio rt-socio--agoda">agoda<small>&bull;&bull;&bull;&bull;&bull;</small></span>
+      </div>
+
+      <div class="rt-footer__aerolineas" aria-label="Aerolíneas">
+        <span class="rt-footer__aero-titulo">Aerolíneas</span>
+        <div class="rt-footer__aero-lista">
+          <a href="#">Arajet</a>
+          <a href="#">American</a>
+          <a href="#">Copa</a>
+          <a href="#">Delta</a>
+          <a href="#">Iberia</a>
+          <a href="#">JetBlue</a>
+          <a href="#">Air France</a>
+          <a href="#">United</a>
+          <a href="#">Avianca</a>
+          <a href="#">Air Europa</a>
         </div>
       </div>
     </div>
   </footer>
 
-
-  <script src="acerca de.js"></script>
+<script src="acerca de.js"></script>
+  <script src="../pagina principal/perfil-menu.js"></script>
+  <script src="../pagina principal/traductor-global.js"></script>
 </body>
 </html>

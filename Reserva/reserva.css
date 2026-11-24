@@ -1,0 +1,1335 @@
+:root {
+  --alto-nav: 64px;
+  --salmon: #e2837d;
+  --rojo: #dd4350;
+  --naranja: #dd4350;
+  --turquesa: #81bac2;
+  --turquesa-hover: #5f9ea7;
+  --azul: #38a3d8;
+  --azul-oscuro: #2589bd;
+  --texto: #192024;
+  --gris-texto: #525d66;
+  --borde: #dce3e8;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.pagina-reserva {
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  color: var(--texto);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.45;
+  background-color: #ffffff;
+}
+
+a {
+  color: var(--rojo);
+  text-decoration: none;
+}
+
+@keyframes bajar-nav {
+  from { transform: translateY(-100%); }
+  to   { transform: none; }
+}
+
+/* ==========================================================
+   BARRA DE NAVEGACIÓN
+   ========================================================== */
+.nav-sitio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--alto-nav);
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(92, 89, 86, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nav-sitio.fija {
+  background: rgba(82, 79, 76, 0.72);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+  animation: bajar-nav 0.25s ease;
+}
+
+.nav-sitio__menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0 9px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.nav-sitio__menu span {
+  display: block;
+  height: 2.5px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+.nav-sitio__marca {
+  margin-right: auto;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  white-space: nowrap;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+}
+
+.nav-sitio__derecha {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.moneda { position: relative; }
+
+.moneda__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 13px 0 8px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.moneda__simbolo {
+  display: grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 5px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffffff;
+  background: var(--turquesa-hover);
+  border-radius: 999px;
+}
+
+.moneda__codigo {
+  font: 700 13px/1 "Poppins", Arial, sans-serif;
+  color: var(--texto);
+}
+
+.moneda__boton i { font-size: 11px; color: #555555; }
+
+.moneda__lista {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 1200;
+  width: 190px;
+  padding: 6px;
+  list-style: none;
+  background: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
+}
+
+.moneda__lista[hidden] { display: none; }
+
+.moneda__lista li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--texto);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.moneda__op-simbolo {
+  display: grid;
+  place-items: center;
+  min-width: 26px;
+  height: 22px;
+  padding: 0 4px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffffff;
+  background: var(--turquesa-hover);
+  border-radius: 999px;
+}
+
+.moneda__lista li small {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.moneda__lista li:hover { background: #f3f5f7; }
+.moneda__lista li[aria-selected="true"] { background: var(--rojo); color: #ffffff; }
+.moneda__lista li[aria-selected="true"] small { color: rgba(255, 255, 255, 0.9); }
+
+.idioma { position: relative; }
+
+.idioma__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 13px 0 9px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.idioma__boton img {
+  display: block;
+  width: 22px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.idioma__codigo {
+  font: 700 13px/1 "Poppins", Arial, sans-serif;
+  color: var(--texto);
+}
+
+.idioma__boton i { font-size: 11px; color: #555555; }
+
+.idioma__panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 1200;
+  width: 310px;
+  max-width: calc(100vw - 24px);
+  padding: 16px 14px 14px;
+  background: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+}
+
+.idioma__panel[hidden] { display: none; }
+
+.idioma__encabezado {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: #4b5563;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.idioma__buscador {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 38px;
+  padding: 0 12px;
+  margin-bottom: 12px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+}
+
+.idioma__buscador i { font-size: 13px; color: #6b7280; }
+
+.idioma__buscador input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--texto);
+}
+
+.idioma__opciones {
+  list-style: none;
+  max-height: 295px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.idioma__opciones li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.idioma__opciones li img {
+  flex: none;
+  width: 28px;
+  height: 19px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.idioma__texto-grupo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.idioma__nombre { font-size: 14px; font-weight: 700; color: #111827; }
+.idioma__region { font-size: 11.5px; font-weight: 500; color: #6b7280; }
+.idioma__opciones li small { margin-left: auto; font-size: 12px; font-weight: 800; color: #4b5563; }
+.idioma__opciones li:hover { background: #f3f4f6; }
+.idioma__opciones li[aria-selected="true"] { background: var(--rojo); }
+.idioma__opciones li[aria-selected="true"] .idioma__nombre,
+.idioma__opciones li[aria-selected="true"] .idioma__region,
+.idioma__opciones li[aria-selected="true"] small { color: #ffffff; }
+
+.usuario-menu { position: relative; }
+
+.nav-sitio__usuario {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  background: var(--azul);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.nav-sitio__inicial { font-size: 16px; font-weight: 800; line-height: 1; color: #ffffff; }
+
+.nav-sitio__usuario img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav-sitio__usuario img[hidden] { display: none; }
+
+.usuario-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 1250;
+  width: 280px;
+  padding: 14px;
+  background: #ffffff;
+  border: 2px solid var(--turquesa);
+  border-radius: 20px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.16);
+}
+
+.usuario-dropdown[hidden] { display: none; }
+
+.usuario-dropdown__agregar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1.5px dashed var(--turquesa);
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.usuario-dropdown__agregar-ico {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--salmon);
+  color: #ffffff;
+  font-size: 14px;
+  flex: none;
+}
+
+.usuario-dropdown__sep { height: 1px; background: #e5e7eb; margin: 12px 2px; }
+
+.usuario-dropdown__link {
+  display: block;
+  padding: 9px 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  border-radius: 8px;
+}
+
+.usuario-dropdown__link:hover { background: #f9fafb; color: var(--rojo); padding-left: 10px; }
+
+.usuario-dropdown__cerrar {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1.5px solid var(--salmon);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--rojo);
+  cursor: pointer;
+}
+
+.usuario-dropdown__cerrar:hover { background: var(--rojo); border-color: var(--rojo); color: #ffffff; }
+
+/* ==========================================================
+   MENÚ LATERAL
+   ========================================================== */
+.cajon-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  background: rgba(196, 202, 213, 0.35);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cajon-fondo.visible { opacity: 1; pointer-events: auto; }
+
+.cajon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1100;
+  width: 300px;
+  max-width: 85vw;
+  padding: 20px 16px 24px;
+  overflow-y: auto;
+  background: #ffffff;
+  box-shadow: 6px 0 30px rgba(0, 0, 0, 0.18);
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.3s;
+}
+
+.cajon.abierto { transform: none; visibility: visible; }
+
+.cajon__cab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.cajon__marca { font-size: 20px; font-weight: 800; color: var(--salmon); }
+
+.cajon__cerrar {
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  color: var(--turquesa);
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cajon__principal, .cajon__enlaces { list-style: none; }
+
+.cajon__principal a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--turquesa);
+  border-left: 3px solid transparent;
+}
+
+.cajon__principal i { width: 22px; font-size: 18px; text-align: center; color: #5b6270; }
+.cajon__principal a.activa { color: var(--naranja); border-left-color: var(--naranja); background: #fff8f4; }
+.cajon__principal a.activa i { color: var(--naranja); }
+
+.cajon__enlaces a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 4px;
+  font-size: 13px;
+  color: var(--rojo);
+}
+
+.cajon__enlaces i { font-size: 9px; color: var(--naranja); }
+
+.cajon__contacto {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+}
+
+.contacto-fila { display: flex; align-items: center; gap: 12px; }
+
+.contacto-fila__icono {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  font-size: 14px;
+  color: #ffffff;
+  background: var(--naranja);
+  border-radius: 50%;
+}
+
+.contacto-fila strong { display: block; margin-bottom: 3px; font-size: 12px; color: #757f99; }
+
+.cajon__contacto .info {
+  display: inline-block;
+  max-width: 100%;
+  padding: 6px 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffffff;
+  background: var(--naranja);
+  border-radius: 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================
+   LAYOUT DE RESERVA CON COLORES DE RUTA TROPICAL
+   ========================================================== */
+.reserva-layout {
+  flex: 1;
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: calc(var(--alto-nav) + 30px) 24px 56px;
+  background-color: #ffffff;
+}
+
+.reserva-layout__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) minmax(300px, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.reserva-izq {
+  display: grid;
+  gap: 28px;
+}
+
+.paso-encabezado h1,
+.paso-encabezado h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #192024;
+  margin-bottom: 6px;
+}
+
+.paso-encabezado p {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--gris-texto);
+}
+
+.enlace-subrayado {
+  color: var(--azul-oscuro);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Paso 1: tarjetas de tarifa */
+.tarifas-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.tarifa-card {
+  background: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 18px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarifa-card:hover {
+  border-color: var(--turquesa);
+}
+
+.tarifa-card.activa {
+  border: 2px solid var(--azul-oscuro);
+  padding: 17px 15px;
+  background: #f7fcff;
+  box-shadow: 0 8px 20px rgba(56, 163, 216, 0.14);
+}
+
+.tarifa-card__nombre {
+  font-size: 14px;
+  font-weight: 700;
+  color: #192024;
+  margin-bottom: 4px;
+}
+
+.tarifa-card__precio {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--azul-oscuro);
+}
+
+.tarifa-card__divisor {
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+  margin: 14px 0;
+}
+
+.tarifa-card__lista {
+  list-style: none;
+  display: grid;
+  gap: 11px;
+  font-size: 12.5px;
+}
+
+.tarifa-card__lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #374151;
+}
+
+.tarifa-card__lista li.no-incluido {
+  color: #6b7280;
+}
+
+.tarifa-card__lista li.no-incluido i {
+  color: var(--salmon);
+  font-size: 14px;
+  margin-top: 1px;
+}
+
+.tarifa-card__lista li.incluido i {
+  color: var(--turquesa-hover);
+  font-size: 14px;
+  margin-top: 1px;
+}
+
+.tarifa-card__lista li:not(.no-incluido):not(.incluido) i {
+  color: var(--azul-oscuro);
+  font-size: 14px;
+  margin-top: 1px;
+}
+
+.ver-detalles-btn {
+  margin-top: 14px;
+  background: none;
+  border: 0;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--azul-oscuro);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.detalles-tarifa-panel {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f4fafe;
+  border: 1px solid #cbe6f5;
+  font-size: 12.5px;
+  color: #334155;
+}
+
+.detalles-tarifa-panel[hidden] {
+  display: none;
+}
+
+/* Paso 2: lista de proveedores */
+.proveedores-lista {
+  margin-top: 14px;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.proveedor-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.18s ease;
+}
+
+.proveedor-fila:last-child {
+  border-bottom: 0;
+}
+
+.proveedor-fila:hover {
+  background: #fff8f8;
+}
+
+.proveedor-fila.seleccionada {
+  background: #fff3f4;
+}
+
+.proveedor-fila__izq {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.proveedor-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.proveedor-logo--booking { background: var(--azul-oscuro); font-size: 14px; }
+.proveedor-logo--expedia { background: var(--salmon); color: #ffffff; }
+.proveedor-logo--orbitz { background: var(--azul); }
+.proveedor-logo--travelocity { background: var(--turquesa-hover); }
+.proveedor-logo--mytrip { background: var(--rojo); }
+.proveedor-logo--cheapoair { background: var(--salmon); }
+
+.proveedor-nombre {
+  font-size: 14px;
+  font-weight: 700;
+  color: #192024;
+}
+
+.proveedor-anuncio {
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--salmon);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--rojo);
+  background: #fff5f5;
+}
+
+.proveedor-fila__der {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.proveedor-info-ico {
+  color: var(--turquesa-hover);
+  font-size: 13px;
+}
+
+.proveedor-precio {
+  font-size: 15px;
+  font-weight: 800;
+  color: #192024;
+  min-width: 54px;
+  text-align: right;
+}
+
+.btn-reservar-marca {
+  background: linear-gradient(135deg, var(--rojo) 0%, var(--salmon) 100%);
+  color: #ffffff;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 22px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(221, 67, 80, 0.24);
+  transition: transform 0.15s ease, box-shadow 0.18s ease;
+}
+
+.btn-reservar-marca:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(221, 67, 80, 0.34);
+}
+
+.btn-reservar-marca--grande {
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 14px;
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-oscuro) 100%);
+  box-shadow: 0 8px 18px rgba(37, 137, 189, 0.26);
+}
+
+.btn-reservar-marca--grande:hover {
+  box-shadow: 0 12px 22px rgba(37, 137, 189, 0.34);
+}
+
+/* Formulario del cliente */
+.form-cliente-caja {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(25, 32, 36, 0.04);
+}
+
+.form-cliente-caja__cab {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.form-cliente-caja__cab h2 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #192024;
+  margin-bottom: 4px;
+}
+
+.form-cliente-caja__cab p {
+  font-size: 12.5px;
+  color: var(--gris-texto);
+}
+
+.form-cliente-caja__cab strong {
+  color: var(--azul-oscuro);
+}
+
+.form-fila {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.form-fila--tres {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.campo {
+  margin-bottom: 14px;
+}
+
+.campo label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 5px;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 13px;
+  color: #192024;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo input:focus,
+.campo select:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(56, 163, 216, 0.16);
+}
+
+/* Columna derecha: resumen del vuelo */
+.reserva-der {
+  display: grid;
+  gap: 16px;
+}
+
+.itinerario-cabecera {
+  position: relative;
+}
+
+.itinerario-acciones {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 6px;
+}
+
+.icono-accion-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1px solid var(--borde);
+  background: #ffffff;
+  color: #334155;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.icono-accion-btn:hover {
+  border-color: var(--turquesa);
+  color: var(--rojo);
+}
+
+.itinerario-cabecera h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #192024;
+  padding-right: 70px;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.itinerario-cabecera p {
+  font-size: 12.5px;
+  color: var(--gris-texto);
+}
+
+.tramo-card {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.tramo-card__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #edf2f7;
+  margin-bottom: 12px;
+}
+
+.tramo-aerolinea-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.tramo-aerolinea-badge--latam { background: var(--azul-oscuro); }
+.tramo-aerolinea-badge--sky { background: var(--turquesa-hover); }
+
+.tramo-ruta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: #192024;
+}
+
+.tramo-ruta span {
+  font-size: 12px;
+  color: var(--gris-texto);
+}
+
+.tramo-sub {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.tramo-detalle {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+  color: #334155;
+}
+
+.tramo-hora {
+  font-size: 12.5px;
+  color: #192024;
+  margin-bottom: 2px;
+}
+
+.tramo-meta {
+  color: #64748b;
+}
+
+.aeronave-pill {
+  display: inline-block;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 3px 8px;
+  border: 1px solid var(--turquesa);
+  background: #f3fbfc;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--turquesa-hover);
+}
+
+.tramo-servicios {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--azul-oscuro);
+}
+
+/* Comprobante */
+.comprobante-reserva {
+  max-width: 540px;
+  margin: 24px auto;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 28px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.comprobante-reserva[hidden] {
+  display: none;
+}
+
+.comprobante-reserva__icono {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: #e6f6f7;
+  color: var(--turquesa-hover);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+.comprobante-reserva h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #192024;
+  margin-bottom: 4px;
+}
+
+.comprobante-reserva__codigo {
+  font-size: 13.5px;
+  color: var(--gris-texto);
+  margin-bottom: 18px;
+}
+
+.comprobante-reserva__datos {
+  text-align: left;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  background: #f8fafc;
+  margin-bottom: 18px;
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.comprobante-reserva__datos div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.comprobante-reserva__datos span { color: #64748b; }
+.comprobante-reserva__datos strong { color: #192024; }
+
+/* ==========================================================
+   PIE DE PÁGINA RUTA TROPICAL
+   ========================================================== */
+.pie-sitio {
+  background: #ffffff;
+  color: #4b5563;
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+}
+
+.pie-sitio__contenido {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 52px 24px 36px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1.35fr) repeat(3, minmax(120px, 0.85fr)) minmax(190px, 1fr);
+  gap: 28px;
+}
+
+.pie-sitio__logo {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--rojo);
+  margin-bottom: 12px;
+}
+
+.pie-sitio__marca-col p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #6b7280;
+  max-width: 260px;
+  margin-bottom: 16px;
+}
+
+.pie-sitio__redes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pie-sitio__redes a {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f9d8da;
+  color: var(--rojo);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+}
+
+.pie-sitio__redes a:hover {
+  background: var(--rojo);
+  color: #ffffff;
+}
+
+.pie-sitio__col h3,
+.pie-sitio__app-col h3 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 14px;
+}
+
+.pie-sitio__col ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.pie-sitio__col a {
+  color: #4b5563;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.pie-sitio__col a i {
+  font-size: 9px;
+  color: var(--rojo);
+}
+
+.pie-sitio__col a:hover {
+  color: var(--rojo);
+}
+
+.pie-sitio__app-col p {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #6b7280;
+  margin-bottom: 14px;
+  max-width: 220px;
+}
+
+.pie-sitio__tiendas {
+  display: grid;
+  gap: 10px;
+  max-width: 175px;
+}
+
+.tienda-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #090d16;
+  color: #ffffff;
+}
+
+.tienda-btn i {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.tienda-btn span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.tienda-btn small {
+  font-size: 8px;
+  letter-spacing: 0.4px;
+  color: #cbd5e1;
+}
+
+.tienda-btn strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.pie-sitio__legal {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 24px 36px;
+}
+
+.pie-sitio__legal-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 12.5px;
+  color: #6b7280;
+  flex-wrap: wrap;
+}
+
+.pie-marca-mini {
+  color: var(--rojo);
+  font-weight: 700;
+}
+
+.pie-sitio__politicas {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pie-sitio__politicas a {
+  color: #6b7280;
+}
+
+.pie-sitio__marcas {
+  padding-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.pie-sitio__aliados {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.aliado-logo {
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.aliado-kayak {
+  background: #111827;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.aliado-opentable {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+}
+
+.pie-sitio__aerolineas {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+
+.pie-sitio__aerolineas a {
+  color: var(--azul-oscuro);
+  font-weight: 500;
+}
+
+@media (max-width: 980px) {
+  .reserva-layout__grid {
+    grid-template-columns: 1fr;
+  }
+  .pie-sitio__contenido {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .tarifas-grid,
+  .form-fila,
+  .form-fila--tres {
+    grid-template-columns: 1fr;
+  }
+  .proveedor-fila {
+    flex-wrap: wrap;
+  }
+  .pie-sitio__contenido {
+    grid-template-columns: 1fr;
+  }
+  .nav-sitio { padding: 0 12px; }
+  .nav-sitio__marca { font-size: 17px; }
+  .nav-sitio__derecha { gap: 8px; }
+  .moneda__boton, .idioma__boton { padding: 0 9px 0 7px; height: 34px; }
+  .nav-sitio__usuario { width: 34px; height: 34px; }
+  .idioma__panel { right: -44px; width: min(300px, calc(100vw - 20px)); }
+}

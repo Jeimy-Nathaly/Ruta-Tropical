@@ -587,17 +587,21 @@
             </svg>
         `;
 
-        function abrirPanelDesdeMapa(modo) {
-            panelChat.classList.add("activo");
-            if (inputPregunta) {
-                if (modo === "describir" && !inputPregunta.value.trim()) {
-                    inputPregunta.placeholder = "Describe el destino o tipo de viaje que buscas...";
-                } else {
-                    inputPregunta.placeholder = "Pregunta más detalles...";
-                }
-                setTimeout(() => inputPregunta.focus(), 150);
-            }
-        }
+     function abrirPanelDesdeMapa(modo) {
+  const panelActual = document.getElementById("panelChatIzquierda");
+  const inputActual = document.getElementById("inputPreguntaIa");
+  if (!panelActual) return;
+
+  panelActual.classList.add("activo");
+  if (inputActual) {
+    if (modo === "describir" && !inputActual.value.trim()) {
+      inputActual.placeholder = "Describe el destino o tipo de viaje que buscas...";
+    } else {
+      inputActual.placeholder = "Pregunta más detalles...";
+    }
+    setTimeout(() => inputActual.focus(), 150);
+  }
+}
 
         function vincularBotonesMapaIa() {
             const elementos = document.querySelectorAll("button, a, [role='button'], div, span");
@@ -643,6 +647,8 @@
         });
         observadorMapa.observe(document.body, { childList: true, subtree: true });
 })();
+
+
 
 // Conectar enlace "planifica con IA" del footer
 document.addEventListener("click", (e) => {

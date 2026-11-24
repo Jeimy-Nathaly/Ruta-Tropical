@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">Términos y condiciones | Ruta Tropical</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="terminos.css">
+  <script src="terminos.js" defer></script>
+</head>
+<body class="pagina-terminos">
+
+  <!-- ==========================================================
+       1. BARRA DE NAVEGACIÓN
+       ========================================================== -->
+  <nav class="nav-sitio" id="nav-sitio">
+    <button class="nav-sitio__menu" id="abrir-menu" type="button"
+            aria-label="Abrir menú" aria-expanded="false" aria-controls="cajon">
+      <span></span><span></span><span></span>
+    </button>
+
+    <a class="nav-sitio__marca" href="../pagina principal/Inicio.html">RuTa TRopical</a>
+
+    <div class="nav-sitio__derecha">
+      <div class="moneda" id="moneda-control">
+        <button class="moneda__boton" id="moneda-boton" type="button"
+                aria-haspopup="listbox" aria-expanded="false" aria-controls="moneda-lista"
+                aria-label="Moneda">
+          <span class="moneda__circulo" aria-hidden="true"><span id="moneda-simbolo">$</span></span>
+          <span class="moneda__codigo" id="moneda-codigo">USD</span>
+          <i class="fa-solid fa-chevron-down" id="moneda-flecha" aria-hidden="true"></i>
+        </button>
+        <ul class="moneda__lista" id="moneda-lista" role="listbox" aria-label="Elegir moneda" hidden>
+          <li role="option" data-moneda="usd" data-simbolo="$" aria-selected="true">
+            <span class="moneda__op-simbolo">$</span>
+            <span class="moneda__op-codigo">USD</span>
+            <small class="moneda__op-nombre">Dólar</small>
+          </li>
+          <li role="option" data-moneda="eur" data-simbolo="€" aria-selected="false">
+            <span class="moneda__op-simbolo">€</span>
+            <span class="moneda__op-codigo">EUR</span>
+            <small class="moneda__op-nombre">Euro</small>
+          </li>
+          <li role="option" data-moneda="dop" data-simbolo="RD$" aria-selected="false">
+            <span class="moneda__op-simbolo">RD$</span>
+            <span class="moneda__op-codigo">DOP</span>
+            <small class="moneda__op-nombre">Peso RD</small>
+          </li>
+          <li role="option" data-moneda="gbp" data-simbolo="£" aria-selected="false">
+            <span class="moneda__op-simbolo">£</span>
+            <span class="moneda__op-codigo">GBP</span>
+            <small class="moneda__op-nombre">Libra</small>
+          </li>
+        </ul>
+        <select id="currency" aria-hidden="true" tabindex="-1" class="sr-only">
+          <option value="usd" selected>USD</option>
+          <option value="eur">EUR</option>
+          <option value="dop">DOP</option>
+          <option value="gbp">GBP</option>
+        </select>
+      </div>
+
+      <div class="idioma" id="idioma">
+        <button class="idioma__boton" id="idioma-boton" type="button"
+                aria-haspopup="listbox" aria-expanded="false" aria-controls="idioma-lista"
+                aria-label="Idioma">
+          <img id="idioma-bandera" src="https://flagcdn.com/w40/es.png" alt="" width="22" height="15">
+          <span class="idioma__codigo" id="idioma-codigo">ES</span>
+          <i class="fa-solid fa-chevron-down" id="idioma-flecha" aria-hidden="true"></i>
+        </button>
+        <div class="idioma__panel" id="idioma-lista" role="dialog" aria-label="Elegir idioma" hidden>
+          <div class="idioma__encabezado" id="idioma-titulo">SELECCIONA TU IDIOMA</div>
+          <div class="idioma__buscador">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input type="search" id="idioma-buscar" placeholder="Buscar idioma..." aria-label="Buscar idioma" autocomplete="off">
+          </div>
+          <ul class="idioma__opciones" id="idioma-opciones" role="listbox"></ul>
+        </div>
+      </div>
+
+      <div class="usuario-menu" id="usuario-menu">
+        <button class="nav-sitio__usuario" id="usuario-boton" type="button"
+                aria-haspopup="menu" aria-expanded="false" aria-controls="usuario-dropdown"
+                aria-label="Menú de usuario">
+          <span class="nav-sitio__inicial" id="usuario-inicial"><i class="fa-solid fa-user" aria-hidden="true"></i></span>
+        </button>
+
+        <div class="usuario-dropdown" id="usuario-dropdown" role="menu" hidden>
+          <div class="usuario-dropdown__cab" id="usuario-cab" data-inicial="" hidden>
+            <strong id="usuario-nombre-activo"></strong>
+            <span id="usuario-correo-activo"></span>
+          </div>
+
+          <button type="button" class="usuario-dropdown__agregar" id="btn-anadir-usuario" role="menuitem">
+            <span>+ Añadir usuario</span>
+          </button>
+
+          <div class="usuario-dropdown__sep"></div>
+
+          <a href="#trips" class="usuario-dropdown__link" id="link-trips" role="menuitem">Trips</a>
+          <a href="ayuda.html" class="usuario-dropdown__link" id="link-ayuda" role="menuitem">Ayuda/Preguntas frecuentes</a>
+          <a href="login.html" class="usuario-dropdown__link" id="link-cuenta" role="menuitem">Tu cuenta</a>
+
+          <button type="button" class="usuario-dropdown__cerrar" id="btn-cerrar-sesion" role="menuitem" hidden>
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================
+       2. MENÚ LATERAL
+       ========================================================== -->
+  <div class="cajon-fondo" id="cajon-fondo"></div>
+
+  <aside class="cajon" id="cajon" aria-label="Menú principal">
+    <div class="cajon__cab">
+      <span class="cajon__marca">Ruta Tropical</span>
+      <button class="cajon__cerrar" id="cerrar-menu" type="button" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <ul class="cajon__principal">
+      <li><a href="#destinos"><i class="fa-solid fa-plane" aria-hidden="true"></i> Vuelos</a></li>
+      <li><a href="#hoteles"><i class="fa-solid fa-hotel" aria-hidden="true"></i> Hoteles</a></li>
+      <li><a href="#autobus"><i class="fa-solid fa-bus" aria-hidden="true"></i> Autobús</a></li>
+    </ul>
+
+       <ul class="cajon__enlaces">
+        <li><a href="../pagina principal/Inicio.html#ia"><i class="fa-solid fa-chevron-right"></i>planifica con IA</a></li>
+        <li><a href="../descubre/descubre tu reserva tu proximo viaje.html"><i class="fa-solid fa-chevron-right"></i> viajes</a></li>
+        <li><a href="../acerca de/acerca de.html"><i class="fa-solid fa-chevron-right"></i> Sobre nosotros</a></li>
+        <li><a href="../contactanos/contactanos.html"><i class="fa-solid fa-chevron-right"></i> Contacto</a></li>
+        <li><a href="../ayuda/ayuda.html"><i class="fa-solid fa-chevron-right"></i> Preguntas frecuentes</a></li>
+        <li><a href="../explorar mas/explorar.html"><i class="fa-solid fa-chevron-right"></i> explorar</a></li>
+        <li><a href="../terminos/termino.html"><i class="fa-solid fa-chevron-right"></i> Términos y condiciones</a></li>
+        <li><a href="../rastreador/rastreo.html"><i class="fa-solid fa-chevron-right"></i> rastraedor de vuelos</a></li>
+        <li><a href="../viajes/viajes.html"><i class="fa-solid fa-chevron-right"></i> planean tus viajes</a></li>
+    </ul>
+
+    <div class="cajon__contacto">
+      <div class="contacto-fila">
+        <span class="contacto-fila__icono"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+        <div class="contacto-fila__datos">
+          <strong>Teléfono:</strong>
+          <span class="info">+1-029-789-7542</span>
+        </div>
+      </div>
+      <div class="contacto-fila">
+        <span class="contacto-fila__icono"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+        <div class="contacto-fila__datos">
+          <strong>Correo:</strong>
+          <span class="info">rutaTropical@tuempresa.com</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================
+       3. PORTADA Y CONTENIDO DE TÉRMINOS
+       ========================================================== -->
+  <header class="hero">
+    <div class="hero-inner">
+      <h1 id="hero-titulo">Términos y condiciones</h1>
+    </div>
+  </header>
+
+  <main class="terms" id="top">
+    <p id="p-intro-1">Lee estos Términos y condiciones con detenimiento antes de usar cualquier material, información, producto o servicio de esta página. Al entrar a la página web de Ruta Tropical o a cualquiera de sus plataformas ("Nuestra web"), aceptas estos Términos y condiciones ("Términos") y nuestra <a href="#privacidad">Política de privacidad</a>. Si no estás de acuerdo con ellos, te pedimos que no uses Nuestra web. En estos Términos, "nosotros", "nuestro(a)" y "Ruta Tropical" se refieren a Ruta Tropical, y "tú" o "tu" se refiere a ti como usuario de Nuestra web.</p>
+
+    <p class="notice" id="p-notice">Estos Términos incluyen limitaciones de responsabilidad. Léelos con atención.</p>
+
+    <p id="p-intro-2">Podemos modificar estos Términos y publicar una nueva versión en Nuestra web en cualquier momento. Los cambios no afectan los derechos y obligaciones que ya existían. Si sigues usando Nuestra web después de que publiquemos una modificación, entendemos que aceptas los Términos vigentes. Revísalos de vez en cuando para estar al tanto de los cambios.</p>
+
+    <h2 id="h2-1">1. Qué es Ruta Tropical</h2>
+    <p id="p-1-1">Ruta Tropical es una web para buscar y comparar opciones de viaje, como vuelos, alojamiento, alquiler de autos, excursiones y paquetes vacacionales (los "Productos de viaje"). Los Productos de viaje pertenecen a terceros, como aerolíneas, hoteles y agencias (los "Proveedores"), que los administran o los ponen a disposición. Los Proveedores son responsables de sus Productos de viaje.</p>
+    <p id="p-1-2">Tú eres responsable de leer y entender los términos y las políticas de cada Proveedor, que son los que rigen tu reserva. También eres responsable de cualquier trato que tengas con ellos a través de Nuestra web. Mostrar un Proveedor o un Producto de viaje no es una recomendación ni significa que Ruta Tropical esté afiliada a él o lo respalde.</p>
+
+    <h2 id="h2-2">2. Reservas hechas a través de Ruta Tropical</h2>
+    <p id="p-2-1">Las reservas se completan con el Proveedor indicado en la página de reserva. En esos casos, Nuestra web funciona solo como una herramienta de búsqueda. No participamos en la descripción de los Productos de viaje ni en la definición de sus precios, tasas o condiciones. Si tienes un problema con tu reserva o con el Producto de viaje, debes comunicarte con el Proveedor para resolverlo.</p>
+
+    <h2 id="h2-3">3. Precios, tasas y tipo de cambio</h2>
+    <p id="p-3-1">Mostramos contenido y precios que nos entregan los Proveedores. No los verificamos de forma independiente y no garantizamos que sean exactos, completos o estén actualizados. Los precios pueden cambiar en cualquier momento y pueden sumarse cargos adicionales, como tasas de pago, cargos por servicio, tarifas de equipaje e impuestos locales. Antes de confirmar una reserva, comprueba que el precio sea el que esperabas.</p>
+    <p id="p-3-2">Algunos Proveedores cobran en una moneda distinta de la que viste al buscar. El tipo de cambio que mostramos es solo de referencia y puede variar. Tu banco o tu medio de pago puede aplicar sus propias tasas o un tipo de cambio de otra fecha.</p>
+
+    <h2 id="h2-4">4. Propiedad intelectual</h2>
+    <p id="p-4-1">Ruta Tropical, sus socios y sus licenciantes son propietarios de los textos, imágenes, diseños, software, marcas y demás materiales de Nuestra web. No puedes copiar ni divulgar ese contenido, salvo para uso personal y no comercial. Los avisos de derechos de autor y de marcas deben conservarse en cualquier copia que imprimas.</p>
+    <p id="p-4-2">Los demás productos, servicios o nombres que aparecen en Nuestra web pertenecen a sus respectivos dueños y se mencionan solo para identificarlos. El uso de Nuestra web no te da ninguna licencia sobre las marcas que aparecen en ella.</p>
+
+    <h2 id="h2-5">5. Uso de Nuestra web</h2>
+    <p id="p-5-1">Para registrarte o usar Nuestra web debes tener la edad legal para celebrar contratos en tu país. En la mayoría de los lugares son 18 años, pero puede variar. Al usarla, declaras que cumples ese requisito.</p>
+    <p id="p-5-2">Nuestra web solo puede usarse para buscar ofertas de viaje legítimas. Está prohibido usarla para hacer reservas falsas, fraudulentas o especulativas. Al usarla, te comprometes a cumplir las leyes que te apliquen. Sin autorización previa por escrito de Ruta Tropical, no puedes:</p>
+    <ul class="plain" id="ul-5-plain">
+      <li>(i) acceder a Nuestra web con procesos automáticos o sistemas para extraer datos, ni con fines distintos del uso personal;</li>
+      <li>(ii) saltarte las restricciones técnicas o las medidas de seguridad de Nuestra web;</li>
+      <li>(iii) usar enlaces profundos hacia cualquier parte de Nuestra web;</li>
+      <li>(iv) realizar acciones que sobrecarguen o interfieran con el funcionamiento de nuestros sistemas;</li>
+      <li>(v) reproducir, copiar, vender, revender o lucrar con Nuestra web;</li>
+      <li>(vi) usarla con fines ilegales, dañinos o que consideremos inapropiados;</li>
+      <li>(vii) publicar material que no respete los derechos de terceros o la ley aplicable;</li>
+      <li>(viii) usarla para obtener o almacenar información personal de otras personas;</li>
+      <li>(ix) usarla con fines comerciales;</li>
+      <li>(x) publicar anuncios o material promocional.</li>
+    </ul>
+    <p id="p-5-3">Si ocurre alguno de estos casos, podemos suspender, cancelar o restringir el acceso a Nuestra web, total o parcialmente, en cualquier momento y sin previo aviso. Además, te comprometes a no:</p>
+    <ul id="ul-5-prohibido">
+      <li>evitar, desactivar o interferir con las funciones de seguridad de Nuestra web;</li>
+      <li>hacerte pasar por otra persona o entidad, o tergiversar tu relación con ella;</li>
+      <li>proporcionar información falsa o engañosa;</li>
+      <li>pedir datos personales a otras personas;</li>
+      <li>eliminar, añadir o cambiar el contenido de otros usuarios;</li>
+      <li>quitar o alterar avisos de derechos de autor u otros avisos de propiedad;</li>
+      <li>desprestigiar públicamente a una persona o al contenido de otro usuario;</li>
+      <li>publicar amenazas de violencia o promover actividades ilegales.</li>
+    </ul>
+    <p id="p-5-4">Si ves contenido abusivo, puedes denunciarlo en <a href="mailto:contacto@rutatropical.com">contacto@rutatropical.com</a>.</p>
+
+    <h2 id="h2-6">6. Tu cuenta</h2>
+    <p id="p-6-1">Si creas una cuenta, eres responsable de mantener la confidencialidad de tu contraseña y de tus datos de acceso. También eres responsable de todo lo que se haga con tu cuenta, con o sin tu permiso. La información que nos des debe ser exacta y estar actualizada. Si sospechas que alguien usa tu cuenta sin autorización, cambia tu información de inmediato y avísanos.</p>
+    <p id="p-6-2">Si decides recibir mensajes de Ruta Tropical en tu teléfono, es tu responsabilidad mantener tu número actualizado y asumir los costos que genere recibirlos. No somos responsables por información enviada a un número desactualizado. Si instalas software que guarde información de Nuestra web en un dispositivo, antes de transferirlo o deshacerte de él debes borrar esa información para evitar accesos no autorizados.</p>
+
+    <h2 id="h2-7">7. Tus comentarios y contenido</h2>
+    <p id="p-7-1">Te invitamos a compartir comentarios, reseñas y preguntas con nosotros. Aun así, es posible que no podamos responder a todos. Ruta Tropical no asume responsabilidad por la revisión de ideas no solicitadas, y puede que algo parecido a tu idea ya exista o se desarrolle en el futuro. Eres responsable de lo que envíes, incluyendo su veracidad, su originalidad y el respeto a los derechos de terceros. No compartas secretos comerciales ni información confidencial.</p>
+    <p id="p-7-2">Al enviarnos contenido, nos das una licencia no exclusiva, gratuita, mundial y permanente para usarlo, copiarlo, modificarlo, traducirlo, publicarlo y distribuirlo con fines operativos, comerciales y de promoción. Puedes borrar tu contenido en cualquier momento, pero la licencia ya otorgada seguirá vigente. No estamos obligados a revisar el contenido de los usuarios, aunque nos reservamos el derecho de revisarlo, editarlo o eliminarlo.</p>
+
+    <h2 id="h2-8">8. Derechos de propiedad intelectual de otras personas</h2>
+    <p id="p-8-1">Respetamos los derechos de propiedad intelectual de los demás y prohibimos subir, publicar o transmitir en Nuestra web contenido que los infrinja. Si crees que tu marca o tus derechos de autor han sido vulnerados, escríbenos a <a href="mailto:contacto@rutatropical.com">contacto@rutatropical.com</a> con los datos de la obra y del contenido en cuestión.</p>
+
+    <h2 id="h2-9">9. Exención de garantías</h2>
+    <p id="p-9-1">Nuestra web, su contenido y sus servicios se ofrecen "tal cual" y "según disponibilidad". Gran parte del contenido se genera de forma automática, por lo que pueden ocurrir errores. Los resultados de búsqueda no son exhaustivos y no siempre muestran el precio más bajo del mercado. En la medida que permita la ley, Ruta Tropical rechaza toda garantía, expresa o implícita, incluyendo las de comerciabilidad, idoneidad para un fin particular, exactitud y no incumplimiento.</p>
+
+    <h2 id="h2-10">10. Limitación de responsabilidad</h2>
+    <p id="p-10-1">En la medida que permita la ley, Ruta Tropical, sus directivos, empleados, socios y proveedores no serán responsables de (a) pérdidas o daños, incluidos virus, que puedan afectar tu equipo como resultado del acceso a Nuestra web o de la descarga de su contenido; ni de (b) lesiones, muerte, pérdidas, reclamaciones o daños directos, indirectos, especiales o de cualquier tipo (incluida la pérdida de beneficios o ahorros) que se deriven de (i) el uso de Nuestra web o de su contenido, (ii) un fallo o retraso, o la imposibilidad de usar algún componente de Nuestra web, o (iii) el incumplimiento nuestro o de un Proveedor, incluso si se nos avisó de esa posibilidad. Cuando la ley lo permita, nuestra responsabilidad total hacia ti por cualquier causa se limita a 50 USD.</p>
+
+    <h2 id="h2-11">11. Te comprometes a protegernos</h2>
+    <p id="p-11-1">Aceptas defender, indemnizar y mantener libres de responsabilidad a Ruta Tropical, a sus directivos, empleados y agentes frente a cualquier reclamación, daño, gasto o costo legal que se derive del incumplimiento de estos Términos, de la violación de leyes aplicables o del uso indebido de Nuestra web o de la propiedad intelectual.</p>
+
+    <h2 id="h2-12">12. Enlaces a otras webs</h2>
+    <p id="p-12-1">Nuestra web puede incluir enlaces a otras páginas que no controlamos ("Otras webs"). Los ofrecemos como referencia y comodidad, pero no avalamos su contenido y no somos responsables de ellas ni de los daños que puedas sufrir por usarlas. Revisa sus términos y políticas de privacidad antes de usarlas. No puedes crear enlaces hacia Nuestra web desde otras páginas sin nuestro permiso.</p>
+
+    <h2 id="h2-13">13. Normas de las aerolíneas</h2>
+    <p id="p-13-1">Muchas aerolíneas prohíben ciertas prácticas, como comprar vuelos simultáneos con fechas solapadas o comprar trayectos que incluyan escalas que no piensas usar. Si una aerolínea detecta estas prácticas, puede cancelar tu reserva, negarte el embarque, retirarte beneficios de viajero frecuente o cobrarte cargos adicionales. Ruta Tropical no se hace responsable de las consecuencias de incumplir las normas de un Proveedor.</p>
+
+    <h2 id="h2-14">14. Inteligencia artificial</h2>
+    <p id="p-14-1">Algunas funciones de Nuestra web pueden usar inteligencia artificial ("IA"), incluida la IA generativa, para ofrecer recomendaciones, resumir información o mejorar tu búsqueda. Procesamos los datos que ingresas con el fin de prestarte el servicio, mejorarlo y resolver problemas, como se explica en estos Términos y en nuestra Política de privacidad. El contenido generado por IA se ofrece "tal cual" y puede contener errores. No garantizamos su relevancia, precisión o integridad, ni nos responsabilizamos por pérdidas que se deriven de confiar en él. Verifica siempre los datos importantes con el Proveedor.</p>
+
+    <h2 id="privacidad">15. Privacidad y seguridad</h2>
+    <p id="p-15-1">El tratamiento de tus datos personales se rige por nuestra Política de privacidad. Para conocer cómo protegemos tu información, consulta la página de <a href="seguridad.html">Seguridad en Ruta Tropical</a>.</p>
+
+    <h2 id="h2-16">16. Requisitos generales</h2>
+    <p id="p-16-1">Podemos modificar Nuestra web y estos Términos en cualquier momento. Eres responsable de mantenerte al tanto de las actualizaciones, y usar Nuestra web significa que las aceptas. Los cambios reemplazan las versiones anteriores y se aplican a todos los usuarios, incluidos los que se registraron antes de que entraran en vigor. También podemos dar por terminado este acuerdo en cualquier momento, avisándote por escrito (incluso por correo electrónico) o cancelando tu cuenta y el acceso a Nuestra web.</p>
+    <p id="p-16-2">Estos Términos se interpretan según las leyes de la República Dominicana, y cualquier controversia se presentará ante los tribunales competentes de ese país.</p>
+
+    <h2 id="h2-avisos">Otros avisos legales</h2>
+    <p id="p-avisos">Google Play y su logo son marcas registradas de Google LLC. Apple, el logo de Apple, iPhone e iPad son marcas registradas de Apple Inc. App Store es una marca de servicio de Apple Inc.</p>
+
+    <h2 id="h2-operador">Nuestra web es operada por:</h2>
+    <address id="address-operador">
+      Ruta Tropical<br>
+      Santo Domingo, República Dominicana<br>
+      <a href="mailto:contacto@rutatropical.com">contacto@rutatropical.com</a>
+    </address>
+
+    <p class="updated" id="p-updated">Última actualización: 20 de noviembre de 2026</p>
+  </main>
+
+  <button id="to-top" class="to-top" aria-label="Volver arriba" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>
+  </button>
+
+  <!-- ==========================================================
+       4. PIE DE PÁGINA
+       ========================================================== -->
+  <footer class="rt-footer" id="rt-footer">
+    <div class="rt-footer__inner">
+
+      <div class="rt-footer__top">
+        <div class="rt-footer__brand-col">
+          <a class="rt-footer__logo" href="../pagina principal/Inicio.html">RuTa TRopical</a>
+          <p class="rt-footer__desc">Tu agencia de confianza para descubrir el mundo al mejor precio. Compara, ahorra y vuela sin límites.</p>
+          <div class="rt-footer__social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <nav class="rt-footer__col" aria-label="Empresa">
+          <h3>Empresa</h3>
+          <ul>
+            <li><a href="/acerca de/acerca de.html"><span class="rt-chev">&rsaquo;</span> Acerca de</a></li>
+            <li><a href="#"><span class="rt-chev">&rsaquo;</span> Prensa</a></li>
+            <li><a href="#"><span class="rt-chev">&rsaquo;</span> Afiliados</a></li>
+            <li><a href="#"><span class="rt-chev">&rsaquo;</span> Socios</a></li>
+          </ul>
+        </nav>
+
+        <nav class="rt-footer__col" aria-label="Contacto">
+          <h3>Contacto</h3>
+          <ul>
+            <li><a href="ayuda.html"><span class="rt-chev">&rsaquo;</span> Ayuda / FAQ</a></li>
+            <li><a href="#"><span class="rt-chev">&rsaquo;</span> Hoteles</a></li>
+            <li><a href="#"><span class="rt-chev">&rsaquo;</span> Publicidad</a></li>
+          </ul>
+        </nav>
+
+        <nav class="rt-footer__col" aria-label="Más">
+          <h3>Más</h3>
+          <ul>
+            <li><a href="#"><span class="rt-chev">&rsaquo;</span> Tarifas aéreas</a></li>
+            <li><a href="#"><span class="rt-chev">&rsaquo;</span> Ofertas bajas</a></li>
+            <li><a href="#privacidad"><span class="rt-chev">&rsaquo;</span> Privacidad</a></li>
+          </ul>
+        </nav>
+
+        <div class="rt-footer__app">
+          <h3>Descarga la app</h3>
+          <p class="rt-footer__app-texto">Lleva tus reservas y ofertas siempre contigo.</p>
+          <div class="rt-footer__apps">
+            <a class="rt-store-btn rt-store-btn--play" href="#" aria-label="Disponible en Google Play">
+              <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+              <span><small>DISPONIBLE EN</small><strong>Google Play</strong></span>
+            </a>
+            <a class="rt-store-btn rt-store-btn--apple" href="#" aria-label="Consíguelo en App Store">
+              <i class="fa-brands fa-apple" aria-hidden="true"></i>
+              <span><small>CONSÍGUELO EN</small><strong>App Store</strong></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rt-footer__legal">
+        <span>© <span id="year">2026</span> RuTa Tropical. Todos los derechos reservados.</span>
+        <div class="rt-footer__legales-links">
+          <a href="#privacidad">Privacidad</a>
+          <span class="rt-dot" aria-hidden="true">&bull;</span>
+          <a href="#top">Términos y condiciones</a>
+          <span class="rt-dot" aria-hidden="true">&bull;</span>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+
+      <div class="rt-footer__partners" aria-label="Marcas aliadas">
+        <span class="rt-partner rt-partner--booking">Booking.com</span>
+        <span class="rt-partner rt-partner--kayak"><span>K</span><span>A</span><span>Y</span><span>A</span><span>K</span></span>
+        <span class="rt-partner rt-partner--opentable"><i class="fa-regular fa-circle" aria-hidden="true"></i> OpenTable</span>
+        <span class="rt-partner rt-partner--priceline">priceline</span>
+        <span class="rt-partner rt-partner--agoda">agoda</span>
+      </div>
+
+      <div class="rt-footer__airlines">
+        <span>Arajet</span>
+        <span>American</span>
+        <span>Copa</span>
+        <span>Delta</span>
+        <span>Iberia</span>
+        <span>JetBlue</span>
+        <span>Air France</span>
+        <span>United</span>
+        <span>Avianca</span>
+        <span>Air Europa</span>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

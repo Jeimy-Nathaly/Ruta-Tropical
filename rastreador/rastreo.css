@@ -625,134 +625,431 @@ select:focus {
 
 
 /* ==========================================================
-   6. PIE DE PÁGINA
+   PIE DE PÁGINA - ESTILO RUTA TROPICAL
    ========================================================== */
-.footer {
+.rt-footer {
   width: 100%;
-  margin: 39px 0 0;
-  padding: 48px 36px 32px;
-  color: #dd4350;
   background: #ffffff;
-  border-top: 1px solid #e3e4e4;
+  color: #334155;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 48px;
 }
 
-.footer__inner {
-  max-width: 1200px;
+.rt-footer__inner {
+  max-width: 1240px;
   margin: 0 auto;
+  padding: 44px 28px 28px;
 }
 
-.footer__columnas {
+.rt-footer__top {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px 40px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid #dd4350;
+  grid-template-columns: 1.45fr 1fr 1fr 1fr 1.25fr;
+  gap: 32px;
+  padding-bottom: 34px;
+}
+
+.rt-footer__logo {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 800;
   color: #dd4350;
-}
-
-.footer h3 {
-  margin: 0 0 16px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #dd4350;
-}
-
-.footer ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  color: #81bac2;
-}
-
-.footer li {
-  margin-bottom: 14px;
-  line-height: 18px;
-}
-
-.footer a {
-  color: var(--texto);
   text-decoration: none;
+  margin-bottom: 12px;
 }
 
-.footer a:hover {
-  color: #5cabb6;
+.rt-footer__desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #64748b;
+  margin: 0 0 18px;
+  max-width: 270px;
 }
 
-.footer a:focus-visible {
-  outline: 2px solid #dd4350;
-  outline-offset: 3px;
+.rt-footer__redes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rt-footer__redes a {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fde8ea;
+  color: #dd4350;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 13px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.rt-footer__redes a:hover {
+  background: #dd4350;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.rt-footer__col h3 {
+  position: relative;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 16px;
+  padding-bottom: 6px;
+}
+
+.rt-footer__col h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 22px;
+  height: 2px;
+  background: #dd4350;
   border-radius: 2px;
 }
 
-.apps {
+.rt-footer__col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
+  gap: 10px;
 }
 
-.app-btn {
+.rt-footer__col ul a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 13.5px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  width: 108px;
-  height: 36px;
-  padding: 0 8px;
-  border: 1px solid var(--texto);
-  border-radius: 6px;
-  text-decoration: none !important;
+  gap: 6px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.rt-footer__col ul a:hover {
+  color: #0f172a;
+  transform: translateX(2px);
+}
+
+.rt-chev {
+  color: #dd4350;
+  font-weight: 700;
+  font-size: 14px;
   line-height: 1;
 }
 
-.app-btn svg {
-  width: 20px;
-  height: 20px;
-  flex: none;
-  fill: var(--texto);
-}
-
-.app-btn small {
-  display: block;
-  font-size: 6px;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.app-btn span {
+.rt-footer__app-texto {
   font-size: 13px;
-  font-weight: 500;
+  line-height: 1.45;
+  color: #64748b;
+  margin: 0 0 14px;
 }
 
-.footer__legal {
+.rt-footer__tiendas {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px 32px;
-  padding: 32px 0 24px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.footer__legal-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 32px;
-}
-
-.social {
-  display: flex;
-  gap: 28px;
-  padding-right: 64px;
-}
-
-.social a {
+.rt-tienda-btn {
   display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  background: #0b132b;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 9px 16px;
+  border-radius: 9px;
+  width: fit-content;
+  min-width: 168px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.social svg {
+.rt-tienda-btn:hover {
+  background: #162246;
+  transform: translateY(-2px);
+}
+
+.rt-tienda-btn i {
+  font-size: 20px;
+}
+
+.rt-tienda-btn__txt {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.rt-tienda-btn__txt small {
+  font-size: 8.5px;
+  letter-spacing: 0.4px;
+  opacity: 0.85;
+}
+
+.rt-tienda-btn__txt strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.rt-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 1px solid #e2e8f0;
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+.rt-footer__legales-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rt-footer__legales-links a {
+  color: #475569;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.rt-footer__legales-links a:hover {
+  color: #dd4350;
+}
+
+.rt-footer__socios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.rt-socio {
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.3px;
+  user-select: none;
+}
+
+.rt-socio--booking {
+  font-size: 20px;
+}
+
+.rt-socio--kayak {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.rt-socio--kayak i {
+  font-style: normal;
+  background: #1e293b;
+  color: #ffffff;
+  font-size: 11px;
   width: 18px;
   height: 18px;
-  fill: var(--texto);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+.rt-socio--opentable {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rt-socio--priceline {
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.rt-socio--agoda {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.rt-socio--agoda small {
+  font-size: 7px;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+.rt-footer__aerolineas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 12.5px;
+}
+
+.rt-footer__aero-titulo {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.rt-footer__aero-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.rt-footer__aero-lista a {
+  color: #64748b;
+  text-decoration: none;
+}
+
+.rt-footer__aero-lista a:hover {
+  color: #dd4350;
+}
+
+@media (max-width: 960px) {
+  .rt-footer__top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .rt-footer__top {
+    grid-template-columns: 1fr;
+  }
+
+  .rt-footer__socios {
+    justify-content: center;
+  }
+}
+
+/* ==========================================================
+   ANIMACIONES DEL PIE DE PÁGINA - RUTA TROPICAL
+   ========================================================== */
+@keyframes rtBrilloPulso {
+  0%, 100% {
+    box-shadow: 0 8px 24px rgba(221, 67, 80, 0.35), 0 0 28px rgba(221, 67, 80, 0.25);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(221, 67, 80, 0.52), 0 0 38px rgba(221, 67, 80, 0.38);
+  }
+}
+
+/* Botones de descarga de app con animación coral al pasar el cursor */
+.rt-tienda-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.28s ease,
+              box-shadow 0.28s ease;
+}
+
+.rt-tienda-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+
+.rt-tienda-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(135deg, #e55360, #dd4350);
+  box-shadow: 0 10px 28px rgba(221, 67, 80, 0.42), 0 0 32px rgba(221, 67, 80, 0.3);
+  animation: rtBrilloPulso 2s ease-in-out infinite;
+}
+
+.rt-tienda-btn:hover::after {
+  left: 140%;
+}
+
+.rt-tienda-btn:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* Redes sociales: giro suave y resplandor */
+.rt-footer__redes a {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.25s ease,
+              color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.rt-footer__redes a:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 16px rgba(221, 67, 80, 0.28);
+}
+
+/* Flecha › animada en los enlaces de columnas */
+.rt-chev {
+  display: inline-block;
+  transition: transform 0.22s ease, color 0.22s ease;
+}
+
+.rt-footer__col ul a:hover .rt-chev {
+  transform: translateX(4px);
+  color: #dd4350;
+}
+
+/* Subrayado animado bajo el título de cada columna */
+.rt-footer__col h3::after {
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rt-footer__col:hover h3::after {
+  width: 38px;
+}
+
+/* Enlaces legales, socios y aerolíneas */
+.rt-footer__legales-links a,
+.rt-footer__aero-lista a {
+  position: relative;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.rt-footer__aero-lista a:hover {
+  color: #dd4350;
+  transform: translateY(-1px);
+}
+
+.rt-socio {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease, opacity 0.25s ease;
+}
+
+.rt-socio:hover {
+  transform: translateY(-2px) scale(1.04);
+  color: #dd4350;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-tienda-btn,
+  .rt-tienda-btn::after,
+  .rt-footer__redes a,
+  .rt-chev,
+  .rt-footer__col h3::after,
+  .rt-socio {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 
@@ -928,4 +1225,233 @@ select:focus {
 
 .rt-btn-usa-ia:active {
   transform: scale(0.97);
+}
+
+/* ==========================================================
+   SELECTOR DE IDIOMA - ESTILO RUTA TROPICAL
+   ========================================================== */
+.idioma {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.idioma__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid transparent;
+  background-image: linear-gradient(#ffffff, #ffffff),
+                    linear-gradient(135deg, #dd4350, #17a1cf);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.idioma__boton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(23, 161, 207, 0.18);
+}
+
+.idioma__boton img {
+  width: 22px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+.idioma__codigo {
+  letter-spacing: 0.4px;
+}
+
+.idioma__lista {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 255px;
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+  z-index: 99999;
+}
+
+.idioma__lista[hidden] {
+  display: none;
+}
+
+.idioma__opcion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: #1e293b;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.idioma__opcion:hover {
+  background: rgba(23, 161, 207, 0.08);
+  color: #0f172a;
+}
+
+.idioma__opcion.activa {
+  background: #dd4350;
+  color: #ffffff;
+}
+
+.idioma__opcion-izq {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.idioma__opcion img {
+  width: 24px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.idioma__opcion-textos {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.idioma__opcion-nombre {
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.idioma__opcion-region {
+  font-size: 11px;
+  opacity: 0.78;
+}
+
+.idioma__opcion-codigo {
+  font-size: 11.5px;
+  font-weight: 800;
+  opacity: 0.85;
+}
+/* ==========================================================
+   MENÚ DESPLEGABLE PERSONALIZADO PARA MONEDA
+   ========================================================== */
+.moneda {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px 5px 6px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid transparent;
+  background-image: linear-gradient(#ffffff, #ffffff),
+                    linear-gradient(135deg, #dd4350, #17a1cf);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+  user-select: none;
+}
+
+.moneda__icono {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dd4350, #17a1cf);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.moneda select#currency.rt-select-oculto {
+  display: none !important;
+}
+
+.rt-moneda-actual-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  padding: 2px 4px;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rt-moneda-lista {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 145px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16);
+  z-index: 99999;
+}
+
+.rt-moneda-lista[hidden] {
+  display: none;
+}
+
+.rt-moneda-opcion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #1e293b;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.rt-moneda-opcion:hover {
+  background: rgba(23, 161, 207, 0.1);
+}
+
+.rt-moneda-opcion.activa {
+  background: #dd4350;
+  color: #ffffff;
 }
